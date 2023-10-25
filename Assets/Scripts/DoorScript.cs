@@ -13,15 +13,16 @@ public class DoorScript : MonoBehaviour
     public bool state = false;
     private void Awake()
     {
-                doorCollider = GameObject.FindWithTag("door").GetComponent<Collider>();
+        doorCollider = GameObject.FindWithTag("door").GetComponent<Collider>();
         playerInput = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        OnTriggerEnter(doorCollider);
+
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (Input.GetKeyDown(KeyCode.E) && !state)

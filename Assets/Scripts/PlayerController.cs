@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,55 +7,70 @@ public class PlayerController : MonoBehaviour
 
     private Animator playerAnimator;
     private Animator doorAnimator;
-
+    private Vector2 move;
+    private Vector2 jump;
+    public Collider doorCollider;
 
     public Rigidbody playerRb;
-
-
-
     public float speed;
-
+    public bool state = true;
 
     private void Awake()
     {
         playerAnimator = GetComponent<Animator>();
         doorAnimator = GameObject.FindWithTag("door").GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            playerAnimator.PlayInFixedTime("attack");
-        }
-
-        PlayerInputActions playerInputActions = new();
-        playerInputActions.Enable();
-        playerInputActions.Player.Jump.performed += Jump;
-    }
-
-    private void Jump(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            playerRb.AddForce(Vector3.up, ForceMode.Impulse); Debug.Log(context);
-        }
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnMove(InputAction.CallbackContext ctx)
     {
-        if (Input.GetKeyDown(KeyCode.E) && other.CompareTag("door"))
+        move = ctx.ReadValue<Vector2>();
+    }
+
+    public void OnJump(InputAction.CallbackContext ctx)
+    {
+        jump = ctx.ReadValue<Vector2>();
+    }
+
+    public void OnInteract(InputAction.CallbackContext ctx)
+    {
+        /*        if (ctx.performed && doorCollider.CompareTag("door"))
+                {
+                    doorAnimator.SetBool("isOpen", true);
+                    doorAnimator.PlayInFixedTime("open", -1, 3);
+                }
+                if (ctx.performed && doorCollider.CompareTag("door"))
+                {
+                    doorAnimator.SetBool("isOpen", false);
+                    doorAnimator.PlayInFixedTime("close", -1, 3);
+                }*/
+    }
+
+    void FixedUpdate()
+    {
+
+        movePlayer();
+
+    }
+
+    public void movePlayer()
+    {
+        Vector3 movement = new(move.x, jump.y, move.y);
+        transform.Translate(speed*Time.deltaTime*movement, Space.World);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (Input.GetKey(KeyCode.E) && other.CompareTag("door"))
         {
             doorAnimator.SetBool("isOpen", true);
-            doorAnimator.PlayInFixedTime("open", -1, 3);
+            doorAnimator.PlayInFixedTime("open");
         }
-        if (Input.GetKeyDown(KeyCode.E) && other.CompareTag("door"))
+        if (Input.GetKey(KeyCode.E) && other.CompareTag("door"))
         {
             doorAnimator.SetBool("isOpen", false);
-            doorAnimator.PlayInFixedTime("close", -1, 3);
+            doorAnimator.PlayInFixedTime("close");
         }
     }
 }
