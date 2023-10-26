@@ -508,11 +508,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 900025116}
-  - component: {fileID: 900025118}
   - component: {fileID: 900025117}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: triger
+  m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545,14 +544,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &900025118
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 900025115}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1196642877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,10 +1407,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b1fc436e1a8694aae162a8eba4fbd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorCollider: {fileID: 900025117}
+  doorClose: 1
+  signOpen: 1
+  signClose: 0
+  playerTriger: {fileID: 8483076812038958078}
   playerRb: {fileID: 8483076812038958081}
   speed: 8
-  state: 1
 --- !u!114 &8483076812038958083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1493,6 +1486,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 413f81b2-0e54-4fd5-97fd-cbfcde8d6f0e
     m_ActionName: Player/Interact
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8483076812038958082}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 60c4acdd-be64-469c-8839-81c4f0b11c83
+    m_ActionName: Player/Attack[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

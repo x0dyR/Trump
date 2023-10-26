@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour
     private Animator doorAnimator;
     private Vector2 move;
     private Vector2 jump;
-    public Collider doorCollider;
+    [SerializeField] private bool doorClose = true;
+    [SerializeField] private bool signOpen = false;
+    [SerializeField] private bool signClose = false;
 
+    public Collider playerTriger;
     public Rigidbody playerRb;
     public float speed;
-    public bool state = true;
 
     private void Awake()
     {
@@ -35,16 +37,26 @@ public class PlayerController : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext ctx)
     {
-        /*        if (ctx.performed && doorCollider.CompareTag("door"))
-                {
-                    doorAnimator.SetBool("isOpen", true);
-                    doorAnimator.PlayInFixedTime("open", -1, 3);
-                }
-                if (ctx.performed && doorCollider.CompareTag("door"))
-                {
-                    doorAnimator.SetBool("isOpen", false);
-                    doorAnimator.PlayInFixedTime("close", -1, 3);
-                }*/
+        if (ctx.performed && doorClose)
+        {
+            doorClose = false;
+            signOpen = true;
+            signClose = false;
+        }
+        else if (ctx.performed && !doorClose)
+        {
+            doorClose = true;
+            signClose = true;
+            signOpen = false;
+        }
+    }
+
+    public void OnAttack(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            playerAnimator.Play("attack");
+        }
     }
 
     void FixedUpdate()
@@ -62,15 +74,19 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (Input.GetKey(KeyCode.E) && other.CompareTag("door"))
+
+        if (other.CompareTag("door"))
         {
-            doorAnimator.SetBool("isOpen", true);
-            doorAnimator.PlayInFixedTime("open");
-        }
-        if (Input.GetKey(KeyCode.E) && other.CompareTag("door"))
-        {
-            doorAnimator.SetBool("isOpen", false);
-            doorAnimator.PlayInFixedTime("close");
+            if (signOpen)
+            {
+                doorAnimator.SetBool("isOpen", true);
+                doorAnimator.Play("open", 0, 10f);
+            }
+            else if (signClose)
+            {
+                doorAnimator.SetBool("isOpen", false);
+                doorAnimator.Play("close");
+            }
         }
     }
 }
