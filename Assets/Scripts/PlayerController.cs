@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         playerAnimator = GetComponent<Animator>();
         doorAnimator = GameObject.FindWithTag("door").GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
@@ -77,16 +78,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("door"))
         {
-            if (signOpen)
-            {
-                doorAnimator.SetBool("isOpen", true);
-                doorAnimator.Play("open", 0, 10f);
-            }
-            else if (signClose)
-            {
-                doorAnimator.SetBool("isOpen", false);
-                doorAnimator.Play("close");
-            }
+            
         }
     }
 }
