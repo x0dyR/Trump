@@ -14,6 +14,9 @@ scopes = {
 	"last_search.DE949528" = "frame"
 	"OpenInspectorPreview.DE949528" = "0"
 	"currentGroup.DE949528" = "menu"
+	"last_search.956173B0" = "render"
+	"OpenInspectorPreview.956173B0" = "0"
+	"currentGroup.956173B0" = "settings"
 }
 providers = {
 	adb = {
@@ -61,10 +64,23 @@ providers = {
 		priority = 100
 		defaultAction = null
 	}
+	archetype = {
+		active = true
+		priority = 2500
+		defaultAction = null
+	}
+	journal = {
+		active = true
+		priority = 2500
+		defaultAction = null
+	}
 }
 objectSelectors = {
 }
 recentSearches = [
+	"u"
+	""
+	"up"
 	"a"
 	"p"
 	"ref:-20630:"

@@ -1,27 +1,22 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Burst;
+using Unity.Jobs;
+using Unity.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    //[SerializeField] private bool onGround = true;
-
     private Animator playerAnimator;
-    private Animator doorAnimator;
+    [SerializeField] private Animator doorAnimator;
     private Vector2 move;
     private Vector2 jump;
     [SerializeField] private bool doorClose = true;
-    [SerializeField] private bool signOpen = false;
-    [SerializeField] private bool signClose = false;
-
-    public Collider playerTriger;
     public Rigidbody playerRb;
     public float speed;
 
     private void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         playerAnimator = GetComponent<Animator>();
-        doorAnimator = GameObject.FindWithTag("door").GetComponent<Animator>();
         playerRb = GetComponent<Rigidbody>();
 
     }
@@ -41,14 +36,10 @@ public class PlayerController : MonoBehaviour
         if (ctx.performed && doorClose)
         {
             doorClose = false;
-            signOpen = true;
-            signClose = false;
         }
         else if (ctx.performed && !doorClose)
         {
             doorClose = true;
-            signClose = true;
-            signOpen = false;
         }
     }
 
@@ -67,18 +58,21 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
     public void movePlayer()
     {
         Vector3 movement = new(move.x, jump.y, move.y);
         transform.Translate(speed*Time.deltaTime*movement, Space.World);
     }
-
-    public void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-
-        if (other.CompareTag("door"))
+        if (!doorClose)
         {
-            
+            doorAnimator.CrossFadeInFixedTime("close", 0.4f);
+        }
+        if (doorClose)
+        {
+            doorAnimator.CrossFadeInFixedTime("open", 0.2f);
         }
     }
 }
