@@ -17,6 +17,9 @@ scopes = {
 	"last_search.956173B0" = "render"
 	"OpenInspectorPreview.956173B0" = "0"
 	"currentGroup.956173B0" = "settings"
+	"last_search.310DEAF1" = "animator"
+	"OpenInspectorPreview.310DEAF1" = "0"
+	"currentGroup.310DEAF1" = "menu"
 }
 providers = {
 	adb = {

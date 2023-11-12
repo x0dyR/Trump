@@ -1,16 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Unity.Burst;
-using Unity.Jobs;
-using Unity.Collections;
 
 public class PlayerController : MonoBehaviour
 {
     private Animator playerAnimator;
     [SerializeField] private Animator doorAnimator;
-    private Vector2 move;
-    private Vector2 jump;
-    [SerializeField] private bool doorClose = true;
+    private Vector3 move;
+
+    public bool doorClose = true;
     public Rigidbody playerRb;
     public float speed;
 
@@ -23,12 +20,15 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext ctx)
     {
-        move = ctx.ReadValue<Vector2>();
+        move = ctx.ReadValue<Vector3>();
     }
 
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        jump = ctx.ReadValue<Vector2>();
+        if(ctx.performed)
+        {
+            move += Vector3.up / 2;
+        }
     }
 
     public void OnInteract(InputAction.CallbackContext ctx)
@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
         if (ctx.performed && doorClose)
         {
             doorClose = false;
+
         }
         else if (ctx.performed && !doorClose)
         {
@@ -61,18 +62,15 @@ public class PlayerController : MonoBehaviour
 
     public void movePlayer()
     {
-        Vector3 movement = new(move.x, jump.y, move.y);
-        transform.Translate(speed*Time.deltaTime*movement, Space.World);
+        Vector3 movement = new(move.x, move.y, move.z);
+        transform.Translate(speed * Time.deltaTime * movement, Space.World);
     }
     private void OnTriggerStay(Collider other)
     {
-        if (!doorClose)
-        {
-            doorAnimator.CrossFadeInFixedTime("close", 0.4f);
-        }
-        if (doorClose)
-        {
-            doorAnimator.CrossFadeInFixedTime("open", 0.2f);
-        }
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        doorClose = true;
     }
 }

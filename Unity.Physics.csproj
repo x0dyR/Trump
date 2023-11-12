@@ -9,11 +9,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>collegeGame</RootNamespace>
-    <ProjectGuid>{582A3E42-DAFB-A696-EA20-1F253216CE71}</ProjectGuid>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{502D27D4-2678-6FBA-8244-2D49DC38B1D1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Unity.Physics</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -27,7 +27,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,7 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -71,75 +71,111 @@
     <Analyzer Include="E:\projects\unity\collegeGame\Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities\SourceGenerators\Unity.Entities.SourceGen.JobEntityGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
-    <Compile Include="Assets\Scripts\ecsScripts\PersMoveSystems.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
-    <Compile Include="Assets\Scripts\fpsShowController.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
-    <Compile Include="Assets\Scripts\ecsScripts\PersAuthoring.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
-    <Compile Include="Assets\Scripts\ecsScripts\PersComponents.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
-    <Compile Include="Assets\Scripts\PlayerInputActions.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
-    <Compile Include="Assets\Scripts\Door.cs" />
-    <Compile Include="Assets\Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
-    <Compile Include="Assets\Scripts\ecsScripts\PersSystems.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Base\Containers\UnsafeEx.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Colliders\CylinderCollider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Simulation\CollisionEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Queries\Overlap.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Colliders\Physics_SphereCollider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Geometry\ConvexHull.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Simulation\Scheduler.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Queries\ConvexConvexDistance.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Queries\ColliderCast.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Jacobians\LinearLimitJacobian.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Jacobians\Motors\LinearVelocityMotorJacobian.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Extensions\PhysicsComponentExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Colliders\Physics_Collider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Filter\CollisionFilter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Geometry\ConvexHullBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\World\Broadphase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Simulation\Narrowphase.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\Base\Aspects\RigidBodyAspect.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\Base\Systems\PhysicsWorldExporter.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Joint\BodyFrame.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Queries\ConvexConvexManifold.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Base\Containers\ElementPool.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\GraphicsIntegration\Systems\RecordMostRecentFixedTime.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Simulation\IImpulseEventJob.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Geometry\Mesh.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\DFG\ColliderCastNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Queries\Collector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Geometry\BoundingVolumeHierarchyBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Base\Math\Aabb.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\Base\Systems\UnityPhysicsSimulationSystems.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Jacobians\Motors\RotationMotorJacobian.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\GraphicsIntegration\Systems\BufferInterpolatedRigidBodiesMotion.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\Base\Systems\PhysicsWorldData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Colliders\PolygonCollider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Simulation\IJacobiansJob.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\AOTHint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\Base\Systems\CustomPhysicsSystemGroup.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\Base\Systems\PhysicsWorldBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Colliders\Physics_TerrainCollider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Simulation\IContactsJob.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Queries\Raycast.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Integrator\Integrator.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Simulation\ISimulation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\World\PhysicsWorld.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Jacobians\AngularLimit1DJacobian.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Base\Math\Physics_Transform.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Base\Jobs\IJobParallelForDeferExtensionsPhysics.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Base\Containers\BlobArray.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Jacobians\Motors\AngularVelocityMotorJacobian.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Extensions\SafetyChecks.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Colliders\CompoundCollider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\Base\Systems\BuildPhysicsWorld.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Simulation\ImpulseEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Simulation\Simulation.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Colliders\Physics_MeshCollider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\Base\Systems\SyncCustomPhysicsProxySystem.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Base\Math\Plane.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Jacobians\AngularLimit3DJacobian.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Base\Math\FourTransposedAabbs.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Solver\SimplexSolver.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Motion\Motion.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Joint\Physics_Joint.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Queries\Distance.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Queries\Collidable.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\Base\Systems\PhysicsSystemGroups.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Extensions\BlobAssetReferenceColliderExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\World\CollisionWorld.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Material\Material.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Colliders\Physics_BoxCollider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Geometry\BoundingVolumeHierarchy.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Jacobians\Motors\PositionMotorJacobian.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\Base\Components\PhysicsComponents.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\Base\Components\PhysicsJointComponents.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\GraphicsIntegration\Components\PhysicsRenderEntity.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Jacobians\ContactJacobian.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\GraphicsIntegration\Systems\CopyPhysicsVelocityToSmoothing.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Simulation\IBodyPairsJob.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Solver\Solver.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Colliders\ConvexCollider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Jacobians\Jacobian.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Jacobians\AngularLimit2DJacobian.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\World\DynamicsWorld.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Base\Math\FloatRange.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\Base\Systems\ExportPhysicsWorld.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\RigidBody\RigidBody.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Simulation\ISimulationEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Simulation\ICollisionEventsJob.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Simulation\ITriggerEventsJob.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Geometry\MeshBuilder.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\GraphicsIntegration\Components\PhysicsGraphicalComponents.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Queries\Manifold.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Dynamics\Simulation\TriggerEvent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Base\Math\FourTransposedPoints.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\DFG\RaycastNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Extensions\JointComponentExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\GraphicsIntegration\Systems\SmoothRigidBodiesGraphicalMotion.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\GraphicsIntegration\Systems\GraphicalSmoothingUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Base\Math\Math.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\ECS\Base\Aspects\ColliderAspect.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Extensions\PhysicsWorldExtensions.cs" />
+    <Compile Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Collision\Colliders\Physics_CapsuleCollider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
-    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
-    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
-    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
+    <None Include="Library\PackageCache\com.unity.physics@1.0.16\Unity.Physics\Unity.Physics.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -391,14 +427,41 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>F:\Unity\Hub\Editor\2022.3.12f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>F:\Unity\Hub\Editor\2022.3.12f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>F:\Unity\Hub\Editor\2022.3.12f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.YamlDotNet">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@2.1.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
     </Reference>
     <Reference Include="ReportGeneratorMerged">
       <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.4\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Plastic.Antlr3.Runtime">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.2.0\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="unityplastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.2.0\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Plastic.Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.2.0\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="log4netPlastic">
+      <HintPath>Library\PackageCache\com.unity.collab-proxy@2.2.0\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.IonicZip">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.TextureAssets">
+      <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
@@ -769,269 +832,34 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>F:\Unity\Hub\Editor\2022.3.12f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Physics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Physics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ScriptableBuildPipeline">
-      <HintPath>Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities.Build">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.Build.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities.UI.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.UI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities.Hybrid.HybridComponents">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.Hybrid.HybridComponents.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Collections">
-      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Formats.Fbx.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Formats.Fbx.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Deformations">
-      <HintPath>Library\ScriptAssemblies\Unity.Deformations.dll</HintPath>
-    </Reference>
-    <Reference Include="PPv2URPConverters">
-      <HintPath>Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Extensions.Hybrid">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Extensions.Hybrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst">
-      <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Serialization.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Serialization.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Polybrush">
-      <HintPath>Library\ScriptAssemblies\Unity.Polybrush.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InputSystem.ForUI">
-      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Transforms">
-      <HintPath>Library\ScriptAssemblies\Unity.Transforms.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Serialization">
-      <HintPath>Library\ScriptAssemblies\Unity.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Scenes.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Scenes.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Autodesk.Fbx.Editor">
-      <HintPath>Library\ScriptAssemblies\Autodesk.Fbx.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities.UI">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities.Editor.Properties">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.Editor.Properties.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Scenes">
-      <HintPath>Library\ScriptAssemblies\Unity.Scenes.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ScriptableBuildPipeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Animation.Rigging.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Animation.Rigging.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities.Hybrid">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.Hybrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Formats.Fbx.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.Formats.Fbx.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Polybrush.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Polybrush.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Physics">
-      <HintPath>Library\ScriptAssemblies\Unity.Physics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Collections.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Physics.Hybrid">
-      <HintPath>Library\ScriptAssemblies\Unity.Physics.Hybrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Animation.Rigging">
-      <HintPath>Library\ScriptAssemblies\Unity.Animation.Rigging.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Profiling.Core">
-      <HintPath>Library\ScriptAssemblies\Unity.Profiling.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.EditorCoroutines.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TerrainTools.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TerrainTools.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Shared.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TerrainTools">
-      <HintPath>Library\ScriptAssemblies\Unity.TerrainTools.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Core">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Core.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Entities.Graphics">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.Graphics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Transforms.Hybrid">
-      <HintPath>Library\ScriptAssemblies\Unity.Transforms.Hybrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InputSystem">
-      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities.Graphics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.Graphics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation.Updater">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
-    </Reference>
-    <Reference Include="Autodesk.Fbx">
-      <HintPath>Library\ScriptAssemblies\Autodesk.Fbx.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Extensions">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Entities.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Entities.Editor.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Unity.Burst.csproj">
+      <Project>{E1E1D2CE-4EDE-2735-AEAA-856CF9D4C850}</Project>
+      <Name>Unity.Burst</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Collections.csproj">
+      <Project>{319ED58C-77F9-CA83-DC00-6C4814BF215D}</Project>
+      <Name>Unity.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Entities.csproj">
+      <Project>{1B6CE270-2091-7054-F020-6D6E3AF1B816}</Project>
+      <Name>Unity.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.csproj">
+      <Project>{ADB6F7E1-10B4-59ED-27CB-C4ED69101A5E}</Project>
+      <Name>Unity.Mathematics</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Transforms.csproj">
+      <Project>{CCE4DECE-82F9-A8BA-182A-C175AD8CDE40}</Project>
+      <Name>Unity.Transforms</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
