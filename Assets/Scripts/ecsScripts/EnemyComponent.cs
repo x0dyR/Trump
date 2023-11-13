@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -12,7 +14,7 @@ namespace collegeGame
 
     public struct EnemyEntity : IComponentData
     {
-        public GameObject prefab;
+        public Entity prefab;
     }
 
     public struct EnemyLevel : IComponentData
@@ -23,12 +25,6 @@ namespace collegeGame
     public struct EnemyDamage : IComponentData
     {
         public float damage;
-    }
-
-    public struct EnemyInventory : IComponentData
-    {
-        // Используем массив фиксированного размера вместо List<string>
-        public string[] inventory;
     }
 
     public struct EnemyPosition : IComponentData
