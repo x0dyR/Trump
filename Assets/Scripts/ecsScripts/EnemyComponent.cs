@@ -30,5 +30,11 @@ namespace collegeGame
     public struct EnemyPosition : IComponentData
     {
         public float3 pos;
+        public float offsetSpawn;
+    }
+
+    public struct EnemyScale : IComponentData
+    {
+        public float scale;
     }
 }

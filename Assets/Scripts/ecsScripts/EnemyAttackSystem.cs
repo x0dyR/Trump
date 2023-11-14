@@ -1,9 +1,7 @@
-using Unity.Entities;
-using Unity.Mathematics;
-using Unity.Transforms;
-using Unity;
-using UnityEngine;
+using System;
 using Unity.Burst;
+using Unity.Entities;
+using Unity.Transforms;
 
 namespace collegeGame
 {
