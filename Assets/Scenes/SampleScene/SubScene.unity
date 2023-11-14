@@ -170,7 +170,7 @@ MonoBehaviour:
   enemyDamage: 1
   enemyLevel: 0
   enemyHealth: 0
-  player: {fileID: 8102395499963076417, guid: a39d991696adc58488c5d735f942f97c, type: 3}
+  player: {fileID: 919132149155446097, guid: 2e3aa07648039c2489fca168a69c8c69, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

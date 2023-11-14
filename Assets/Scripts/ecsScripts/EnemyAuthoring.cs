@@ -11,7 +11,7 @@ namespace collegeGame
         public float enemyDamage;
         public float enemyLevel;
         public float enemyHealth;
-        public GameObject player;
+        public GameObject enemy;
     }
 
     public class EnemySpawnerBaker : Baker<EnemyAuthoring>
@@ -23,7 +23,7 @@ namespace collegeGame
             var entity = GetEntity(TransformUsageFlags.Dynamic);
             AddComponent(entity, new EnemyEntity
             {
-                prefab = GetEntity(authoring.player,TransformUsageFlags.Dynamic)
+                prefab = GetEntity(authoring.enemy,TransformUsageFlags.Dynamic)
             });
             AddComponent(entity, new EnemyHealth
             {
