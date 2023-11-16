@@ -1,4 +1,5 @@
 using Unity.Burst;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
@@ -7,41 +8,30 @@ namespace collegeGame
 {
     public partial struct SpawnSystem : ISystem
     {
-
-        public void OnCreate(ref SystemState state) 
+        uint updateCounter;
+        [BurstCompile]
+        public void OnCreate(ref SystemState state)
         {
-            state.RequireForUpdate<EnemyHealth>();
-            state.RequireForUpdate<EnemyLevel>();
-            state.RequireForUpdate<EnemyPosition>();
-            state.RequireForUpdate<PlayerHealth>();
-            state.RequireForUpdate<PlayerLevel>();
-            state.RequireForUpdate<PlayerPosition>();
+            state.RequireForUpdate<Spawner>();
+            state.RequireForUpdate<Prefabs>();
         }
-
-        public void OnDestroy(ref SystemState state) { }
-
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
-            var rand = new Random(123);
-            var enemyComponents = SystemAPI.GetSingleton<EnemyPosition>();
-            var enemyPrefab = SystemAPI.GetSingleton<EnemyEntity>();
-            var enemyScale = SystemAPI.GetSingleton<EnemyScale>();
-            
+            var spinningCubeQuery = SystemAPI.QueryBuilder().WithAll<RotationSpeed>().Build();
 
-            var enemyEntity = state.EntityManager.Instantiate(enemyPrefab.prefab);
-            state.EntityManager.SetComponentData(enemyEntity, new LocalTransform
+            if (spinningCubeQuery.IsEmpty)
             {
-                Position = new float3
+                var prefab = SystemAPI.GetSingleton<Spawner>().Prefab;
+                var instance = state.EntityManager.Instantiate(prefab, 50000, Allocator.Temp);
+                var random = Random.CreateFromIndex(updateCounter++);
+
+                foreach (var entity in instance)
                 {
-                    x = rand.NextFloat(enemyComponents.offsetSpawn),
-                    y=0,
-                    z = rand.NextFloat(enemyComponents.offsetSpawn)
-                },
-                Scale = enemyScale.scale,
-                Rotation = quaternion.identity
-            });
+                    var transform = SystemAPI.GetComponentRW<LocalTransform>(entity);
+                    transform.ValueRW.Position = (random.NextFloat3() - new float3(0.5f, 0, 0.5f)) * 20;
+                }
+            }
         }
     }
-    
 }
