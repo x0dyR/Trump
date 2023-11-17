@@ -16,10 +16,14 @@ namespace collegeGame
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
-            //state.RequireForUpdate<MainThread>(); mainThread example
-            //state.RequireForUpdate<IJobEntityasd>(); IJobEntity example
-            //state.RequireForUpdate<Aspectsasd>();  Aspects example
-            state.RequireForUpdate<IJobChunkasd>(); // IJobChunk example
+            /* state.RequireForUpdate<MainThread>(); mainThread example   
+             * */
+            /* state.RequireForUpdate<IJobEntityasd>(); IJobEntity example 
+             */
+            /* state.RequireForUpdate<Aspectsasd>();  Aspects example     
+             * */
+            state.RequireForUpdate<IJobChunkasd>(); //IJobChunk example
+            //state.RequireForUpdate<Reparenting>(); Reparenting example
         }
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
@@ -46,6 +50,7 @@ namespace collegeGame
             {
                 movement.Move(elapsedTime);
             }*/
+            //IJobChunk example 
             var spinningCubeQuery = SystemAPI.QueryBuilder().WithAll<RotationSpeed, LocalTransform>().Build();
 
             var job = new RotationJob
@@ -56,6 +61,14 @@ namespace collegeGame
             };
 
             state.Dependency = job.ScheduleParallel(spinningCubeQuery, state.Dependency);
+            /* Reparenting example
+            float deltaTime = SystemAPI.Time.DeltaTime;
+
+            foreach(var (transform,speed) in SystemAPI.Query<RefRW<LocalTransform>,RefRO<RotationSpeed>>())
+            {
+                transform.ValueRW = transform.ValueRO.RotateY(
+                    speed.ValueRO.Radians * deltaTime);
+            }*/
 
         }
     }
@@ -78,7 +91,8 @@ namespace collegeGame
             m_Transform.ValueRW.Position.y = (float)math.sin(elapsedTime * m_Speed.ValueRO.Radians);
         }
     }*/
-    [BurstCompile]
+
+    //IJobChunk example  
     struct RotationJob : IJobChunk
     {
         public ComponentTypeHandle<LocalTransform> TransformTypeHandle;
@@ -94,7 +108,7 @@ namespace collegeGame
             var transforms = chunk.GetNativeArray(ref TransformTypeHandle);
             var rotationSpeeds = chunk.GetNativeArray(ref RotationSpeedTypeHandle);
 
-            for(int i = 0,chunkEntityCount = chunk.Count;i < chunkEntityCount;i++)
+            for (int i = 0, chunkEntityCount = chunk.Count; i < chunkEntityCount; i++)
             {
                 transforms[i] = transforms[i].RotateY(rotationSpeeds[i].Radians * deltaTime);
             }

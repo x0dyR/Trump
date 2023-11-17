@@ -19,14 +19,8 @@ namespace collegeGame
             {
                 var entity = GetEntity(TransformUsageFlags.None);
 
-                if (authoring.MainThread) AddComponent<MainThread>(entity);
-                if (authoring.IJobEntity) AddComponent<IJobEntityasd>(entity);
-                if (authoring.Aspects) AddComponent<Aspectsasd>(entity);
-                if (authoring.Prefabs) AddComponent<Prefabs>(entity);
-                if (authoring.IJobChunk) AddComponent<IJobChunkasd>(entity);
-                if (authoring.GameObjectSync) AddComponent<GameObjectSync>(entity);
-                if (authoring.Reparenting) AddComponent<Reparenting>(entity);
-                if (authoring.EnableableComponents) AddComponent<EnableableComponents>(entity);
+                AddComponent<Prefabs>(entity);
+                AddComponent<IJobChunkasd>(entity);
             }
         }
     }
