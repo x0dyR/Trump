@@ -1,42 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+namespace collegeGame
 {
-
-    private Animator doorAnimator;
-    private bool doorClose;
-    // Start is called before the first frame update
-    void Start()
+    public class Door : MonoBehaviour
     {
-        doorAnimator = GetComponent<Animator>();
-        
-    }
 
-    public void Update()
-    {
-        doorClose = GameObject.FindWithTag("Player").GetComponent<PlayerController>().doorClose;
-    }
-
-    // Update is called once per frame
-    public void ToggleDoor()
-    {
-        if(!doorClose)
+        private Animator doorAnimator;
+        private bool doorClose;
+        // Start is called before the first frame update
+        void Start()
         {
-            doorAnimator.CrossFadeInFixedTime("close", 0.4f);
+            doorAnimator = GetComponent<Animator>();
+
         }
-        if(doorClose)
+
+        public void Update()
         {
-            doorAnimator.CrossFadeInFixedTime("open", 0.2f);
+            doorClose = GameObject.FindWithTag("Player").GetComponent<PlayerController>().doorClose;
         }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        this.tag = "door";
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        this.tag = "asd";
+
+        // Update is called once per frame
+        public void ToggleDoor()
+        {
+            if (!doorClose)
+            {
+                doorAnimator.CrossFadeInFixedTime("close", 0.4f);
+            }
+            if (doorClose)
+            {
+                doorAnimator.CrossFadeInFixedTime("open", 0.2f);
+            }
+        }
+        private void OnCollisionEnter(Collision collision)
+        {
+            this.tag = "door";
+        }
+        private void OnCollisionExit(Collision collision)
+        {
+            this.tag = "asd";
+        }
     }
 }

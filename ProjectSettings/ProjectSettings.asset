@@ -641,7 +641,8 @@ PlayerSettings:
     Standalone: DOTS_ADD_PARTIAL_KEYWORD
   additionalCompilerArguments: {}
   platformArchitecture: {}
-  scriptingBackend: {}
+  scriptingBackend:
+    Standalone: 1
   il2cppCompilerConfiguration: {}
   il2cppCodeGeneration: {}
   managedStrippingLevel:
@@ -743,7 +744,7 @@ PlayerSettings:
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 2
+  activeInputHandler: 1
   windowsGamepadBackendHint: 0
   cloudProjectId: 87d49a0a-e180-4e3c-8465-2fd68d548b9c
   framebufferDepthMemorylessMode: 0
