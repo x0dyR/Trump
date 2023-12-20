@@ -8,7 +8,7 @@ namespace collegeGame
         // Start is called before the first frame update
         public float fps;
         public float frameTime = 0.2f;
-        [SerializeField] public TextMeshProUGUI fpsTitle;
+        [field: SerializeField] public TextMeshProUGUI fpsTitle;
 
         private void UpdateFPS()
         {

@@ -1,6 +1,6 @@
 namespace collegeGame
 {
-    public class SprintState : MovementState
+    public class SprintState : GroundedState
     {
         public SprintState(MovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {

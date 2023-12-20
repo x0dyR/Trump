@@ -6,7 +6,7 @@ namespace collegeGame
     public class PlayerController : MonoBehaviour
     {
         private Animator playerAnimator;
-        [SerializeField] private Animator doorAnimator;
+        [field: SerializeField] private Animator doorAnimator;
         private Vector2 move;
         private Vector2 jump;
 
