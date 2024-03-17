@@ -96,8 +96,8 @@
     <Compile Include="Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities.Editor\Utilities\ComponentsUtility.cs" />
     <Compile Include="Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities.Editor\Utilities\WorldCategoryHelper.cs" />
     <Compile Include="Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities.Editor\Hierarchy\Model\HierarchyNameStore.cs" />
-    <Compile Include="Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities.Editor\SystemSchedule\PlayerLoop\ScheduledSystemData.cs" />
     <Compile Include="Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities.Editor\Utilities\WorldListChangeTracker.cs" />
+    <Compile Include="Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities.Editor\SystemSchedule\PlayerLoop\ScheduledSystemData.cs" />
     <Compile Include="Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities.Editor\PropertyDrawers\LayerFieldDrawer.cs" />
     <Compile Include="Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities.Editor\Inspector\EntityAspectContainer.cs" />
     <Compile Include="Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities.Editor\Common\Controls\ComponentView.cs" />
