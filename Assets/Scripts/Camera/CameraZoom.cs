@@ -13,7 +13,7 @@ namespace collegeGame
         [field: SerializeField] float minCameraDistance = 1f;
         [field: SerializeField] float maxCameraDistance = 10f;
 
-        private void Start()
+/*        private void Start()
         {
             _playerControler.inputActions.Player.Zoom.performed += ZoomCamera;
             thirdperson = _virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
@@ -26,6 +26,6 @@ namespace collegeGame
                 maxCameraDistance);
 
             thirdperson.m_CameraDistance = Mathf.Lerp(thirdperson.m_CameraDistance, targetDistance, Time.deltaTime * zoomSpeed);
-        }
+        }*/
     }
 }

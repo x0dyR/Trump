@@ -111,6 +111,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerControler1.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+    <Compile Include="Assets\Scripts\Home\Home.cs" />
     <Compile Include="Assets\MapMagic\Compatibility\RTP\RTPOutput.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimatorControler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
@@ -131,6 +132,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Samples\Starter Assets\0.1.0\Controllers Sample\Environment\Shaders\Built-in_RP\Triplanar.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
@@ -138,6 +140,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\Samples\Starter Assets\0.1.0\Controllers Sample\Environment\Shaders\Built-in_RP\ArmatureShader.shader" />
     <None Include="Assets\MapMagic\Demo\Compatibility\MegaSplat\MegaSplatShader2.shader" />
     <None Include="Assets\MapMagic\Demo\Compatibility\MicroSplat\MicroSplat.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
@@ -1101,17 +1104,17 @@
       <Project>{D119C99B-006F-6480-7AAD-0EDC2B3BEC83}</Project>
       <Name>Unity.Formats.Fbx.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Deformations.csproj">
-      <Project>{AD28B3D9-7A2C-0917-BA88-E64084E69AB8}</Project>
-      <Name>Unity.Deformations</Name>
+    <ProjectReference Include="Unity.Collections.Editor.csproj">
+      <Project>{E06A148A-A2BD-1E27-C603-AD74942236F9}</Project>
+      <Name>Unity.Collections.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Physics.Hybrid.csproj">
       <Project>{F1722C6B-DF79-BF21-84C8-D3A33B68BCDF}</Project>
       <Name>Unity.Physics.Hybrid</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Collections.Editor.csproj">
-      <Project>{E06A148A-A2BD-1E27-C603-AD74942236F9}</Project>
-      <Name>Unity.Collections.Editor</Name>
+    <ProjectReference Include="Unity.Deformations.csproj">
+      <Project>{AD28B3D9-7A2C-0917-BA88-E64084E69AB8}</Project>
+      <Name>Unity.Deformations</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{1316547F-288D-AC47-51A8-4D3225312AE9}</Project>
@@ -1137,6 +1140,10 @@
       <Project>{3B4A0B9F-9736-5771-5771-5CB237A5B4B3}</Project>
       <Name>Unity.TerrainTools.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.StarterAssets.Editor.csproj">
+      <Project>{7489B38F-FE9D-BA3B-56BE-6EC0F8E966E6}</Project>
+      <Name>Unity.StarterAssets.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Burst.csproj">
       <Project>{E1E1D2CE-4EDE-2735-AEAA-856CF9D4C850}</Project>
       <Name>Unity.Burst</Name>
@@ -1161,17 +1168,21 @@
       <Project>{4652B89A-6B52-8134-5B96-3EAE21B6F06B}</Project>
       <Name>Unity.Serialization.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Transforms.Hybrid.csproj">
-      <Project>{53442B54-BA9D-10C5-77F2-D07472857A7B}</Project>
-      <Name>Unity.Transforms.Hybrid</Name>
-    </ProjectReference>
     <ProjectReference Include="MapMagic.Editor.csproj">
       <Project>{D2A8ED61-BE26-0057-9556-43EE9FEBD500}</Project>
       <Name>MapMagic.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Transforms.Hybrid.csproj">
+      <Project>{53442B54-BA9D-10C5-77F2-D07472857A7B}</Project>
+      <Name>Unity.Transforms.Hybrid</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Polybrush.csproj">
       <Project>{72C1F2A6-B559-81F6-AD89-342CE1657CDA}</Project>
       <Name>Unity.Polybrush</Name>
+    </ProjectReference>
+    <ProjectReference Include="URPWizard.csproj">
+      <Project>{9A3637C0-39C9-FEFB-CDCA-37CF7C7FF12B}</Project>
+      <Name>URPWizard</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Timeline.csproj">
       <Project>{DC6E3E44-CBE8-43A1-3F8A-A6D8F4FEA6AA}</Project>
@@ -1212,6 +1223,10 @@
     <ProjectReference Include="Autodesk.Fbx.Editor.csproj">
       <Project>{99A113DE-E321-A7B4-C7DE-68F7F9781875}</Project>
       <Name>Autodesk.Fbx.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.StarterAssets.csproj">
+      <Project>{41A20671-4FFB-4C7F-E01A-2957BF706208}</Project>
+      <Name>Unity.StarterAssets</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Entities.UI.csproj">
       <Project>{B949BED9-C474-0221-28C7-3EA02DA43F85}</Project>

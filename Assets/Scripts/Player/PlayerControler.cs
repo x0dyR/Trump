@@ -1,210 +1,260 @@
+using System;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
 namespace collegeGame
 {
-
-    [RequireComponent(typeof(CharacterController))]
-
     public class PlayerControler : MonoBehaviour
     {
-        public enum State
-        {
-            Idle,
-            Walking,
-            Moving,
-            Running,
-            Dashing,
-            Jump,
-        }
+        #region Variables: Movement
 
-        [field: SerializeField] CharacterController _characterController;
+        private Vector2 _input;
+        [field: SerializeField]private CharacterController _characterController;
+        private Vector3 _direction;
 
-        [field: SerializeField] private float _idleSpeed = 0f;
-        [field: SerializeField] private float _idleTimer = 5f;
+        [SerializeField] private float speed;
 
-        [field: SerializeField] private float _walkingSpeed = 3.5f;
+        #endregion
+        #region Variables: Rotation
 
-        [field: SerializeField] private float _movingSpeed = 7f;
-        [Header("Running")]
-        [field: SerializeField] private float _runningSpeed = 10.5f;
-        [field: SerializeField] private float _maxRunningTimer = 5f;
-        [field: SerializeField] private float _runningTimer = 0;
-        [Header("Dashing")]
-        [field: SerializeField] private float _dashingSpeed = 15f;
-        [field: SerializeField] private float _maxdashTimer = 1f;
-        [field: SerializeField] private float _dashTimer = 0;
-        [Header("Gravity")]
-        [field: SerializeField] private float _playerAttraction;
-        [field: SerializeField] private LayerMask _groundLayer;
-        [field: SerializeField] private float _jumpForce;
-        private float _gravityForce = 9.81f;
+        [SerializeField] private float smoothTime = 0.05f;
+        private float _currentVelocity;
 
-        private Vector3 moveDir;
-        private State state;
+        #endregion
+        #region Variables: Gravity
 
-        [Header("Other")]
-        public PlayerInputActions inputActions;
-        public float turnSmoothVelocity;
-        public float turnSmoothTime = .1f;
-        public bool isWalking = false;
+        private float _gravity = -9.81f;
+        [SerializeField] private float gravityMultiplier = 3.0f;
+        private float _velocity;
+
+        #endregion
+        #region Variables: Jumping
+
+        [SerializeField] private float jumpPower;
+
+        #endregion
+
+        private PlayerInputActions inputActions;
+
 
         private void Awake()
         {
-            state = State.Idle;
             inputActions = new();
-            inputActions.Player.Enable();
-
-            inputActions.Player.Dash.performed += Dash_performed;
-
-            inputActions.Player.Walktoggle.performed += Walktoggle_performed;
-
-            inputActions.Player.Movement.started += Movement_performed;
-
-            inputActions.Player.Jump.performed += Jump_performed;
-
+            inputActions.Player.Enable();inputActions.Player.Jump.started += Jump_performed;
         }
-        private void FixedUpdate()
-        {
 
-        }
         private void Update()
         {
-            ChangeState();
-            GravityHandler();
-            Rotate();
+            ApplyGravity();
+            ApplyRotation();
+            ApplyMovement();
+            Move();
         }
 
-        private void Dash_performed(InputAction.CallbackContext context)
+        private void ApplyGravity()
         {
-            state = State.Dashing;
-        }
-
-        private void Movement_performed(InputAction.CallbackContext context)
-        {
-            if (isWalking)
+            if (IsGrounded() && _velocity < 0.0f)
             {
-                state = State.Walking;
+                _velocity = -1.0f;
             }
             else
             {
-                state = State.Moving;
+                _velocity += _gravity * gravityMultiplier * Time.deltaTime;
             }
+
+            _direction.y = _velocity;
         }
-        private void Walktoggle_performed(InputAction.CallbackContext context)
+
+        private void ApplyRotation()
         {
-            if (!isWalking)
-            {
-                state = State.Walking;
-                isWalking = true;
-            }
-            else
-            {
-                state = State.Moving;
-                isWalking = false;
-            }
+            if (_input.sqrMagnitude == 0) return;
+
+            var targetAngle = Mathf.Atan2(_direction.x, _direction.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+            var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _currentVelocity, smoothTime);
+            transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
         }
+
+        private void ApplyMovement()
+        {
+            _characterController.Move(_direction * speed * Time.deltaTime);
+        }
+
+        public void Move()
+        {
+            _input = inputActions.Player.Move.ReadValue<Vector2>().normalized;
+            _direction = new Vector3(_input.x, 0.0f, _input.y);
+        }
+
+        public void Jump()
+        {
+            _velocity += jumpPower;
+        }
+
         private void Jump_performed(InputAction.CallbackContext obj)
         {
-
             Jump();
         }
 
-
-
-        public Vector2 GetMovementNormalized()
+        private bool IsGrounded() => _characterController.isGrounded;
+        /*
+        public enum State
         {
-            return inputActions.Player.Movement.ReadValue<Vector2>().normalized;
+            idle,
+            walk,
+            move,
+            run,
+            dash,
+        }
+        private PlayerInputActions _inputActions;
+        [field: SerializeField] private CharacterController _characterContoroller;
+        public float smoothVelocity;
+        public float turnSmoothTime = .1f;
+        public bool isWalking = false;
+        public float speed;
+
+
+        private float _idleSpeed = 0;
+        private float _walkSpeed = 3.5f;
+        private float _moveSpeed = 7f;
+        private float _runSpeed = 10.5f;
+        private float _dashSpeed = 15f;
+
+        private float dashTimer = 1;
+        private const float MaxDashTimer = 1;
+        private float runTimer = 5;
+        private const float MaxRunTimer = 5;
+
+        Vector3 moveDir;
+        private State _state;
+
+        private void Awake()
+        {
+            _inputActions = new();
+            _inputActions.Player.Enable();
+            _inputActions.Player.Walktoggle.performed += Walktoggle_performed;
+            _inputActions.Player.Movement.started += Movement_performed;
+            _inputActions.Player.Dash.performed += Dash_performed;
+            _state = State.idle;
         }
 
-        public void MovementHandler(float moveSpeed)
+        private void Dash_performed(InputAction.CallbackContext obj)
         {
-
-            Vector3 inputDir = new(GetMovementNormalized().x, 0, GetMovementNormalized().y);
-            if (inputDir == Vector3.zero)
-            {
-                return;
-            }
-            _characterController.Move(moveSpeed * Time.deltaTime * moveDir);
-
+            _state = State.dash;
         }
 
-        public void Rotate()
+        private void Movement_performed(InputAction.CallbackContext obj)
         {
-            float targetAngle = Mathf.Atan2(GetMovementNormalized().x, GetMovementNormalized().y)
-                * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y,
-                targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            moveDir = Quaternion.Euler(0, angle, 0) * Vector3.forward;
+            _state = State.move;
+        }
+
+        private void Walktoggle_performed(InputAction.CallbackContext obj)
+        {
+            _state = State.walk;
+        }
+
+        private void Update()
+        {
+            MovementHandler();
+            ChangeState();
+        }
+        private void FixedUpdate()
+        {
+            GravityHandler();
+        }
+        private void MovementHandler()
+        {
+            Vector2 inputDir = GetMovement();
+            moveDir = new(inputDir.x, 0, inputDir.y);
+            if (moveDir == Vector3.zero)
+            { return; }
+            float targetAngle = Mathf.Atan2(GetMovement().x, GetMovement().y) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref smoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0, angle, 0);
+            moveDir = Quaternion.Euler(0, angle, 0) * Vector3.forward;
+            _characterContoroller.Move(speed * Time.deltaTime * moveDir);
         }
-        public void Jump()
+        private Vector2 GetMovement()
         {
-            moveDir = Vector3.zero;
-            moveDir.y += _jumpForce * Time.deltaTime;
-            _characterController.Move(moveDir);
-            Debug.Log(moveDir);
+
+            return _inputActions.Player.Movement.ReadValue<Vector2>().normalized;
         }
-        public void GravityHandler()
+        private void GravityHandler()
         {
-            if (!_characterController.isGrounded)
+            if (!IsGrounded())
             {
-                _characterController.Move(_gravityForce * Time.deltaTime * Vector3.down);
+                moveDir.y += Physics.gravity.y;
+                _characterContoroller.Move(moveDir * Time.deltaTime);
+            }
+            else
+            {
+                moveDir.y = -_characterContoroller.height / 2f + .2f;
             }
         }
 
+        private bool IsGrounded()
+        {
+            if (!Physics.Raycast(transform.position + _characterContoroller.center, Vector3.down, _characterContoroller.height / 2f + .2f))
+            {
+                return false;
+            }
+            return true;
+        }
         private void ChangeState()
         {
-            switch (state)
+            switch (_state)
             {
-                case State.Idle:
-                    MovementHandler(_idleSpeed);
-                    if (_runningTimer >= 0)
+                case State.idle:
+                    speed = _idleSpeed;
+                    if (dashTimer < MaxDashTimer)
                     {
-                        _runningTimer -= Time.deltaTime; if (_dashTimer >= 0)
-                        {
-                            _dashTimer -= Time.deltaTime;
-                        }
+                        dashTimer += Time.deltaTime;
+                    }
+                    if (runTimer < MaxRunTimer)
+                    {
+                        runTimer += Time.deltaTime;
                     }
                     break;
-                case State.Running:
-                    MovementHandler(_runningSpeed);
-                    _runningTimer += Time.deltaTime;
-                    if (_runningTimer >= _maxRunningTimer)
+                case State.walk:
+                    speed = _walkSpeed;
+                    if (dashTimer < MaxDashTimer)
                     {
-                        state = State.Moving;
+                        dashTimer += Time.deltaTime;
+                    }
+                    if (runTimer < MaxRunTimer)
+                    {
+                        runTimer += Time.deltaTime;
                     }
                     break;
-                case State.Moving:
-                    MovementHandler(_movingSpeed);
-                    if (_runningTimer >= 0)
+                case State.move:
+                    speed = _moveSpeed;
+                    if (dashTimer < MaxDashTimer)
                     {
-                        _runningTimer -= Time.deltaTime; if (_dashTimer >= 0)
-                        {
-                            _dashTimer -= Time.deltaTime;
-                        }
+                        dashTimer += Time.deltaTime;
+                    }
+                    if (runTimer < MaxRunTimer)
+                    {
+                        runTimer += Time.deltaTime;
                     }
                     break;
-                case State.Dashing:
-                    MovementHandler(_dashingSpeed);
-                    _dashTimer += Time.deltaTime;
-                    if (_dashTimer >= _maxdashTimer)
+                case State.dash:
+                    speed = _dashSpeed;
+                    dashTimer -= Time.deltaTime;
+                    if (dashTimer <= 0f)
                     {
-                        state = State.Running;
+                        _state = State.run;
                     }
                     break;
-                case State.Walking:
-                    MovementHandler(_walkingSpeed);
-                    if (_runningTimer >= 0)
+                case State.run:
+                    speed = _runSpeed;
+                    runTimer -= Time.deltaTime;
+                    if (runTimer <= 0f)
                     {
-                        _runningTimer -= Time.deltaTime; if (_dashTimer >= 0)
-                        {
-                            _dashTimer -= Time.deltaTime;
-                        }
+                        _state = State.move;
                     }
                     break;
             }
-        }
+        }*/
     }
 }
