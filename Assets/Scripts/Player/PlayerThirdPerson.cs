@@ -1,18 +1,17 @@
-﻿using UnityEngine;
+using Cinemachine;
+using StarterAssets;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
 
-/* Note: animations are called via the controller for both the character and capsule using animator null checks
- */
-
-namespace StarterAssets
+namespace collegeGame
 {
     [RequireComponent(typeof(CharacterController))]
 #if ENABLE_INPUT_SYSTEM
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class ThirdPersonController : MonoBehaviour
+    public class PlayerThirdPerson : MonoBehaviour
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -76,11 +75,20 @@ namespace StarterAssets
         public bool LockCameraPosition = false;
 
         // cinemachine
+        [Header("Cinemachine")]
         private float _cinemachineTargetYaw;
-        private float _cinemachineTargetPitch;        
+        private float _cinemachineTargetPitch;
         [Range(1, 8)] public float cameraDistance;
+        [field: SerializeField] CinemachineVirtualCamera cm;
+        CinemachineComponentBase componentBase;
+        public float zoomSpeed;
+        public float minZoomDistance = 1f;
+        public float maxZoomDistance = 8f;
+        [Header("layers")]
+        public LayerMask interactableLayer;
 
         // player
+        private Vector3 targetDirection;
         private float _speed;
         private float _animationBlend;
         private float _targetRotation = 0.0f;
@@ -123,6 +131,24 @@ namespace StarterAssets
             }
         }
 
+        private void OnEnable()
+        {
+            StarterAssetsInputs.OnZoomasd += ZoomCamera;
+        }
+
+        private void OnDisable()
+        {
+            StarterAssetsInputs.OnZoomasd -= ZoomCamera;
+        }
+        private void ZoomCamera(float scrollValue)
+        {
+            float zoomDelta = scrollValue * Time.deltaTime * zoomSpeed;
+            cameraDistance += zoomDelta;
+            cameraDistance = Mathf.Clamp(cameraDistance, minZoomDistance, maxZoomDistance);
+            CinemachineFramingTransposer transposer = componentBase as CinemachineFramingTransposer;
+            transposer.m_CameraDistance = cameraDistance;
+
+        }
 
         private void Awake()
         {
@@ -136,6 +162,7 @@ namespace StarterAssets
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
+            componentBase = cm.GetCinemachineComponent<CinemachineFramingTransposer>();
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -150,6 +177,7 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
         }
 
         private void Update()
@@ -159,12 +187,17 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+            
+        }
+
+        private void FixedUpdate()
+        {
+            Inteaction();
         }
 
         private void LateUpdate()
         {
             CameraRotation();
-            CameraZoom();
         }
 
         private void AssignAnimationIDs()
@@ -212,11 +245,6 @@ namespace StarterAssets
                 _cinemachineTargetYaw, 0.0f);
         }
 
-        private void CameraZoom()
-        {
-            cameraDistance = _input.zoom;
-        }
-            
 
         private void Move()
         {
@@ -272,7 +300,7 @@ namespace StarterAssets
             }
 
 
-            Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+            targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             // move the player
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
@@ -393,6 +421,22 @@ namespace StarterAssets
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
+            }
+        }
+
+        private void Inteaction()
+        {
+            //float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            bool interact = _input.interact ? true : false;
+            if (interact)
+            {
+                if (Physics.Raycast(transform.position,targetDirection,out RaycastHit hit,2f,interactableLayer))
+                {
+                    if(hit.transform.TryGetComponent(out Interactable interactable))
+                    {
+                        interactable.Interact(_controller);
+                    }
+                }
             }
         }
     }

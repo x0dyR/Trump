@@ -1,14 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace collegeGame
 {
-    public class Home : MonoBehaviour
+    public class Home : Interactable
     {
         private void Awake()
         {
-            
+
+        }
+        public override void Interact(CharacterController characterController)
+        {
+            Debug.Log(this + "called");
         }
     }
 }

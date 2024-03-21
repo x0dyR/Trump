@@ -9,6 +9,7 @@ TagManager:
   - death text
   - doorTriger
   - ground
+  - CinemachineTarget
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - UI
   - Environment
   - Ground
-  - Home
   - 
+  - Interactable
   - 
   - 
   - 
