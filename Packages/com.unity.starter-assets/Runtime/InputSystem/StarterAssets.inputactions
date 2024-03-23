@@ -46,14 +46,23 @@
                     "type": "Value",
                     "id": "34d0b60b-6ee1-4231-90bd-8aaf668084ff",
                     "expectedControlType": "Axis",
-                    "processors": "",
+                    "processors": "Invert",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
                     "name": "Interaction",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "d607bf4c-9a8a-48fa-a4c5-e08272e6563f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "5d0c81fb-b8f1-4dc7-acc4-0364ef566b79",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -267,6 +276,28 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c61b28f8-b283-457a-873c-aa00e4f3f019",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4766c039-c13b-4bdb-b980-a026077f9d3f",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

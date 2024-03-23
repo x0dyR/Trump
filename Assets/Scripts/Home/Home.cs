@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace collegeGame
 {
@@ -11,7 +10,7 @@ namespace collegeGame
         }
         public override void Interact(CharacterController characterController)
         {
-            Debug.Log(this + "called");
+            Debug.Log(gameObject + "called");
         }
     }
 }
