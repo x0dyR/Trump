@@ -1,44 +1,59 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace collegeGame
 {
     public class Troll : MonoBehaviour
     {
-        public GameObject Player;
-        private UnityEngine.AI.NavMeshAgent agent;
+        public Transform playerTransform;
+        private NavMeshAgent agent;
         private Animator animator;
 
-        private void Start()
+        private void Awake()
         {
-            agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-            animator = GetComponentInChildren<Animator>();
+            agent = GetComponent<NavMeshAgent>();
+            animator = GetComponent<Animator>();
         }
 
         private void Update()
         {
-            agent.destination = Player.transform.position;
+            agent.destination = playerTransform.position;
+            /*float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);*/
+            //Vector3.Distance медленный
+            Vector3 vectorDistanceToPlayer = transform.position - agent.destination;
+            float distanceToPlayer = Mathf.Sqrt(vectorDistanceToPlayer.sqrMagnitude);
 
-           
-            float distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
-
-            
+            if (distanceToPlayer <= 7f)
+            {
+                agent.isStopped = false;
+                animator.SetFloat("Blend", 3);
+            }
+            else if (distanceToPlayer <= 10f)
+            {
+                agent.isStopped = false;
+                animator.SetFloat("Blend", 2);
+            }
+            else if (distanceToPlayer >= 15f)
+            {
+                agent.isStopped = true;
+                animator.SetFloat("Blend", 0);
+            }
+            else if (distanceToPlayer <= 15f)
+            {
+                agent.isStopped = false;
+                animator.SetFloat("Blend", 1);
+            }
+            /*
             if (distanceToPlayer <= 5f)
             {
-                
                 agent.isStopped = true;
-
-                animator.SetBool("IsRunning", false);
+                animator.SetFloat("Blend", .4f);
             }
             else
             {
-                
                 agent.isStopped = false;
-
-             
-                animator.SetBool("IsRunning", agent.velocity.magnitude > 0);
-            }
+                animator.SetFloat("Blend", .7f);
+            }*/
         }
     }
 }
@@ -69,7 +84,7 @@ namespace collegeGame
 
 //             
 //             agent.SetDestination(hit.position);
-            
+
 //             // Устанавливаем параметр анимации IsWalking
 //             animator.SetBool("IsWalking", true);
 //         }
