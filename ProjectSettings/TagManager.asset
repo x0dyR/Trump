@@ -9,7 +9,11 @@ TagManager:
   - death text
   - doorTriger
   - ground
+<<<<<<< HEAD
+  - Points
+=======
   - CinemachineTarget
+>>>>>>> ec2ed8dc0630c605a84fcc495f39464126c528a8
   layers:
   - Default
   - TransparentFX
