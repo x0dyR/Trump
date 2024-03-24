@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,26 +7,26 @@ namespace collegeGame
 {
     public class CameraZoom : MonoBehaviour
     {
-        [field: SerializeField] private CinemachineVirtualCamera _virtualCamera;
-        [field: SerializeField] private PlayerControler _playerControler;
-        private CinemachineFramingTransposer thirdperson;
-        [field: SerializeField] float targetDistance;
-        [field: SerializeField] float minCameraDistance = 1f;
-        [field: SerializeField] float maxCameraDistance = 10f;
+        private PlayerInput _input;
+        public CinemachineVirtualCamera cm;
+        private float _cameraDistance = 8f;
+        private float _minCameraDistance =1f;
+        private float _maxCameraDistance =8f;
 
-        private void Start()
+        private void Awake()
         {
-            _playerControler.inputActions.Player.Zoom.performed += ZoomCamera;
-            thirdperson = _virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
+            _input = GetComponent<PlayerInput>();
+            _input.actions["Zoom"].performed += CameraZoom_performed;
         }
 
-        private void ZoomCamera(InputAction.CallbackContext context)
+        private void CameraZoom_performed(InputAction.CallbackContext obj)
         {
-            float zoomSpeed = 21f;
-            targetDistance = Mathf.Clamp(_playerControler.inputActions.Player.Zoom.ReadValue<float>() / 10, minCameraDistance,
-                maxCameraDistance);
-
-            thirdperson.m_CameraDistance = Mathf.Lerp(thirdperson.m_CameraDistance, targetDistance, Time.deltaTime * zoomSpeed);
+            float scrollValue = obj.ReadValue<float>()/10;
+            var ft = cm.GetCinemachineComponent<CinemachineFramingTransposer>();
+            _cameraDistance += scrollValue;
+            _cameraDistance = Math.Clamp(_cameraDistance, _minCameraDistance, _maxCameraDistance);
+            ft.m_CameraDistance = Mathf.Lerp(ft.m_CameraDistance, _cameraDistance,Time.deltaTime);
         }
+
     }
 }
