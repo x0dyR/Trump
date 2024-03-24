@@ -21,11 +21,11 @@ namespace collegeGame
 
         private void CameraZoom_performed(InputAction.CallbackContext obj)
         {
-            float scrollValue = obj.ReadValue<float>()/10;
+            float scrollValue = obj.ReadValue<float>();
             var ft = cm.GetCinemachineComponent<CinemachineFramingTransposer>();
             _cameraDistance += scrollValue;
             _cameraDistance = Math.Clamp(_cameraDistance, _minCameraDistance, _maxCameraDistance);
-            ft.m_CameraDistance = Mathf.Lerp(ft.m_CameraDistance, _cameraDistance,Time.deltaTime);
+            ft.m_CameraDistance = Mathf.Lerp(ft.m_CameraDistance, _cameraDistance,Time.deltaTime*10);
         }
 
     }

@@ -7,19 +7,15 @@ namespace collegeGame
         [field: SerializeField] private float _health;
         public void DamageTake(float damage)
         {
-            if (_health < 0)
+            if (_health < damage)
             {
-                return;
+                Destroy(gameObject);
             }
             _health -= damage;
         }
         public float GetHealth()
         {
             return _health;
-        }
-        private void Awake()
-        {
-            Debug.Log(_health);
         }
     }
 }
