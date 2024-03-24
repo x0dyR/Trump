@@ -262,7 +262,7 @@
                     "id": "51d1760a-500e-40b4-8002-d1c5a1afb838",
                     "path": "<Mouse>/scroll/y",
                     "interactions": "",
-                    "processors": "Invert",
+                    "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Zoom",
                     "isComposite": false,

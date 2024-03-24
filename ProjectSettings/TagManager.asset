@@ -3,17 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Ground
-  - door
-  - death text
-  - doorTriger
-  - ground
-<<<<<<< HEAD
-  - Points
-=======
-  - CinemachineTarget
->>>>>>> ec2ed8dc0630c605a84fcc495f39464126c528a8
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -21,10 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - Environment
-  - Ground
-  - Damageable
-  - Interactable
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

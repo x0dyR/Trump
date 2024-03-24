@@ -14,7 +14,7 @@ scopes = {
 	"last_search.DE949528" = "frame"
 	"OpenInspectorPreview.DE949528" = "0"
 	"currentGroup.DE949528" = "menu"
-	"last_search.956173B0" = "input"
+	"last_search.956173B0" = ""
 	"OpenInspectorPreview.956173B0" = "0"
 	"currentGroup.956173B0" = "all"
 	"last_search.310DEAF1" = "animator"
@@ -81,10 +81,10 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	""
 	"in"
 	"pl"
 	"u"
-	""
 	"up"
 	"a"
 	"p"

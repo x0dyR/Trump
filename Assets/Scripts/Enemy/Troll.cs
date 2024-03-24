@@ -8,13 +8,11 @@ namespace collegeGame
     {
         public GameObject Player;
         private UnityEngine.AI.NavMeshAgent agent;
-        private Animator animator; // Добавляем переменную аниматора
+        private Animator animator;
 
         private void Start()
         {
             agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-            
-            // Получаем доступ к компоненту аниматора дочернего объекта с именем "Troll"
             animator = GetComponentInChildren<Animator>();
         }
 
@@ -22,20 +20,32 @@ namespace collegeGame
         {
             agent.destination = Player.transform.position;
 
-            // Устанавливаем параметр анимации run, если скорость NavMeshAgent больше нуля
-            if (agent.velocity.magnitude > 0)
+           
+            float distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
+
+            
+            if (distanceToPlayer <= 5f)
             {
-                animator.SetBool("IsRunning", true);
+                
+                agent.isStopped = true;
+
+                animator.SetBool("IsRunning", false);
             }
             else
             {
-                animator.SetBool("IsRunning", false);
+                
+                agent.isStopped = false;
+
+             
+                animator.SetBool("IsRunning", agent.velocity.magnitude > 0);
             }
         }
     }
 }
-// using UnityEngine;
-// using UnityEngine.AI;
+
+
+
+
 
 // public class Troll : MonoBehaviour
 // {
@@ -52,12 +62,12 @@ namespace collegeGame
 //     {
 //         if (!agent.hasPath || agent.remainingDistance < 0.5f)
 //         {
-//             // Выбираем случайную точку внутри навигационной сетки
+//             
 //             Vector3 randomPoint = Random.insideUnitSphere * 50f;
 //             NavMeshHit hit;
 //             NavMesh.SamplePosition(transform.position + randomPoint, out hit, 50f, NavMesh.AllAreas);
 
-//             // Устанавливаем случайную точку как новую цель для NavMeshAgent
+//             
 //             agent.SetDestination(hit.position);
             
 //             // Устанавливаем параметр анимации IsWalking
