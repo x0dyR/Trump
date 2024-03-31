@@ -77,8 +77,7 @@ namespace StarterAssets
 
         // cinemachine
         private float _cinemachineTargetYaw;
-        private float _cinemachineTargetPitch;        
-        [Range(1, 8)] public float cameraDistance;
+        private float _cinemachineTargetPitch;
 
         // player
         private float _speed;
@@ -136,6 +135,7 @@ namespace StarterAssets
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
+            
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -164,7 +164,6 @@ namespace StarterAssets
         private void LateUpdate()
         {
             CameraRotation();
-            CameraZoom();
         }
 
         private void AssignAnimationIDs()
@@ -211,12 +210,6 @@ namespace StarterAssets
             CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
                 _cinemachineTargetYaw, 0.0f);
         }
-
-        private void CameraZoom()
-        {
-            cameraDistance = _input.zoom;
-        }
-            
 
         private void Move()
         {
