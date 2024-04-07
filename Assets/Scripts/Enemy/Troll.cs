@@ -1,92 +1,325 @@
+// using UnityEngine;
+// using UnityEngine.AI;
+// using System.Collections;
+
+// public class Troll : MonoBehaviour
+// {
+//     private Animator animator;
+//     private NavMeshAgent navMeshAgent;
+//     private GameObject player;
+//     private float defaultChaseRadius = 10f;
+//     private float extendedChaseRadius = 20f;
+//     private float currentChaseRadius;
+//     private bool isResting = false;
+//     private bool isChasing = false;
+//     public float chaseThreshold = 1.5f;
+//     public float idleSpeedThreshold = 0.1f;
+//     public float walkingSpeed = 2.5f;
+//     public float runningSpeed = 5f;
+//     public float idleTime = 5f;
+
+//     void Start()
+//     {
+//         animator = GetComponent<Animator>();
+//         navMeshAgent = GetComponent<NavMeshAgent>();
+//         player = GameObject.FindWithTag("Player");
+//         currentChaseRadius = defaultChaseRadius;
+//         navMeshAgent.speed = walkingSpeed;
+//         SetRandomDestination();
+//     }
+
+//     void Update()
+// {
+//     if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.1f && !isResting)
+//         StartCoroutine(Rest());
+
+//     if (isChasing)
+//     {
+//         if (player != null && Vector3.Distance(transform.position, player.transform.position) <= currentChaseRadius)
+//         {
+//             SetChaseTarget();
+//         }
+//         else
+//         {
+//             StopChase(); // Прекратить преследование, если игрок находится за пределами радиуса обзора погони
+//         }
+//     }
+//     else if (player != null && Vector3.Distance(transform.position, player.transform.position) <= currentChaseRadius)
+//     {
+//         StartChase(); // Начать преследование, если игрок находится в пределах радиуса обзора погони
+//     }
+
+//     UpdateAnimationParameters();
+// }
+
+
+
+//     IEnumerator Rest()
+//     {
+//         isResting = true;
+//         navMeshAgent.isStopped = true;
+//         animator.SetBool("IsIdle", true);
+//         yield return new WaitForSeconds(idleTime);
+//         isResting = false;
+//         navMeshAgent.isStopped = false;
+//         SetRandomDestination();
+//     }
+
+//     void SetRandomDestination()
+//     {
+//         Vector3 randomDirection = Random.insideUnitSphere * 20f;
+//         NavMeshHit hit;
+//         NavMesh.SamplePosition(randomDirection + transform.position, out hit, 20f, NavMesh.AllAreas);
+//         navMeshAgent.SetDestination(hit.position);
+//     }
+
+//     void SetChaseTarget()
+//     {
+//         if (player != null)
+//             navMeshAgent.SetDestination(player.transform.position);
+//     }
+
+//     void UpdateAnimationParameters()
+//     {
+//         float speed = navMeshAgent.velocity.magnitude;
+//         animator.SetBool("IsIdle", speed < idleSpeedThreshold && !isResting);
+//         animator.SetBool("IsWalking", speed >= idleSpeedThreshold && !isResting && !isChasing);
+//         animator.SetBool("IsRunning", speed >= runningSpeed * chaseThreshold && isChasing);
+//         animator.SetFloat("speed", speed);
+//     }
+
+//     public void StartChase()
+//     {
+//         isChasing = true;
+//         currentChaseRadius = extendedChaseRadius;
+//         navMeshAgent.speed = runningSpeed;
+//     }
+
+//     public void StopChase()
+//     {
+//         isChasing = false;
+//         currentChaseRadius = defaultChaseRadius;
+//         navMeshAgent.speed = walkingSpeed;
+//     }
+// }
+
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
-namespace collegeGame
+// public class Troll : MonoBehaviour
+// {
+//     private Animator animator;
+//     private NavMeshAgent navMeshAgent;
+//     private GameObject player;
+//     private float defaultChaseRadius = 10f;
+//     private float extendedChaseRadius = 20f;
+//     private float currentChaseRadius;
+//     private bool isResting = false;
+//     private bool isChasing = false;
+//     private bool isDead = false; // Добавляем флаг для отслеживания смерти тролля
+//     public float chaseThreshold = 1.5f;
+//     public float idleSpeedThreshold = 0.1f;
+//     public float walkingSpeed = 2.5f;
+//     public float runningSpeed = 5f;
+//     public float idleTime = 5f;
+
+//     void Start()
+//     {
+//         animator = GetComponent<Animator>();
+//         navMeshAgent = GetComponent<NavMeshAgent>();
+//         player = GameObject.FindWithTag("Player");
+//         currentChaseRadius = defaultChaseRadius;
+//         navMeshAgent.speed = walkingSpeed;
+//         SetRandomDestination();
+//     }
+
+//     void Update()
+//     {
+//         if (!isDead) // Проверяем, жив ли тролль, прежде чем выполнять его обновление
+//         {
+//             if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.1f && !isResting)
+//                 StartCoroutine(Rest());
+
+//             if (isChasing)
+//             {
+//                 if (player != null && Vector3.Distance(transform.position, player.transform.position) <= currentChaseRadius)
+//                 {
+//                     SetChaseTarget();
+//                 }
+//                 else
+//                 {
+//                     StopChase(); // Прекратить преследование, если игрок находится за пределами радиуса обзора погони
+//                 }
+//             }
+//             else if (player != null && Vector3.Distance(transform.position, player.transform.position) <= currentChaseRadius)
+//             {
+//                 StartChase(); // Начать преследование, если игрок находится в пределах радиуса обзора погони
+//             }
+
+//             UpdateAnimationParameters();
+//         }
+//     }
+
+//     IEnumerator Rest()
+//     {
+//         isResting = true;
+//         navMeshAgent.isStopped = true;
+//         animator.SetBool("IsIdle", true);
+//         yield return new WaitForSeconds(idleTime);
+//         isResting = false;
+//         navMeshAgent.isStopped = false;
+//         SetRandomDestination();
+//     }
+
+//     void SetRandomDestination()
+//     {
+//         Vector3 randomDirection = Random.insideUnitSphere * 20f;
+//         NavMeshHit hit;
+//         NavMesh.SamplePosition(randomDirection + transform.position, out hit, 20f, NavMesh.AllAreas);
+//         navMeshAgent.SetDestination(hit.position);
+//     }
+
+//     void SetChaseTarget()
+//     {
+//         if (player != null)
+//             navMeshAgent.SetDestination(player.transform.position);
+//     }
+
+//     void UpdateAnimationParameters()
+//     {
+//         float speed = navMeshAgent.velocity.magnitude;
+//         animator.SetBool("IsIdle", speed < idleSpeedThreshold && !isResting);
+//         animator.SetBool("IsWalking", speed >= idleSpeedThreshold && !isResting && !isChasing);
+//         animator.SetBool("IsRunning", speed >= runningSpeed * chaseThreshold && isChasing);
+//         animator.SetFloat("speed", speed);
+//     }
+
+//     public void StartChase()
+//     {
+//         isChasing = true;
+//         currentChaseRadius = extendedChaseRadius;
+//         navMeshAgent.speed = runningSpeed;
+//     }
+
+//     public void StopChase()
+//     {
+//         isChasing = false;
+//         currentChaseRadius = defaultChaseRadius;
+//         navMeshAgent.speed = walkingSpeed;
+//     }
+
+
+// }
+
+public class Troll : MonoBehaviour
 {
-    public class Troll : MonoBehaviour
+    private Animator animator;
+    private NavMeshAgent navMeshAgent;
+    private GameObject player;
+    private float defaultChaseRadius = 10f;
+    private float extendedChaseRadius = 20f;
+    private float currentChaseRadius;
+    private bool isResting = false;
+    private bool isChasing = false;
+    private bool isDead = false; // Добавляем флаг для отслеживания смерти тролля
+    public float chaseThreshold = 1.5f;
+    public float idleSpeedThreshold = 0.1f;
+    public float walkingSpeed = 2.5f;
+    public float runningSpeed = 5f;
+    public float idleTime = 5f;
+
+    void Start()
     {
-        public Transform playerTransform;
-        private NavMeshAgent agent;
-        private Animator animator;
+        animator = GetComponent<Animator>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindWithTag("Player");
+        currentChaseRadius = defaultChaseRadius;
+        navMeshAgent.speed = walkingSpeed;
+        SetRandomDestination();
+    }
 
-        private void Awake()
+    void Update()
+    {
+        if (!isDead) // Проверяем, жив ли тролль, прежде чем выполнять его обновление
         {
-            agent = GetComponent<NavMeshAgent>();
-            animator = GetComponent<Animator>();
-        }
+            if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.1f && !isResting)
+                StartCoroutine(Rest());
 
-        private void Update()
-        {
-            agent.destination = playerTransform.position;
-            /*float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);*/
-            //Vector3.Distance медленный
-            Vector3 vectorDistanceToPlayer = transform.position - agent.destination;
-            float distanceToPlayer = Mathf.Sqrt(vectorDistanceToPlayer.sqrMagnitude);
+            if (isChasing)
+            {
+                if (player != null && Vector3.Distance(transform.position, player.transform.position) <= currentChaseRadius)
+                {
+                    SetChaseTarget();
+                }
+                else
+                {
+                    StopChase(); // Прекратить преследование, если игрок находится за пределами радиуса обзора погони
+                }
+            }
+            else if (player != null && Vector3.Distance(transform.position, player.transform.position) <= currentChaseRadius)
+            {
+                StartChase(); // Начать преследование, если игрок находится в пределах радиуса обзора погони
+            }
 
-            if (distanceToPlayer <= 7f)
-            {
-                agent.isStopped = false;
-                animator.SetFloat("Blend", 3);
-            }
-            else if (distanceToPlayer <= 10f)
-            {
-                agent.isStopped = false;
-                animator.SetFloat("Blend", 2);
-            }
-            else if (distanceToPlayer >= 15f)
-            {
-                agent.isStopped = true;
-                animator.SetFloat("Blend", 0);
-            }
-            else if (distanceToPlayer <= 15f)
-            {
-                agent.isStopped = false;
-                animator.SetFloat("Blend", 1);
-            }
-            /*
-            if (distanceToPlayer <= 5f)
-            {
-                agent.isStopped = true;
-                animator.SetFloat("Blend", .4f);
-            }
-            else
-            {
-                agent.isStopped = false;
-                animator.SetFloat("Blend", .7f);
-            }*/
+            UpdateAnimationParameters();
         }
+    }
+
+    IEnumerator Rest()
+    {
+        isResting = true;
+        navMeshAgent.isStopped = true;
+        animator.SetBool("IsIdle", true);
+        yield return new WaitForSeconds(idleTime);
+        isResting = false;
+        navMeshAgent.isStopped = false;
+        SetRandomDestination();
+    }
+
+    void SetRandomDestination()
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * 20f;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection + transform.position, out hit, 20f, NavMesh.AllAreas);
+        navMeshAgent.SetDestination(hit.position);
+    }
+
+    void SetChaseTarget()
+    {
+        if (player != null)
+            navMeshAgent.SetDestination(player.transform.position);
+    }
+
+    void UpdateAnimationParameters()
+    {
+        float speed = navMeshAgent.velocity.magnitude;
+        animator.SetBool("IsIdle", speed < idleSpeedThreshold && !isResting);
+        animator.SetBool("IsWalking", speed >= idleSpeedThreshold && !isResting && !isChasing);
+        animator.SetBool("IsRunning", speed >= runningSpeed * chaseThreshold && isChasing);
+        animator.SetFloat("speed", speed);
+    }
+
+    public void StartChase()
+    {
+        isChasing = true;
+        currentChaseRadius = extendedChaseRadius;
+        navMeshAgent.speed = runningSpeed;
+    }
+
+    public void StopChase()
+    {
+        isChasing = false;
+        currentChaseRadius = defaultChaseRadius;
+        navMeshAgent.speed = walkingSpeed;
+    }
+
+    public void Dead() // Метод для смерти тролля
+    {
+        isDead = true;
+        // Останавливаем анимацию или что-то еще, что нужно сделать перед уничтожением объекта
+        Destroy(gameObject); // Уничтожаем объект тролля
     }
 }
 
 
-
-
-
-// public class Troll : MonoBehaviour
-// {
-//     private NavMeshAgent agent;
-//     private Animator animator;
-
-//     private void Start()
-//     {
-//         agent = GetComponent<NavMeshAgent>();
-//         animator = GetComponentInChildren<Animator>();
-//     }
-
-//     private void Update()
-//     {
-//         if (!agent.hasPath || agent.remainingDistance < 0.5f)
-//         {
-//             
-//             Vector3 randomPoint = Random.insideUnitSphere * 50f;
-//             NavMeshHit hit;
-//             NavMesh.SamplePosition(transform.position + randomPoint, out hit, 50f, NavMesh.AllAreas);
-
-//             
-//             agent.SetDestination(hit.position);
-
-//             // Устанавливаем параметр анимации IsWalking
-//             animator.SetBool("IsWalking", true);
-//         }
-//     }
-// }
