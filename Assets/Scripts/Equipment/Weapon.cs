@@ -1,33 +1,25 @@
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace collegeGame
 {
     public class Weapon : MonoBehaviour
     {
-        /*public Animator animator;*/
-        public float damage;
+        [field:SerializeField] protected float damage;
+        private float _rare;
+        private float _subStat;
+        private string _subStatName;
+        public string weaponName;
         public BoxCollider boxCollider;
-        /*
-        private void Awake()
-        {
-            animator = GetComponent<Animator>();
-        }
-        public virtual void WeaponAttack()
-        {
-            animator.SetTrigger("Attack");
-        }*/
+        public BlendTree weaponBlendTree;
         private void Awake()
         {
             boxCollider = GetComponent<BoxCollider>();
         }
-        public void Attack(LayerMask damageableLayer)
+        public float GetWeaponDamage()
         {
-            Collider[] colliderArray = Physics.OverlapBox(transform.position, boxCollider.size, Quaternion.identity, damageableLayer);
-            foreach (Collider coll in colliderArray)
-            {
-                coll.TryGetComponent(out Damageable damageable);
-                damageable.DamageTake(damage);
-            }
+            return damage;
         }
+        public virtual void Attack(LayerMask damageableLayer) { } // делаем virtual чтобы можно было менять под каждый тип оружия
     }
 }

@@ -84,8 +84,8 @@
     <Compile Include="Library\PackageCache\com.unity.scriptablebuildpipeline@1.21.20\Editor\Shared\BuildContent.cs" />
     <Compile Include="Library\PackageCache\com.unity.scriptablebuildpipeline@1.21.20\Editor\Utilities\ContentFileIdentifiers.cs" />
     <Compile Include="Library\PackageCache\com.unity.scriptablebuildpipeline@1.21.20\Editor\Shared\DefaultBuildTasks.cs" />
-    <Compile Include="Library\PackageCache\com.unity.scriptablebuildpipeline@1.21.20\Editor\Utilities\USerialize\USerialize.cs" />
     <Compile Include="Library\PackageCache\com.unity.scriptablebuildpipeline@1.21.20\Editor\Interfaces\IBuildContent.cs" />
+    <Compile Include="Library\PackageCache\com.unity.scriptablebuildpipeline@1.21.20\Editor\Utilities\USerialize\USerialize.cs" />
     <Compile Include="Library\PackageCache\com.unity.scriptablebuildpipeline@1.21.20\Editor\Utilities\ReflectionExtensions.cs" />
     <Compile Include="Library\PackageCache\com.unity.scriptablebuildpipeline@1.21.20\Editor\Interfaces\IBuildResults.cs" />
     <Compile Include="Library\PackageCache\com.unity.scriptablebuildpipeline@1.21.20\Editor\CompatibilityBuildPipeline.cs" />

@@ -71,8 +71,8 @@
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\TestLaunchers\EditModeLauncherContextSettings.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\TestSettings\TestSettings.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\Api\ITestAdaptor.cs" />
-    <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\AssemblyInfo.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\TestRunner\Utils\CachingTestListProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\AssemblyInfo.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\UnityTestProtocol\UnityTestProtocolListener.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\TestLaunchers\AttributeFinderBase.cs" />
     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.33\UnityEditor.TestRunner\TestRunner\Utils\EditorCompilationInterfaceProxy.cs" />

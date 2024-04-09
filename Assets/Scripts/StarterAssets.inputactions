@@ -87,9 +87,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ChangeToSword",
+                    "name": "ChangeToCatalyst",
                     "type": "Button",
-                    "id": "3ad1f36e-227e-4f6f-a650-316ae1fe192c",
+                    "id": "135ea4a6-cf6d-4ccb-abc6-0049024da9fb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -105,9 +105,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ChangeToCatalyst",
+                    "name": "ChangeToSword",
                     "type": "Button",
-                    "id": "135ea4a6-cf6d-4ccb-abc6-0049024da9fb",
+                    "id": "3ad1f36e-227e-4f6f-a650-316ae1fe192c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -326,23 +326,23 @@
                 },
                 {
                     "name": "",
+                    "id": "bebac101-37b1-4014-adb1-b3515f21df0f",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "f865af01-ace3-4a94-aabc-725276710636",
                     "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "ChangeToBow",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d792388d-aa60-4de4-9328-93e552dbcb92",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeToSword",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -359,23 +359,34 @@
                 },
                 {
                     "name": "",
-                    "id": "fdce1bef-d987-48ae-ac1a-8a49a75b5704",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeToCatalyst",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b61a7edd-4cb8-48dd-a5bb-1ac2fb250632",
                     "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Walk",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d792388d-aa60-4de4-9328-93e552dbcb92",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeToSword",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fdce1bef-d987-48ae-ac1a-8a49a75b5704",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeToCatalyst",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
