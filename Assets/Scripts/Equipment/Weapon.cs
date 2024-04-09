@@ -23,3 +23,4 @@ namespace collegeGame
         public virtual void Attack(LayerMask damageableLayer) { } // делаем virtual чтобы можно было менять под каждый тип оружия
     }
 }
+
