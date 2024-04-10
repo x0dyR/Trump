@@ -270,8 +270,10 @@ public class Troll : MonoBehaviour
     {
         isResting = true;
         navMeshAgent.isStopped = true;
-        animator.SetBool("IsIdle", true);
+        navMeshAgent.speed = 0f;
+        /*animator.SetBool("IsIdle", true);*/
         yield return new WaitForSeconds(idleTime);
+        navMeshAgent.speed = walkingSpeed;
         isResting = false;
         navMeshAgent.isStopped = false;
         SetRandomDestination();
@@ -293,10 +295,10 @@ public class Troll : MonoBehaviour
 
     void UpdateAnimationParameters()
     {
-        float speed = navMeshAgent.velocity.magnitude;
-        animator.SetBool("IsIdle", speed < idleSpeedThreshold && !isResting);
+        float speed = navMeshAgent.speed;
+        /*animator.SetBool("IsIdle", speed < idleSpeedThreshold && !isResting);
         animator.SetBool("IsWalking", speed >= idleSpeedThreshold && !isResting && !isChasing);
-        animator.SetBool("IsRunning", speed >= runningSpeed * chaseThreshold && isChasing);
+        animator.SetBool("IsRunning", speed >= runningSpeed * chaseThreshold && isChasing);*/
         animator.SetFloat("speed", speed);
     }
 

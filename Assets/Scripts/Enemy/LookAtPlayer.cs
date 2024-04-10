@@ -6,10 +6,9 @@ namespace collegeGame
 {
     public class LookAtPlayer : MonoBehaviour
     {
-        public Transform camera;
         void LateUpdate() {
         
-        transform.LookAt(camera);
+        transform.LookAt(Camera.main.transform);
     }
 }
 }
