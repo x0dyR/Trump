@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 2100000, guid: 111523ac649da7941b6398d4be7f3e17, type: 2}
+    second: {fileID: 2100000, guid: 64605497a6e64e64f9ee88b89a51522c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -90,7 +90,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.3630468
+        functionName: EnableCollider
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: d2e51d04be9c3ea439d4890f9222648a, type: 3}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
+      - time: 0.61468077
+        functionName: NewEvent
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: d2e51d04be9c3ea439d4890f9222648a, type: 3}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

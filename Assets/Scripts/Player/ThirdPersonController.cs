@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System;
 using TMPro;
+using Zenject;
+
 
 
 #if ENABLE_INPUT_SYSTEM
@@ -14,7 +16,7 @@ namespace collegeGame.Inputs
 #if ENABLE_INPUT_SYSTEM
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class ThirdPersonController : MonoBehaviour
+    public class ThirdPersonController : MonoBehaviour, ITarget
     {
         #region Variables
         [Header("Player")]
@@ -73,7 +75,7 @@ namespace collegeGame.Inputs
 
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
-        public CinemachineVirtualCamera cm;
+        private CinemachineVirtualCamera cm;
         public float minCameraDistance = 1f;
         public float maxCameraDistance = 8f;
         public float cameraDistance = 6f;
@@ -81,7 +83,7 @@ namespace collegeGame.Inputs
         [field: SerializeField] private float interactionDistance = 2f;
         [Header("Weapon")]
         [field: SerializeField] private Weapon weapon;
-        private bool isAttacking;
+        [HideInInspector] public bool isAttacking;
         private float _cooldownToChangeWeapon = 3f;
 
         [Header("Layers")]
@@ -96,6 +98,8 @@ namespace collegeGame.Inputs
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
+        private float _maxSprintTime = 5f;
+        public float currentSprintTime = 0;
 
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
@@ -110,6 +114,8 @@ namespace collegeGame.Inputs
 
         private const float _threshold = 0.01f;
         #endregion
+        public Transform cameraPoint;
+
         private bool IsCurrentDeviceMouse
         {
             get
@@ -124,6 +130,10 @@ namespace collegeGame.Inputs
 
         private void Awake()
         {
+            cm = FindObjectOfType<CinemachineVirtualCamera>();
+            cm.m_Follow = cameraPoint;
+            cm.m_LookAt = cameraPoint;
+
             if (_mainCamera == null)
             {
                 _mainCamera = Camera.main.gameObject;
@@ -149,6 +159,7 @@ namespace collegeGame.Inputs
 
         private void Update()
         {
+            currentSprintTime = _input.sprint ? currentSprintTime + Time.deltaTime : currentSprintTime - Time.deltaTime;
             GroundedCheck();
             Move();
             Attack();
@@ -239,8 +250,6 @@ namespace collegeGame.Inputs
                 weapon.Attack(damageableLayer);
             }
             weapon.boxCollider.enabled = false;
-
-            isAttacking = false;
         }
 
 
@@ -248,7 +257,6 @@ namespace collegeGame.Inputs
         {
             if (_input.attack && Grounded)
             {
-                isAttacking = true;
                 animator.SetTrigger("Attack");
             }
             _input.attack = false;
@@ -256,15 +264,15 @@ namespace collegeGame.Inputs
 
         private void ChangeToAny()
         {
-           /* Bow weaponBow;
+            /* Bow weaponBow;
 
-            weaponBow = GetComponentInChildren<Bow>();
-            if (_input.bow)
-            {
-                weapon.gameObject.SetActive(false);
-                weapon = weaponBow;
-                weapon.gameObject.SetActive(true);
-            }*/
+             weaponBow = GetComponentInChildren<Bow>();
+             if (_input.bow)
+             {
+                 weapon.gameObject.SetActive(false);
+                 weapon = weaponBow;
+                 weapon.gameObject.SetActive(true);
+             }*/
         }
 
         private void JumpAndGravity()
@@ -285,6 +293,7 @@ namespace collegeGame.Inputs
                 {
                     _jumpTimeoutDelta -= Time.deltaTime;
                 }
+
             }
             else
             {
@@ -321,6 +330,11 @@ namespace collegeGame.Inputs
             Gizmos.DrawSphere(
                 new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
                 GroundedRadius);
+        }
+
+        Transform ITarget.GetTransform()
+        {
+            return transform;
         }
     }
 }

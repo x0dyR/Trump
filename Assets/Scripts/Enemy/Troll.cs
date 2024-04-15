@@ -106,6 +106,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
+using Zenject;
+using collegeGame;
 
 // public class Troll : MonoBehaviour
 // {
@@ -216,7 +218,7 @@ public class Troll : MonoBehaviour
 {
     private Animator animator;
     private NavMeshAgent navMeshAgent;
-    private GameObject player;
+    private ITarget player;
     private float defaultChaseRadius = 10f;
     private float extendedChaseRadius = 20f;
     private float currentChaseRadius;
@@ -229,11 +231,16 @@ public class Troll : MonoBehaviour
     public float runningSpeed = 5f;
     public float idleTime = 5f;
 
+    [Inject]
+    private void Construct(ITarget target)
+    {
+        player = target;
+    }
+
     void Start()
     {
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindWithTag("Player");
         currentChaseRadius = defaultChaseRadius;
         navMeshAgent.speed = walkingSpeed;
         SetRandomDestination();
@@ -248,7 +255,7 @@ public class Troll : MonoBehaviour
 
             if (isChasing)
             {
-                if (player != null && Vector3.Distance(transform.position, player.transform.position) <= currentChaseRadius)
+                if (player != null && Vector3.Distance(transform.position, player.GetTransform().position) <= currentChaseRadius)
                 {
                     SetChaseTarget();
                 }
@@ -257,7 +264,7 @@ public class Troll : MonoBehaviour
                     StopChase(); // Прекратить преследование, если игрок находится за пределами радиуса обзора погони
                 }
             }
-            else if (player != null && Vector3.Distance(transform.position, player.transform.position) <= currentChaseRadius)
+            else if (player != null && Vector3.Distance(transform.position, player.GetTransform().position) <= currentChaseRadius)
             {
                 StartChase(); // Начать преследование, если игрок находится в пределах радиуса обзора погони
             }
@@ -290,7 +297,7 @@ public class Troll : MonoBehaviour
     void SetChaseTarget()
     {
         if (player != null)
-            navMeshAgent.SetDestination(player.transform.position);
+            navMeshAgent.SetDestination(player.GetTransform().position);
     }
 
     void UpdateAnimationParameters()
