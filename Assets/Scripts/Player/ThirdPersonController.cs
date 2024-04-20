@@ -1,10 +1,5 @@
 ﻿using UnityEngine;
 using System;
-using TMPro;
-using Zenject;
-
-
-
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 using Cinemachine;
@@ -16,7 +11,7 @@ namespace collegeGame.Inputs
 #if ENABLE_INPUT_SYSTEM
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class ThirdPersonController : MonoBehaviour, ITarget
+    public class ThirdPersonController : MonoBehaviour, ITarget, IHealth
     {
         #region Variables
         [Header("Player")]
@@ -83,8 +78,8 @@ namespace collegeGame.Inputs
         [field: SerializeField] private float interactionDistance = 2f;
         [Header("Weapon")]
         [field: SerializeField] private Weapon weapon;
-        [HideInInspector] public bool isAttacking;
-        private float _cooldownToChangeWeapon = 3f;
+        /*        [HideInInspector] public bool isAttacking;*/
+        /*        private float _cooldownToChangeWeapon = 3f;*/
 
         [Header("Layers")]
         [field: SerializeField] LayerMask interactableLayer;
@@ -98,8 +93,8 @@ namespace collegeGame.Inputs
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
-        private float _maxSprintTime = 5f;
-        public float currentSprintTime = 0;
+        /*        private float _maxSprintTime = 5f;
+                public float currentSprintTime = 0;*/
 
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
@@ -113,9 +108,13 @@ namespace collegeGame.Inputs
         private GameObject _mainCamera;
 
         private const float _threshold = 0.01f;
-        #endregion
-        public Transform cameraPoint;
 
+        public Transform cameraPoint;
+        public Transform attackRangePoint;
+        public Transform attackHand;
+        /*        public GameObject[] weapons;*/
+
+        #endregion
         private bool IsCurrentDeviceMouse
         {
             get
@@ -127,9 +126,16 @@ namespace collegeGame.Inputs
 #endif
             }
         }
+        public float health = 100;
 
         private void Awake()
         {
+            /*            foreach (var weapon in weapons)
+                            Instantiate(weapon, attackHand);
+
+                        weapon = weapons[2].GetComponent<Weapon>();*/
+
+            weapon = GetComponentInChildren<Weapon>();
             cm = FindObjectOfType<CinemachineVirtualCamera>();
             cm.m_Follow = cameraPoint;
             cm.m_LookAt = cameraPoint;
@@ -143,37 +149,54 @@ namespace collegeGame.Inputs
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
             animator = GetComponent<Animator>();
-            weapon = GetComponentInChildren<Weapon>();
+            /*weapon = GetComponentInChildren<Weapon>();*/
+
 #if ENABLE_INPUT_SYSTEM
             _playerInput = GetComponent<PlayerInput>();
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
+
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
 
         private void Update()
         {
-            currentSprintTime = _input.sprint ? currentSprintTime + Time.deltaTime : currentSprintTime - Time.deltaTime;
+            /*currentSprintTime = _input.sprint ? currentSprintTime + Time.deltaTime : currentSprintTime - Time.deltaTime;*/
             GroundedCheck();
             Move();
-            Attack();
             Interact();
             JumpAndGravity();
+            Attack();
         }
         private void LateUpdate()
         {
             CameraRotation();
             CameraZoom();
-            ChangeToAny();
+        }
+        public Transform GetTransform()
+        {
+            return transform;
         }
 
-        private void GroundedCheck()
+        public void TakeDamage(float damage)
+        {
+            if (damage >= health)
+            {
+                Destroy(gameObject);
+            }
+            health -= damage;
+        }
+
+        public float GetHealth()
+        {
+            return health;
+        }
+        public void GroundedCheck()
         {
             Vector3 spherePosition = new(transform.position.x, transform.position.y - GroundedOffset,
                 transform.position.z);
@@ -181,7 +204,7 @@ namespace collegeGame.Inputs
                 QueryTriggerInteraction.Ignore);
         }
 
-        private void CameraZoom()
+        public void CameraZoom()
         {
             float scrollValue = _input.zoom;
             var framingTranspoer = cm.GetCinemachineComponent<CinemachineFramingTransposer>();
@@ -190,7 +213,7 @@ namespace collegeGame.Inputs
             framingTranspoer.m_CameraDistance = Mathf.Lerp(framingTranspoer.m_CameraDistance, cameraDistance, Time.deltaTime * 10);
         }
 
-        private void CameraRotation()
+        public void CameraRotation()
         {
             if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
             {
@@ -204,9 +227,9 @@ namespace collegeGame.Inputs
             CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw, 0.0f);
         }
 
-        private void Move()
+        public void Move()
         {
-            if (isAttacking) { return; }
+            /*            if (isAttacking) { return; }*/
             float targetSpeed = _input.sprint ? SprintSpeed : (_input.isWalking ? WalkSpeed : MoveSpeed);
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
             animator.SetFloat("Speed", targetSpeed);
@@ -228,54 +251,48 @@ namespace collegeGame.Inputs
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
         }
 
-        private void Interact()
+        public void EnableWeaponCollider(int enable)
         {
-            if (_input.interact)
-            {
-                Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactionDistance, interactableLayer);
-                foreach (Collider collider in colliderArray)
-                {
-                    collider.TryGetComponent(out Interactable interactable);
-                    interactable.Interact(_controller);
-                }
-            }
-            _input.interact = false;
-        }
 
-        public void EnableCollider(int enable)
-        {
             if (enable == 1)
             {
                 weapon.boxCollider.enabled = true;
-                weapon.Attack(damageableLayer);
+                weapon.Attack();
             }
-            weapon.boxCollider.enabled = false;
+
+            if (enable == 0)
+                weapon.boxCollider.enabled = false;
         }
 
-
-        private void Attack()
+        public void Attack()
         {
-            if (_input.attack && Grounded)
+
+            if (_input.attack)
             {
                 animator.SetTrigger("Attack");
             }
+
             _input.attack = false;
         }
 
-        private void ChangeToAny()
+        public void Interact()
         {
-            /* Bow weaponBow;
 
-             weaponBow = GetComponentInChildren<Bow>();
-             if (_input.bow)
-             {
-                 weapon.gameObject.SetActive(false);
-                 weapon = weaponBow;
-                 weapon.gameObject.SetActive(true);
-             }*/
+            if (_input.interact)
+            {
+                Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactionDistance, interactableLayer);
+
+                foreach (Collider collider in colliderArray)
+                {
+                    collider.TryGetComponent(out IInteract interactable);
+                    interactable.Interact();
+                }
+            }
+
+            _input.interact = false;
         }
 
-        private void JumpAndGravity()
+        public void JumpAndGravity()
         {
             if (Grounded)
             {
@@ -332,9 +349,6 @@ namespace collegeGame.Inputs
                 GroundedRadius);
         }
 
-        Transform ITarget.GetTransform()
-        {
-            return transform;
-        }
+
     }
 }

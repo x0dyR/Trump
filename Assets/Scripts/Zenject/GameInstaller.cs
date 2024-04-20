@@ -16,19 +16,18 @@ namespace collegeGame
         {
             BindPlayer();
             BindCM();
+            Container.BindInterfacesAndSelfTo<Troll>().AsSingle();
         }
 
         private void BindCM()
         {
             Container.Bind<CinemachineVirtualCamera>().FromInstance(cm).AsSingle();
-          /*Container.Bind<CMFollowPlayer>().AsSingle();*/
         }
 
         private void BindPlayer()
         {
             var player = Container.InstantiatePrefabForComponent<ThirdPersonController>(playerPrefab, playerSpawnPos.position, Quaternion.identity, null);
             Container.BindInterfacesAndSelfTo<ThirdPersonController>().FromInstance(player).AsSingle();
-/*            Container.BindInterfacesAndSelfTo<Damageable>().FromInstance(player).AsSingle();*/
         }
     }
 }

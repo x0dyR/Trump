@@ -2,15 +2,11 @@ using UnityEngine;
 
 namespace collegeGame
 {
-    public class Home : Interactable
+    public class Home : MonoBehaviour, IInteract
     {
-        private void Awake()
+        public void Interact()
         {
-
-        }
-        public override void Interact(CharacterController characterController)
-        {
-            Debug.Log(gameObject + "called");
+            Debug.Log(gameObject.name + "called");
         }
     }
 }
