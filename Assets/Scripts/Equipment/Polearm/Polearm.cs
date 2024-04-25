@@ -1,9 +1,8 @@
 using UnityEngine;
-using Zenject;
 
 namespace collegeGame
 {
-    public class Katana : Weapon
+    public class Polearm : Weapon
     {
         private void OnValidate()
         {
@@ -11,11 +10,6 @@ namespace collegeGame
             {
                 damage = 1;
             }
-        }
-
-        private void Awake()
-        {
-            boxCollider = GetComponent<BoxCollider>();
         }
 
         public override void Attack()
@@ -30,5 +24,6 @@ namespace collegeGame
                     target.TakeDamage(damage);
             }
         }
+
     }
 }

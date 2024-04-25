@@ -1,5 +1,6 @@
 using Cinemachine;
 using collegeGame.Inputs;
+using collegeGame.StateMachine;
 using UnityEngine;
 using Zenject;
 
@@ -26,8 +27,8 @@ namespace collegeGame
 
         private void BindPlayer()
         {
-            var player = Container.InstantiatePrefabForComponent<ThirdPersonController>(playerPrefab, playerSpawnPos.position, Quaternion.identity, null);
-            Container.BindInterfacesAndSelfTo<ThirdPersonController>().FromInstance(player).AsSingle();
+            var player = Container.InstantiatePrefabForComponent<Character>(playerPrefab, playerSpawnPos.position, Quaternion.identity, null);
+            Container.BindInterfacesAndSelfTo<Character>().FromInstance(player).AsSingle();
         }
     }
 }

@@ -19,8 +19,8 @@ namespace collegeGame
         {
             _isMoving = true;
             self.NavAgent.isStopped = false;
-            if (Vector3.Distance(self.Transform.position, target.GetTransform().position) < 20)
-                self.NavAgent.SetDestination(target.GetTransform().position);
+            if (Vector3.Distance(self.Transform.position, target.Transform.position) < 20)
+                self.NavAgent.SetDestination(target.Transform.position);
             else
             {
                 Vector3 randomDirection = Random.insideUnitSphere * 20f + self.Transform.position;

@@ -125,7 +125,7 @@ public class Troll : MonoBehaviour, INavAgent
     void SetChaseTarget()
     {
         if (player != null)
-            navMeshAgent.SetDestination(player.GetTransform().position);
+            navMeshAgent.SetDestination(player.Transform.position);
     }
     public void StartChase()
     {

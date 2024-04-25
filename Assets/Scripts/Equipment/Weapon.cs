@@ -10,7 +10,7 @@ namespace collegeGame
         public string subStatName;
         public string weaponName;
         public BoxCollider boxCollider;
-        private void Awake()
+        protected virtual void Awake()
         {
             boxCollider = GetComponent<BoxCollider>();
         }

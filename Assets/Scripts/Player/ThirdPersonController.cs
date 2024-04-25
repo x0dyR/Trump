@@ -100,7 +100,7 @@ namespace collegeGame.Inputs
         private float _fallTimeoutDelta;
 
 #if ENABLE_INPUT_SYSTEM
-        private PlayerInput _playerInput;
+        private StarterAssetsInputs _playerInput;
 #endif
         public Animator animator;
         private CharacterController _controller;
@@ -115,18 +115,20 @@ namespace collegeGame.Inputs
         /*        public GameObject[] weapons;*/
 
         #endregion
-        private bool IsCurrentDeviceMouse
+/*        private bool IsCurrentDeviceMouse
         {
             get
             {
 #if ENABLE_INPUT_SYSTEM
-                return _playerInput.currentControlScheme == "KeyboardMouse";
+                *//*return _playerInput.currentControlScheme == "KeyboardMouse";*//*
 #else
 				return false;
 #endif
             }
-        }
+        }*/
         public float health = 100;
+
+        public Transform Transform => throw new NotImplementedException();
 
         private void Awake()
         {
@@ -136,9 +138,7 @@ namespace collegeGame.Inputs
                         weapon = weapons[2].GetComponent<Weapon>();*/
 
             weapon = GetComponentInChildren<Weapon>();
-            cm = FindObjectOfType<CinemachineVirtualCamera>();
-            cm.m_Follow = cameraPoint;
-            cm.m_LookAt = cameraPoint;
+
 
             if (_mainCamera == null)
             {
@@ -155,7 +155,7 @@ namespace collegeGame.Inputs
             /*weapon = GetComponentInChildren<Weapon>();*/
 
 #if ENABLE_INPUT_SYSTEM
-            _playerInput = GetComponent<PlayerInput>();
+            _playerInput = GetComponent<StarterAssetsInputs>();
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
@@ -217,7 +217,7 @@ namespace collegeGame.Inputs
         {
             if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
             {
-                float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+                float deltaTimeMultiplier = 1.0f;
 
                 _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
                 _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
