@@ -89,10 +89,7 @@
     <Compile Include="Assets\Scripts\Character\StateMachine\States\GroundedStates\RunningState.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
-    <Compile Include="Assets\Scripts\Enemy\ChaseState.cs" />
     <Compile Include="Assets\Scripts\IInteract.cs" />
-    <Compile Include="Assets\Scripts\Enemy\RestState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyTester.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\Configs\RunningStateConfig.cs" />
@@ -107,16 +104,13 @@
     <Compile Include="Assets\Scripts\Character\StateMachine\Configs\AirbornStateConfig.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\Enemy\TrollHealth.cs" />
-    <Compile Include="Assets\Scripts\Player\ITarget.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\IState.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\GroundedStates\IdlingState.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\GroundedStates\GroundedState.cs" />
     <Compile Include="Assets\Scripts\Zenject\GameInstaller.cs" />
-    <Compile Include="Assets\Scripts\Player\StarterAssetsInputs.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\Scripts\PlayerInput.cs" />
-    <Compile Include="Assets\Scripts\Player\ThirdPersonController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
@@ -124,12 +118,12 @@
     <Compile Include="Assets\Scripts\Enemy\StateMachine\States\IdleState.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\AirbornStates\AirbornState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\FindState.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\States\FindState.cs" />
     <Compile Include="Assets\MapMagic\Compatibility\CTS\CTSOutput.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\Enemy.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
+    <Compile Include="Assets\Scripts\Health\Health.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\AttackStates\AttackingState.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\StateMachineData.cs" />
@@ -138,11 +132,11 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\Scripts\Enemy\LookAtPlayer.cs" />
+    <Compile Include="Assets\Scripts\ITarget.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\IStateSwitcher.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterView.cs" />
-    <Compile Include="Assets\Scripts\Enemy\IEnemyStates.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\EnemyStateMachine.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\AirbornStates\JumpingState.cs" />
@@ -179,7 +173,6 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\Samples\Starter Assets\0.1.0\Controllers Sample\Environment\Shaders\Built-in_RP\Triplanar.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
@@ -187,7 +180,6 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-    <None Include="Assets\Samples\Starter Assets\0.1.0\Controllers Sample\Environment\Shaders\Built-in_RP\ArmatureShader.shader" />
     <None Include="Assets\MapMagic\Demo\Compatibility\MegaSplat\MegaSplatShader2.shader" />
     <None Include="Assets\MapMagic\Demo\Compatibility\MicroSplat\MicroSplat.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
@@ -1153,10 +1145,6 @@
       <HintPath>Library\ScriptAssemblies\Unity.Polybrush.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="URPWizard">
-      <HintPath>Library\ScriptAssemblies\URPWizard.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.InputSystem.ForUI">
       <HintPath>Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
       <Private>False</Private>
@@ -1293,10 +1281,6 @@
       <HintPath>Library\ScriptAssemblies\Unity.TerrainTools.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.StarterAssets.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.StarterAssets.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1317,12 +1301,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.2D.Common.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Transforms.Hybrid">
       <HintPath>Library\ScriptAssemblies\Unity.Transforms.Hybrid.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Timeline">
@@ -1343,10 +1327,6 @@
     </Reference>
     <Reference Include="Autodesk.Fbx">
       <HintPath>Library\ScriptAssemblies\Autodesk.Fbx.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.StarterAssets">
-      <HintPath>Library\ScriptAssemblies\Unity.StarterAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Mathematics">

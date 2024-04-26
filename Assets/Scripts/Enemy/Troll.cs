@@ -8,9 +8,6 @@ public class Troll : MonoBehaviour, INavAgent
     private Animator animator;
 
     private NavMeshAgent navMeshAgent;
-    private IEnemyStates restState;
-    private IEnemyStates chaseState;
-    private IEnemyStates findState;
 
     private float _health = 100;
     private float _damage = 20;
@@ -47,10 +44,6 @@ public class Troll : MonoBehaviour, INavAgent
 
     private void Awake()
     {
-        chaseState = new ChaseState(player,this);
-        findState = new FindState(player, this);
-        restState = new RestState();
-
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         currentChaseRadius = defaultChaseRadius;
@@ -83,12 +76,11 @@ public class Troll : MonoBehaviour, INavAgent
 
                     UpdateAnimationParameters();
                 }*/
-        restState.StartMove();
+
         idleTimer += Time.deltaTime;
         if (idleTimer > idleTime)
         {
-            findState.StartMove();
-            findState.Update();
+
             idleTimer = 0;
         }
     }

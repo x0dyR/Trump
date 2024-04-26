@@ -13,6 +13,7 @@ namespace collegeGame.StateMachine
         private CharacterStateMachine _stateMachine;
         private CharacterController _characterController;
         private CinemachineVirtualCamera cm;
+        private Health.Health _health;
 
         public Transform cameraPoint;
         public Transform meeleWeaponSpawnPoint;
@@ -34,6 +35,7 @@ namespace collegeGame.StateMachine
 
         private void Awake()
         {
+            _health = new(50);
             _view.Initialize();
             _input = new();
             _characterController = GetComponent<CharacterController>();
@@ -68,14 +70,8 @@ namespace collegeGame.StateMachine
         private void OnDisable() => _input.Disable();
 
 
-        public void TakeDamage(float damage)
-        {
-            throw new System.NotImplementedException();
-        }
+        public void TakeDamage(float damage) => _health.TakeDamage(damage);
 
-        public float GetHealth()
-        {
-            throw new System.NotImplementedException();
-        }
+        public float GetHealth() => _health.HealthAmount;
     }
 }

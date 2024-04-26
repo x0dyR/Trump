@@ -1,5 +1,4 @@
 using Cinemachine;
-using collegeGame.Inputs;
 using UnityEngine;
 using Zenject;
 

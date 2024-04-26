@@ -32,8 +32,11 @@ namespace collegeGame.Enemy
                 if (coll.TryGetComponent(out ITarget target))
                 {
                     if (target.Transform.position != enemy.Transform.position)
-                        StateSwitcher.SwitchState<AttackState>();
-                    return;
+                    {
+                        this.target = target.Transform.position;
+                        enemy.NavAgent.SetDestination(this.target);
+                        return;
+                    }
                 }
             }
 
@@ -50,11 +53,11 @@ namespace collegeGame.Enemy
 
         public void Update()
         {
-            if (Vector3.Distance(enemy.transform.position, target) < _config.AttackRange)
+            if (enemy.NavAgent.remainingDistance < _config.AttackRange)
             {
                 StateSwitcher.SwitchState<AttackState>();
             }
-            if (Vector3.Distance(enemy.transform.position, target) > _config.AttackRange)
+            if (enemy.NavAgent.remainingDistance > _config.AttackRange)
             {
                 return;
             }

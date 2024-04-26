@@ -31,10 +31,12 @@ namespace collegeGame.Enemy
                 if (coll.TryGetComponent(out ITarget target))
                 {
                     if (target.Transform.position != enemy.Transform.position)
+                    {
                         enemy.NavAgent.SetDestination(this.target.Transform.position);
+                        enemy.DealDamage(enemy.attackRange,_config.Damage);
+                    }
                 }
             }
-
         }
 
         public void Exit()
@@ -44,7 +46,7 @@ namespace collegeGame.Enemy
 
         public void Update()
         {
-            if (Vector3.Distance(enemy.transform.position, target.Transform.position) < _config.AttackRange)
+            if (enemy.NavAgent.remainingDistance < _config.AttackRange)
             {
                 return;
             }

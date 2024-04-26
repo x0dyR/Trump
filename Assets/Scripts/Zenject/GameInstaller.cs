@@ -1,10 +1,9 @@
 using Cinemachine;
-using collegeGame.Inputs;
 using collegeGame.StateMachine;
 using UnityEngine;
 using Zenject;
 
-namespace collegeGame
+namespace collegeGame.Zenject
 {
     public class GameInstaller : MonoInstaller
     {
