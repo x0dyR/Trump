@@ -76,15 +76,13 @@
     <Analyzer Include="D:\Game colledge\collegeGame\Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities\SourceGenerators\Unity.Entities.SourceGen.JobEntityGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Assets\Skelet_chase.cs" />
-=======
     <Compile Include="Assets\Scripts\Health\HealthComponent.cs" />
->>>>>>> 9e2e6e5c23dde89d289ae17813034f7645e6ff00
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Skelet_idle.cs" />
     <Compile Include="Assets\Scripts\Enemy\TrollAttack.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\Enemy\INavAgent.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Skelet_attack.cs" />
     <Compile Include="Assets\Scripts\Camera\CMFollowPlayer.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\Configs\JumpingStateConfig.cs" />
     <Compile Include="Assets\MapMagic\Compatibility\MegaSplat\MegaSplatOutput.cs" />
@@ -130,11 +128,12 @@
     <Compile Include="Assets\Scripts\Character\Character.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\AirbornStates\AirbornState.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\States\FindState.cs" />
-    <Compile Include="Assets\Skelet_idle.cs" />
     <Compile Include="Assets\MapMagic\Compatibility\CTS\CTSOutput.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Skelet_patrol.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Skelet_chase.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\StateMachineData.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\IStateSwitcher.cs" />
@@ -145,7 +144,6 @@
     <Compile Include="Assets\Scripts\ITarget.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\IStateSwitcher.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
-    <Compile Include="Assets\Skelet_attack.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterView.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\EnemyStateMachine.cs" />
@@ -155,8 +153,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterConfig.cs" />
-    <Compile Include="Assets\Skelet_behaviour.cs" />
-    <Compile Include="Assets\Skelet_patrol.cs" />
     <Compile Include="Assets\Scripts\Equipment\Polearm\Polearm.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\AttackStates\GroundedAttack\AttackingState.cs" />
