@@ -18,20 +18,21 @@ namespace collegeGame.Enemy
 
         public EnemyView View => enemy.View;
 
-        public void Enter()
+        public virtual void Enter()
         {
             Debug.Log("Enemy " + GetType());
             enemy.NavAgent.isStopped = true;
             View.StartIdle();
         }
 
-        public void Exit()
+        public virtual void Exit()
         {
             restTime = 0;
             View.StopIdle();
         }
 
-        public void Update()
+        public virtual void LateUpdate() { }
+        public virtual void Update()
         {
             restTime += Time.deltaTime;
             if (restTime > restTimer)

@@ -7,11 +7,11 @@ namespace collegeGame.StateMachine
     public class CharacterView : MonoBehaviour
     {
         ///<summary>
-        /// без каких либо для триггеров
+        /// с большой буквы для триггеров
         /// "is" для булевых 
-        ///"f_" для флоата
+        /// "f_" для флоата
         /// "int_" инт
-        /// </summary>
+        ///</summary>
         private Animator _animator;
 
         public readonly string idle = "isIdling";
@@ -25,6 +25,8 @@ namespace collegeGame.StateMachine
         //experiments
         public readonly string moving = "isMoving";
         public readonly string attacking = "isAttacking";
+        public readonly string lightAttack = "isLightAttack";
+        public readonly string heavyAttack = "isHeavyAttack";
         public readonly string attack = "Attack";
 
         public void Initialize() => _animator = GetComponent<Animator>();
@@ -49,12 +51,15 @@ namespace collegeGame.StateMachine
         public void StartAirborn() => _animator.SetBool(airborn, true);
         public void StopAirborn() => _animator.SetBool(airborn, false);
 
-        /*public void StartAttacking() => _animator.SetTrigger(attacking); //триггер чтобы было комбо   */     
-        
         public void StartMoving() => _animator.SetBool(moving, true);
         public void StopMoving() => _animator.SetBool(moving, false);
 
-        public void StartAttacking() { _animator.SetBool(attacking, true); _animator.SetTrigger(attack); }
+        public void StartAttacking() { _animator.SetBool(attacking, true); _animator.SetTrigger(attack); } //триггер чтобы была последовательность
         public void StopAttacking() => _animator.SetBool(attacking, false);
+
+        public void StartHeavyAttack() { _animator.SetBool(heavyAttack, true); _animator.SetTrigger(attack); }
+        public void StopHeavyAttack() => _animator.SetBool(heavyAttack, false);
+        public void StartLightAttack() { _animator.SetBool(lightAttack, true); _animator.SetTrigger(attack); }
+        public void StopLightAttack() => _animator.SetBool(lightAttack, false);
     }
 }

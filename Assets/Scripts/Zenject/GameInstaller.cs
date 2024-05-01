@@ -15,8 +15,7 @@ namespace collegeGame.Zenject
         public override void InstallBindings()
         {
             BindPlayer();
-            BindCM();
-            Container.BindInterfacesAndSelfTo<Troll>().AsSingle();
+            BindCM(); Container.BindInterfacesAndSelfTo<Troll>().AsSingle();
         }
 
         private void BindCM()

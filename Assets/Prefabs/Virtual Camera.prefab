@@ -88,7 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerIndex: -1
   AutoEnableInputs: 1
-  XYAxis: {fileID: -3787169064211337688, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
+  XYAxis: {fileID: -162351328363764100, guid: b4056378dbd8ab4408624765787b72e1, type: 3}
   ZAxis: {fileID: 3144598820847838326, guid: 49ba81b65508ebc40814870b61cb4327, type: 3}
 --- !u!114 &3282598878602937751
 MonoBehaviour:
