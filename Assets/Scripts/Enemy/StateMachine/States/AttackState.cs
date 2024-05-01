@@ -8,6 +8,7 @@ namespace collegeGame.Enemy
         protected readonly Enemy enemy;
         protected readonly ITarget target;
         private readonly EnemyConfig _config;
+        private Collider[] colls;
 
         public AttackState(IStateSwitcher stateSwitcher, Enemy enemy, ITarget target)
         {
@@ -19,40 +20,39 @@ namespace collegeGame.Enemy
 
         public EnemyView View => enemy.View;
 
-        public void Enter()
+        public virtual void Enter()
         {
             View.StartAttack();
             Debug.Log("Enemy " + GetType());
             enemy.NavAgent.isStopped = false;
-
-            Collider[] colls = Physics.OverlapSphere(enemy.transform.position, _config.DistanceToView);
-            foreach (Collider coll in colls)
-            {
-                if (coll.TryGetComponent(out ITarget target))
-                {
-                    if (target.Transform.position != enemy.Transform.position)
-                    {
-                        enemy.NavAgent.SetDestination(this.target.Transform.position);
-                        enemy.DealDamage(enemy.attackRange,_config.Damage);
-                    }
-                }
-            }
+            enemy.NavAgent.stoppingDistance = _config.AttackRange * 2;
+            enemy.DealDamage(enemy.attackRange, _config.Damage);
         }
 
-        public void Exit()
+        public virtual void Exit()
         {
             View.StopAttack();
         }
 
-        public void Update()
+        public virtual void LateUpdate()
         {
-            if (enemy.NavAgent.remainingDistance < _config.AttackRange)
+            colls = Physics.OverlapSphere(enemy.AttackPoint.position, _config.AttackRange);
+            foreach(Collider coll in colls)
+            {
+                if (coll.TryGetComponent(out IHealth health))
+                    enemy.DealDamage(enemy.attackRange, _config.Damage);
+            }
+        }
+
+        public virtual void Update()
+        {
+            if (enemy.NavAgent.remainingDistance < _config.DistanceToView)
             {
                 return;
             }
 
             StateSwitcher.SwitchState<FindState>();
-
         }
+
     }
 }

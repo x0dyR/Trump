@@ -5,5 +5,6 @@ namespace collegeGame.Enemy
         void Enter();
         void Exit();
         void Update();
+        void LateUpdate();
     }
 }

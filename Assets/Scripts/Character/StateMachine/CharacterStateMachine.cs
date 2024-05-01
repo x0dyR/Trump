@@ -19,6 +19,7 @@ namespace collegeGame.StateMachine
                 new FallingState(this,data,character),
                 new JumpingState(this,data,character),
                 new LightAttackState(this,data,character),
+                new HeavyAttackState(this,data,character),
 
             };
             _currentState = _states[0];

@@ -1,3 +1,4 @@
+using Den.Tools;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,6 +11,7 @@ namespace collegeGame.Enemy
         private readonly EnemyConfig _config;
         private readonly ITarget player;
         private Vector3 target;
+        private Collider[] colls;
 
         public FindState(IStateSwitcher stateSwitcher, Enemy enemy, ITarget player)
         {
@@ -21,11 +23,12 @@ namespace collegeGame.Enemy
 
         public EnemyView View => enemy.View;
 
-        public void Enter()
+        public virtual void Enter()
         {
             View.StartFind();
             Debug.Log("Enemy " + GetType());
             enemy.NavAgent.isStopped = false;
+            enemy.NavAgent.stoppingDistance = 0;
             Collider[] colls = Physics.OverlapSphere(enemy.transform.position, _config.DistanceToView);
             foreach (Collider coll in colls)
             {
@@ -35,6 +38,7 @@ namespace collegeGame.Enemy
                     {
                         this.target = target.Transform.position;
                         enemy.NavAgent.SetDestination(this.target);
+                        StateSwitcher.SwitchState<AttackState>();
                         return;
                     }
                 }
@@ -42,25 +46,39 @@ namespace collegeGame.Enemy
 
             NavMesh.SamplePosition(enemy.transform.position + Random.insideUnitSphere * _config.DistanceToView, out NavMeshHit hit, _config.DistanceToView, NavMesh.AllAreas);
             target = hit.position;
-            enemy.NavAgent.SetDestination(hit.position);
+            enemy.NavAgent.SetDestination(target);
         }
 
 
-        public void Exit()
+        public virtual void Exit()
         {
             View.StopFind();//внутри класса EnemyView можно добавить какие то партиклы
         }
 
-        public void Update()
+        public void LateUpdate()
+        {
+            colls = Physics.OverlapSphere(enemy.AttackPoint.position, _config.DistanceToView);
+            foreach (Collider coll in colls)
+            {
+                if (coll.TryGetComponent(out ITarget target))
+                    enemy.NavAgent.SetDestination(target.Transform.position);
+                else
+                    enemy.NavAgent.SetDestination(this.target);
+            }
+        }
+
+        public virtual void Update()
         {
             if (enemy.NavAgent.remainingDistance < _config.AttackRange)
             {
                 StateSwitcher.SwitchState<AttackState>();
             }
+
             if (enemy.NavAgent.remainingDistance > _config.AttackRange)
             {
                 return;
             }
+
             StateSwitcher.SwitchState<IdleState>();
         }
     }

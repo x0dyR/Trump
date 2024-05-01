@@ -1,3 +1,4 @@
+using collegeGame.Health;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,12 +9,16 @@ namespace collegeGame.Enemy
     public class Enemy : MonoBehaviour, IHealth, IDamage, INavAgent
     {
         public Vector3 attackRange = new(3f, 3f, 0f);
+        public event Action HealthChanged;
+        public event Action Died;
+
         [field: SerializeField] private EnemyConfig _enemyConfig;
         [field: SerializeField] private EnemyView _view;
+        [field: SerializeField] private Transform _attackPoint;
         private NavMeshAgent _navAgent;
         private EnemyStateMachine _stateMachine;
         private ITarget player;
-        private Health.Health _health;
+        private IHealth _health;
 
         [Inject]
         private void Construct(ITarget target)
@@ -29,15 +34,7 @@ namespace collegeGame.Enemy
 
         public EnemyView View => _view;
 
-        private void OnEnable() => _health.Die += OnDie;
-
-        private void OnDisable() => _health.Die -= OnDie;
-
-        private void OnDie()
-        {
-            //лучше сделать стейт
-            //проигрываются партиклы, звуки, экран смерти
-        }
+        public Transform AttackPoint => _attackPoint;
 
         private void Awake()
         {
@@ -45,9 +42,8 @@ namespace collegeGame.Enemy
             _navAgent = GetComponent<NavMeshAgent>();
             _stateMachine = new EnemyStateMachine(this, player);
             _navAgent.speed = _enemyConfig.Speed;
-            _navAgent.stoppingDistance = _enemyConfig.AttackRange + 1;
-            attackRange.z += _enemyConfig.AttackRange;
-            _health = new(_enemyConfig.Health);
+            _navAgent.stoppingDistance = _enemyConfig.AttackRange * 2;
+            _health = new HealthComponent(_enemyConfig.Health);
         }
 
         private void Update()
@@ -55,25 +51,50 @@ namespace collegeGame.Enemy
             _stateMachine.Update();
         }
 
+        private void LateUpdate()
+        {
+            _stateMachine.LateUpdate();
+        }
+
         public void DealDamage(Vector3 damageZone, float damage)
         {
-            Collider[] colls = Physics.OverlapBox(transform.position, damageZone,transform.rotation);
+            Collider[] colls = Physics.OverlapBox(_attackPoint.position, damageZone, _attackPoint.rotation);
             foreach (Collider coll in colls)
             {
                 if (coll.TryGetComponent(out IHealth health))
                     health.TakeDamage(damage);
             }
         }
-        public float GetHealth() => _health.HealthAmount;
 
-        public void TakeDamage(float damage) => _health.TakeDamage(damage);
+        public float GetHealth() => _health.GetHealth();
+
+        public void TakeDamage(float damage)
+        {
+            _health.TakeDamage(damage);
+            HealthChanged?.Invoke();
+
+            if (_health.GetHealth() <= damage)
+            {
+                Died?.Invoke();
+            }
+        }
 
         private void OnDrawGizmos()
         {
-            Gizmos.DrawWireSphere(transform.position, _enemyConfig.AttackRange);
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(_attackPoint.position, _enemyConfig.AttackRange);
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, _enemyConfig.DistanceToView);
-            Gizmos.DrawWireCube(transform.position, attackRange);
         }
+
+        private void OnDie()
+        {
+            //лучше сделать стейт
+            //проигрываются партиклы, звуки
+        }
+
+        private void OnEnable() => Died += OnDie;
+
+        private void OnDisable() => Died -= OnDie;
     }
 }

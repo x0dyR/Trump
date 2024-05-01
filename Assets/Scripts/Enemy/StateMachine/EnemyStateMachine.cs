@@ -31,5 +31,7 @@ namespace collegeGame.Enemy
         }
 
         public void Update() => _currentState.Update();
+
+        public void LateUpdate() => _currentState.LateUpdate();
     }
 }
