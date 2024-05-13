@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2528552f35353d428646a9f70e12b89, type: 3}
   m_Name: EnemyConfig
   m_EditorClassIdentifier: 
-  _distanceToView: 20
+  _distanceToView: 20.1
   _attackRange: 2
   _speed: 4
   _damage: 0

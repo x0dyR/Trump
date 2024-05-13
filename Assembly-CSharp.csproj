@@ -1,26 +1,21 @@
-﻿<Project ToolsVersion="Current">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
   <PropertyGroup>
-    <BaseIntermediateOutputPath>Temp\obj\$(Configuration)\$(MSBuildProjectName)</BaseIntermediateOutputPath>
-    <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-  </PropertyGroup>
-  <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
-  <ItemGroup>
-    <ProjectCapability Include="Unity" />
-  </ItemGroup>
-  <PropertyGroup>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <EnableDefaultItems>false</EnableDefaultItems>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <LangVersion>9.0</LangVersion>
-    <Configurations>Debug;Release</Configurations>
+  </PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>collegeGame</RootNamespace>
+    <ProjectGuid>{582A3E42-DAFB-A696-EA20-1F253216CE71}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -44,22 +39,23 @@
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <NoStandardLibraries>true</NoStandardLibraries>
-    <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
-    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
-    <MSBuildWarningsAsMessages>MSB3277</MSBuildWarningsAsMessages>
+    <NoStdLib>true</NoStdLib>
+    <AddAdditionalExplicitAssemblyReferences>false</AddAdditionalExplicitAssemblyReferences>
+    <ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
+    <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <PropertyGroup>
+    <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>2.0.22</UnityProjectGeneratorVersion>
-    <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
+    <UnityProjectGeneratorStyle>Legacy</UnityProjectGeneratorStyle>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2022.3.12f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\evsiu\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.0.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="D:\Visual Studio Comm\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="D:\какак\2022.3.12f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="D:\какак\2022.3.12f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="D:\Game colledge\collegeGame\Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities\SourceGenerators\Unity.Entities.SourceGen.SystemGenerator.dll" />
@@ -78,11 +74,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Health\HealthComponent.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Skelet_idle.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Troll\Troll.cs" />
     <Compile Include="Assets\Scripts\Enemy\TrollAttack.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\Enemy\INavAgent.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Skelet_attack.cs" />
     <Compile Include="Assets\Scripts\Camera\CMFollowPlayer.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\Configs\JumpingStateConfig.cs" />
     <Compile Include="Assets\MapMagic\Compatibility\MegaSplat\MegaSplatOutput.cs" />
@@ -91,6 +86,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Skeleton\Skelet.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\Scripts\Damage\IDamage.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\GroundedStates\RunningState.cs" />
@@ -99,12 +95,13 @@
     <Compile Include="Assets\Scripts\IInteract.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Skeleton\Healthbar.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\Configs\RunningStateConfig.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyView.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\MovementState.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\States\AttackState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Troll.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Troll\TrollView.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\CharacterStateMachine.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\Configs\EnemyConfig.cs" />
@@ -123,6 +120,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Troll\Healthbar_t.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Skeleton\SkeletonSpawner.cs" />
     <Compile Include="Assets\Scripts\Health\IHealth.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\States\IdleState.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />
@@ -130,12 +129,13 @@
     <Compile Include="Assets\Scripts\Enemy\StateMachine\States\FindState.cs" />
     <Compile Include="Assets\MapMagic\Compatibility\CTS\CTSOutput.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\Enemy.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Skelet_patrol.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Skeleton\SkeletView.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Skelet_chase.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Troll\Configs\TrollConfig.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\StateMachineData.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Skeleton\SkeletHp.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\IStateSwitcher.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
@@ -146,6 +146,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterView.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Skeleton\Configs\SkeletConfig.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\EnemyStateMachine.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\AirbornStates\JumpingState.cs" />
@@ -1369,26 +1370,50 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj" />
-    <ProjectReference Include="Zenject-PoolMonitor-Editor.csproj" />
-    <ProjectReference Include="Zenject-Editor.csproj" />
-    <ProjectReference Include="Zenject-ReflectionBaking-Editor.csproj" />
-    <ProjectReference Include="MapMagic.csproj" />
-    <ProjectReference Include="Zenject.csproj" />
-    <ProjectReference Include="Den.Tools.csproj" />
-    <ProjectReference Include="MapMagic.Editor.csproj" />
-    <ProjectReference Include="Den.Tools.Editor.csproj" />
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{9FFD8274-DA62-3D45-FB04-5279010E9F75}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject-PoolMonitor-Editor.csproj">
+      <Project>{174B9589-DFB5-D13C-7358-FEE778170638}</Project>
+      <Name>Zenject-PoolMonitor-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject-Editor.csproj">
+      <Project>{CB64D989-2047-1839-E249-C78912FE3064}</Project>
+      <Name>Zenject-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject-ReflectionBaking-Editor.csproj">
+      <Project>{A668DAC4-89BC-49A8-D9F3-EF29CA4B8429}</Project>
+      <Name>Zenject-ReflectionBaking-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="MapMagic.csproj">
+      <Project>{75899863-F94A-90D5-FC59-51B93B1878CA}</Project>
+      <Name>MapMagic</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject.csproj">
+      <Project>{41A462F8-4EED-71C9-A5F9-B39B9DB07CF6}</Project>
+      <Name>Zenject</Name>
+    </ProjectReference>
+    <ProjectReference Include="Den.Tools.csproj">
+      <Project>{267EEC83-6544-0DB7-82FB-3AAE411EE13D}</Project>
+      <Name>Den.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="MapMagic.Editor.csproj">
+      <Project>{D2A8ED61-BE26-0057-9556-43EE9FEBD500}</Project>
+      <Name>MapMagic.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Den.Tools.Editor.csproj">
+      <Project>{EFC0C8A7-2213-8BFD-02D0-C6252EDC3667}</Project>
+      <Name>Den.Tools.Editor</Name>
+    </ProjectReference>
   </ItemGroup>
-  <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
-  <ItemGroup>
-    <ProjectCapability Remove="LaunchProfiles" />
-    <ProjectCapability Remove="SharedProjectReferences" />
-    <ProjectCapability Remove="ReferenceManagerSharedProjects" />
-    <ProjectCapability Remove="ProjectReferences" />
-    <ProjectCapability Remove="ReferenceManagerProjects" />
-    <ProjectCapability Remove="COMReferences" />
-    <ProjectCapability Remove="ReferenceManagerCOM" />
-    <ProjectCapability Remove="AssemblyReferences" />
-    <ProjectCapability Remove="ReferenceManagerAssemblies" />
-  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="GenerateTargetFrameworkMonikerAttribute" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>

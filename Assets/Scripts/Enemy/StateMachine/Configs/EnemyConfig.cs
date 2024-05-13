@@ -21,6 +21,6 @@ namespace collegeGame.Enemy
         public float Damage => _damage;
 
         public float Health => _health;
-
+        
     }
 }

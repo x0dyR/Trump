@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 49ba81b65508ebc40814870b61cb4327, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: b4056378dbd8ab4408624765787b72e1, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -729,15 +729,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b792364213715734fa9f6500d24090bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _config: {fileID: 11400000, guid: ac6c7916040c4744ab54bd3bd530c788, type: 2}
-  _groundChecker: {fileID: 651414019833534536}
-  _view: {fileID: 8580461746936906810}
   cameraPoint: {fileID: 5347461105242238393}
   meeleWeaponSpawnPoint: {fileID: 7788208220312428027}
   currentWeapon: {fileID: 0}
   weapons:
   - {fileID: 336862090595718147, guid: 16b1d1be3f4012044969baba9300b32c, type: 3}
   - {fileID: 4015315905588937011, guid: b1a4aafe8124564419fa03755d4f76c3, type: 3}
+  _config: {fileID: 11400000, guid: ac6c7916040c4744ab54bd3bd530c788, type: 2}
+  _groundChecker: {fileID: 651414019833534536}
+  _view: {fileID: 8580461746936906810}
 --- !u!1 &3802337663045887664
 GameObject:
   m_ObjectHideFlags: 0

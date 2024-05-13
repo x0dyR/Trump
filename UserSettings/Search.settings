@@ -20,6 +20,11 @@ scopes = {
 	"last_search.310DEAF1" = "animator"
 	"OpenInspectorPreview.310DEAF1" = "0"
 	"currentGroup.310DEAF1" = "menu"
+	"picker_window_position_offset.768FEAAC" = "566;-389;737;550"
+	"picker_search_text.768FEAAC" = ""
+	"last_search.768FEAAC" = ""
+	"OpenInspectorPreview.768FEAAC" = "0"
+	"currentGroup.768FEAAC" = "sassets"
 }
 providers = {
 	adb = {
