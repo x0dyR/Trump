@@ -32,7 +32,9 @@ namespace collegeGame.StateMachine
             Debug.Log(GetType());
             AddInputActionsCallback();
         }
+
         public virtual void Exit() => RemoveInputActionsCallback();
+
         public void HandleInput()
         {
             Data.XInput = ReadHorizontalInput().x;
@@ -40,22 +42,28 @@ namespace collegeGame.StateMachine
             Data.XVelocity = Data.XInput * Data.Speed;
             Data.ZVelocity = Data.ZInput * Data.Speed;
         }
+
         public virtual void Update()
         {
             MoveCharacter();
         }
+
         public virtual void LateUpdate() => Camera.main.transform.rotation = Quaternion.Euler(ReadCameraInput().x, ReadCameraInput().y, 0);
 
         protected virtual void AddInputActionsCallback()
         {
-            Input.Player.SwitchToSword.started += SwitchToSword;
-            Input.Player.SwitchToPolearm.started += SwitchToPolearm;
-            Input.Player.Attack.started += OnAttack;
+            Input.Player.SwitchToSword.started += ctx => _character.SwitchToWeapon(Resources.Load<WeaponSO>("Sword"));
+            Input.Player.SwitchToPolearm.started += ctx => _character.SwitchToWeapon(Resources.Load<WeaponSO>("Polearm"));
+            Input.Player.LightAttack.started += OnLightAttack;
+            Input.Player.HeavyAttack.started += OnHeavyAttack;
         }
 
         protected virtual void RemoveInputActionsCallback() { }
+
         private Vector2 ReadHorizontalInput() => Input.Player.Movement.ReadValue<Vector2>().normalized;
+
         private Vector2 ReadCameraInput() => Input.Player.Look.ReadValue<Vector2>();
+
         private void MoveCharacter()
         {
             Vector3 moveDirection = (Camera.main.transform.forward * Data.ZVelocity) + (Camera.main.transform.right * Data.XVelocity);
@@ -69,24 +77,10 @@ namespace collegeGame.StateMachine
                 _character.transform.rotation = Quaternion.Euler(0.0f, Mathf.SmoothDampAngle(_character.transform.eulerAngles.y, targetRotation, ref _rotationVelocity, RotationSmoothTime), 0.0f);
             }
         }
-        private void OnAttack(UnityEngine.InputSystem.InputAction.CallbackContext context) => StateSwitcher.SwitchState<LightAttackState>();
-        private void SwitchToPolearm(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-        {
-            _character.currentWeapon.gameObject.SetActive(false);
-            _character.currentWeapon = _character.weapons
-                 .Select(weapon => weapon.GetComponent<Polearm>())
-                .FirstOrDefault(polear => polear is Polearm);
-            _character.currentWeapon.gameObject.SetActive(true);
-        }
 
-        private void SwitchToSword(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-        {
-            _character.currentWeapon.gameObject.SetActive(false);
-            _character.currentWeapon = _character.weapons
-                .Select(weapon => weapon.GetComponent<Sword>())
-                .FirstOrDefault(sword => sword is Sword);
-            _character.currentWeapon.gameObject.SetActive(true);
-        }
+        private void OnLightAttack(UnityEngine.InputSystem.InputAction.CallbackContext context) => StateSwitcher.SwitchState<LightAttackState>();
+
+        private void OnHeavyAttack(UnityEngine.InputSystem.InputAction.CallbackContext obj) => StateSwitcher.SwitchState<HeavyAttackState>();
 
     }
 }

@@ -10,8 +10,8 @@ namespace collegeGame.StateMachine
     {
         public Transform cameraPoint;
         public Transform meeleWeaponSpawnPoint;
-        public Weapon currentWeapon;
-        public GameObject[] weapons;
+        public WeaponSO currentWeapon;
+        public WeaponSO[] weapons;
         public event Action HealthChanged;
         public event Action Died;
 
@@ -19,6 +19,7 @@ namespace collegeGame.StateMachine
         [field: SerializeField] private GroundChecker _groundChecker;
         [field: SerializeField] private CharacterView _view;
         private PlayerInput _input;
+        private GameObject _currentWeaponInstance;
         private CharacterStateMachine _stateMachine;
         private CharacterController _characterController;
         private CinemachineVirtualCamera cm;
@@ -67,6 +68,24 @@ namespace collegeGame.StateMachine
             {
                 Died?.Invoke();
             }
+        }
+
+        public void SwitchToWeapon(WeaponSO weaponData)
+        {
+            if (_currentWeaponInstance != null)
+            {
+                Destroy(_currentWeaponInstance);
+            }
+
+            GameObject weaponPrefab = Resources.Load<GameObject>(weaponData.Path);
+            if (weaponPrefab == null)
+            {
+                Debug.LogError("Weapon prefab not found at path: " + weaponData.Path);
+                return;
+            }
+
+            _currentWeaponInstance = Instantiate(weaponPrefab, meeleWeaponSpawnPoint);
+            currentWeapon = weaponData;
         }
 
         public float GetHealth() => _health.GetHealth();

@@ -303,7 +303,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 0920a419780d54942a74fcad99c9df85, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -651,8 +651,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5347461105242238393}
   - {fileID: 1384595310826960973}
@@ -733,8 +733,8 @@ MonoBehaviour:
   meeleWeaponSpawnPoint: {fileID: 7788208220312428027}
   currentWeapon: {fileID: 0}
   weapons:
-  - {fileID: 336862090595718147, guid: 16b1d1be3f4012044969baba9300b32c, type: 3}
-  - {fileID: 4015315905588937011, guid: b1a4aafe8124564419fa03755d4f76c3, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   _config: {fileID: 11400000, guid: ac6c7916040c4744ab54bd3bd530c788, type: 2}
   _groundChecker: {fileID: 651414019833534536}
   _view: {fileID: 8580461746936906810}
@@ -1337,6 +1337,7 @@ GameObject:
   - component: {fileID: 4080713198857001583}
   - component: {fileID: 8274088009482352087}
   - component: {fileID: 5858633033210342928}
+  - component: {fileID: 504507095849682726}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -1427,6 +1428,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &504507095849682726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6720708273481312714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a30b5c1c71c89b4cbc6d61b5c316c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _character: {fileID: -8476419336046063882}
+  _characterHpBar: {fileID: 1260607699025875192}
 --- !u!1 &7126357641748419309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,6 +1486,7 @@ GameObject:
   - component: {fileID: 5273176646030364770}
   - component: {fileID: 9039913336472447387}
   - component: {fileID: 1002040942587179699}
+  - component: {fileID: 1260607699025875192}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -1526,7 +1542,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1d8598b11b346564d9d5889e4153b49c, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1587,6 +1603,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1260607699025875192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7231815940064259609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da0d09e9f37d0594d8920d1af7fb1a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthSlider: {fileID: 1002040942587179699}
 --- !u!1 &8398425352265956320
 GameObject:
   m_ObjectHideFlags: 0

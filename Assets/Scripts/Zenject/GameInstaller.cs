@@ -15,7 +15,8 @@ namespace collegeGame.Zenject
         public override void InstallBindings()
         {
             BindPlayer();
-            BindCM(); Container.BindInterfacesAndSelfTo<Troll>().AsSingle();
+            BindCM(); 
+            Container.BindInterfacesAndSelfTo<Troll>().AsSingle();
         }
 
         private void BindCM()
@@ -26,7 +27,7 @@ namespace collegeGame.Zenject
         private void BindPlayer()
         {
             var player = Container.InstantiatePrefabForComponent<Character>(playerPrefab, playerSpawnPos.position, Quaternion.identity, null);
-            Container.BindInterfacesAndSelfTo<Character>().FromInstance(player).AsSingle();
+            Container.BindInterfacesAndSelfTo<Character>().FromInstance(player).AsCached();
         }
     }
 }

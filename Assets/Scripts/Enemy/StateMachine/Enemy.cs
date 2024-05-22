@@ -38,53 +38,53 @@ namespace collegeGame.Enemy
 
         private void Awake()
         {
-            _view.Initialize();
+/*            _view.Initialize();
             _navAgent = GetComponent<NavMeshAgent>();
             _stateMachine = new EnemyStateMachine(this, player);
             _navAgent.speed = _enemyConfig.Speed;
             _navAgent.stoppingDistance = _enemyConfig.AttackRange * 2;
-            _health = new HealthComponent(_enemyConfig.Health);
+            _health = new HealthComponent(_enemyConfig.Health);*/
         }
 
         private void Update()
         {
-            _stateMachine.Update();
+            /*_stateMachine.Update();*/
         }
 
         private void LateUpdate()
         {
-            _stateMachine.LateUpdate();
+/*            _stateMachine.LateUpdate();*/
         }
 
         public void DealDamage(Vector3 damageZone, float damage)
         {
-            Collider[] colls = Physics.OverlapBox(_attackPoint.position, damageZone, _attackPoint.rotation);
+/*            Collider[] colls = Physics.OverlapBox(_attackPoint.position, damageZone, _attackPoint.rotation);
             foreach (Collider coll in colls)
             {
                 if (coll.TryGetComponent(out IHealth health))
                     health.TakeDamage(damage);
-            }
+            }*/
         }
 
         public float GetHealth() => _health.GetHealth();
 
         public void TakeDamage(float damage)
         {
-            _health.TakeDamage(damage);
+/*            _health.TakeDamage(damage);
             HealthChanged?.Invoke();
 
             if (_health.GetHealth() <= damage)
             {
                 Died?.Invoke();
-            }
+            }*/
         }
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.red;
+/*            Gizmos.color = Color.red;
             Gizmos.DrawSphere(_attackPoint.position, _enemyConfig.AttackRange);
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, _enemyConfig.DistanceToView);
+            Gizmos.DrawWireSphere(transform.position, _enemyConfig.DistanceToView);*/
         }
 
         private void OnDie()

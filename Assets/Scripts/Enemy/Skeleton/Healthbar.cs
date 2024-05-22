@@ -1,19 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using collegeGame;
 
 namespace collegeGame
 {
     public class Healthbar : MonoBehaviour
     {
         [SerializeField] private Image _backSprite;
-        [SerializeField] private SkeletConfig _skeletConfig;
+        [SerializeField] private EnemyConfig _skeletConfig;
         [SerializeField] private float _reduceSpeed = 2;
         private float _target = 2;
         private Camera _cam;
-     
+
         void Start()
         {
             _cam = Camera.main;

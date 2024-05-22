@@ -25,6 +25,9 @@ scopes = {
 	"last_search.768FEAAC" = ""
 	"OpenInspectorPreview.768FEAAC" = "0"
 	"currentGroup.768FEAAC" = "sassets"
+	"last_search.756173B0" = "p: t:texture"
+	"OpenInspectorPreview.756173B0" = "0"
+	"currentGroup.756173B0" = "asset"
 }
 providers = {
 	adb = {
@@ -86,9 +89,10 @@ providers = {
 objectSelectors = {
 }
 recentSearches = [
+	"p: t:texture"
+	""
 	"c"
 	"nav"
-	""
 	"in"
 	"pl"
 	"u"

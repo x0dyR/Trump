@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f38039f12162b34c9a37e07f0b3a136, type: 3}
   m_Name: TrollConfig
   m_EditorClassIdentifier: 
+  _prefab: {fileID: 7635761802911216815, guid: b532f75d95087054092a437a7850b30d, type: 3}
   _patrolSpeed: 3
   _distanceToView: 15
   _attackRange: 1

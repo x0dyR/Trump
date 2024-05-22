@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6eb74dc9474a4042b7e04f44cdc2235, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f38039f12162b34c9a37e07f0b3a136, type: 3}
   m_Name: SkeletConfig
   m_EditorClassIdentifier: 
+  _prefab: {fileID: 2118109813777176944, guid: 585e9e60d3902634fa6b9fde4a295a3f, type: 3}
   _patrolSpeed: 3
   _distanceToView: 6
   _attackRange: 0.4

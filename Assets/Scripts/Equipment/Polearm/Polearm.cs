@@ -1,29 +1,27 @@
+using System;
+using Unity.Physics;
 using UnityEngine;
+using Collider = UnityEngine.Collider;
 
 namespace collegeGame
 {
-    public class Polearm : Weapon
+    public class Polearm : MonoBehaviour, IWeapon
     {
-        private void OnValidate()
-        {
-            if (damage < 0)
-            {
-                damage = 1;
-            }
-        }
+        public event Action WeaponAttack;
+        [field: SerializeField] private WeaponSO weaponSO;
 
-        public override void Attack()
+        public void Attack()
         {
-            Collider[] colls = Physics.OverlapBox(transform.position, boxCollider.bounds.size, transform.rotation);
+            WeaponAttack?.Invoke();
+            Collider[] colls = Physics.OverlapBox(transform.position, weaponSO.BoxCollider.bounds.size, transform.rotation);
             foreach (Collider coll in colls)
             {
                 if (coll.TryGetComponent(out ITarget tranform))
                     return;
                 Debug.Log("Find enemy!!!");
                 if (coll.TryGetComponent(out IHealth target))
-                    target.TakeDamage(damage);
+                    target.TakeDamage(weaponSO.Damage);
             }
         }
-
     }
 }

@@ -1,22 +1,27 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using Zenject;
+using collegeGame.StateMachine;
+using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 namespace collegeGame
 {
-    public class Skelet : MonoBehaviour, IHealth
+    public class Skelet : AbsEnemy, IHealth
     {
         public event Action HealthChanged;
         public event Action Died;
 
-        [SerializeField] private SkeletConfig _skeletConfig;
+        [SerializeField] private EnemyConfig _skeletConfig;
         [SerializeField] private SkeletView _view;
         [SerializeField] private Transform _attackPoint;
         [SerializeField] private Healthbar _healthbar;
         [SerializeField] private int _maxOccupancy = 1;
-        [SerializeField] private Transform[] _patrolPoints; // Массив точек патрулирования
+        [SerializeField] private List<Transform> _patrolPoints; // Массив точек патрулирования
+        [field: SerializeField] private int _patrolPointsCount;
         private NavMeshAgent _navAgent;
-        private Transform _player;
+        private Character _player;
         private int _currentPatrolIndex; // Индекс текущей точки патрулирования
         private float _currentHealth;
         private bool isAttacking = false;
@@ -27,15 +32,39 @@ namespace collegeGame
             get { return _maxOccupancy; }
             set { _maxOccupancy = value; }
         }
+
+        [Inject]
+        private void Construct(Character character)
+        {
+            _player = character;
+        }
+
         private void Start()
         {
             _navAgent = GetComponent<NavMeshAgent>();
-            _player = GameObject.FindGameObjectWithTag("Player")?.transform;
-            _currentPatrolIndex = -1; // Начинаем с -1, чтобы выбрать случайную точку патрулирования при первом обновлении
+            CreatePatrolPoints(_patrolPoints);
+            _currentPatrolIndex = 0; // Начинаем с -1, чтобы выбрать случайную точку патрулирования при первом обновлении
             _currentHealth = _skeletConfig.Health;
             _view.Initialize(); // Инициализируем SkeletView
             SetDestinationToRandomPatrolPoint(); // Начинаем с патрулирования к случайной точке
 
+        }
+
+        public List<Transform> CreatePatrolPoints(List<Transform> patrolArray)
+        {
+            if (patrolArray.Count > 0)
+                return patrolArray;
+            patrolArray.Clear();
+
+            for (int i = 0; i < _patrolPointsCount; i++)
+            {
+                GameObject asd = new("Patrol Point");
+                asd.transform.parent = transform;
+                NavMesh.SamplePosition(transform.position + Random.insideUnitSphere * _skeletConfig.DistanceToView, out NavMeshHit hit, _skeletConfig.DistanceToView, NavMesh.AllAreas);
+                asd.transform.position = hit.position;
+                patrolArray.Add(asd.transform);
+            }
+            return patrolArray;
         }
 
         private void Update()
@@ -44,65 +73,54 @@ namespace collegeGame
             if (_player != null && ShouldChasePlayer())
             {
                 // Преследуем игрока
-                _navAgent.SetDestination(_player.position);
+                _navAgent.SetDestination(_player.transform.position);
                 _view.StartChase(); // Запускаем анимацию преследования
                 _navAgent.speed = _skeletConfig.Speed;
             }
-            if (Vector3.Distance(transform.position, _player.position) <= _skeletConfig.AttackRange)
+            else if (Vector3.Distance(transform.position, _player.transform.position) <= _skeletConfig.AttackRange)
             {
                 // Если игрок достигнут, начинаем атаку
                 _view.StartAttack(); // Запускаем анимацию атаки
                 AttackPlayer(); // Вызываем метод для выполнения атаки
             }
-            else if (Vector3.Distance(transform.position, _player.position) <= 2f) // Если расстояние до игрока меньше или равно 2 метрам
+            else if (_navAgent.remainingDistance < 0.1f)
             {
-                _view.StartAttack(); // Запускаем анимацию атаки
-                AttackPlayer();                  // Добавьте здесь код для атаки
-            }
-            else
-            {
-                // Патрулируем между точками
-                if (_navAgent.remainingDistance < 0.1f)
-                {
-                    SetDestinationToRandomPatrolPoint();
-                    _view.StartPatrol(); // Запускаем анимацию патрулирования
-                    _navAgent.speed = _skeletConfig.PatrolSpeed; // Устанавливаем скорость патрулирования
-                }
+                SetDestinationToRandomPatrolPoint();
+                _view.StartPatrol(); // Запускаем анимацию патрулирования
+                _navAgent.speed = _skeletConfig.PatrolSpeed; // Устанавливаем скорость патрулирования
             }
         }
 
-
-
         private void SetDestinationToRandomPatrolPoint()
         {
-            if (_patrolPoints.Length == 0)
+            if (_patrolPoints.Count == 0)
             {
                 Debug.LogWarning("No patrol points available.");
                 return;
             }
 
-            int randomIndex = UnityEngine.Random.Range(0, _patrolPoints.Length);
+            int randomIndex = Random.Range(0, _patrolPoints.Count);
             _navAgent.SetDestination(_patrolPoints[randomIndex].position);
         }
-
 
         private bool ShouldChasePlayer()
         {
             // Проверяем, должен ли скелет преследовать игрока
             if (_player != null)
             {
-                float distanceToPlayer = Vector3.Distance(transform.position, _player.position);
+                float distanceToPlayer = Vector3.Distance(transform.position, _player.transform.position);
                 return distanceToPlayer < _skeletConfig.DistanceToView;
             }
             return false;
         }
+
         private void AttackPlayer()
         {
             // Регистрируем урон в атакующей точке
             Collider[] hitColliders = Physics.OverlapSphere(_attackPoint.position, _skeletConfig.AttackRange);
             foreach (Collider col in hitColliders)
             {
-                if (col.CompareTag("Player") && isAttackedThisFrame)
+                if (col.CompareTag("Player") && !isAttackedThisFrame)
                 {
                     IHealth healthComponent = col.GetComponent<IHealth>(); // Проверяем, есть ли у объекта компонент здоровья
                     if (healthComponent != null)
@@ -114,21 +132,19 @@ namespace collegeGame
             }
         }
 
-
         public void TakeDamage(float damage)
         {
-
             _currentHealth -= damage;
             if (_currentHealth <= 0)
             {
                 Died?.Invoke();
                 _view.StartDead();
-                //Destroy(gameObject);
-                Invoke("DestroySkeleton", 3.0f); // Вызов уничтожения через 3 секунды
+                Destroy(gameObject, 3);
             }
             HealthChanged?.Invoke();
             _healthbar.UpdateHealthBar(_currentHealth);
         }
+
         private void DestroySkeleton()
         {
             Destroy(gameObject);
@@ -146,9 +162,5 @@ namespace collegeGame
         {
             return _currentHealth;
         }
-
     }
 }
-
-
-

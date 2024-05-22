@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using collegeGame;
 
 namespace collegeGame
 {
     public class Healthbar_t : MonoBehaviour
     {
         [SerializeField] private Image _backSprite;
-        [SerializeField] private TrollConfig _trollConfig; // Изменено на TrollConfig
+        [SerializeField] private EnemyConfig _trollConfig; // Изменено на TrollConfig
         [SerializeField] private float _reduceSpeed = 2;
         private float _target = 2;
         private Camera _cam;
