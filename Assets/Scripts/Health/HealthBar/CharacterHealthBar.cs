@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace collegeGame
+namespace Trump
 {
     [RequireComponent(typeof(Slider))]
     public class CharacterHealthBar : MonoBehaviour

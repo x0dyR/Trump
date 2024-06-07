@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace collegeGame
+namespace Trump
 {
     public class SkeletHp : MonoBehaviour
     {

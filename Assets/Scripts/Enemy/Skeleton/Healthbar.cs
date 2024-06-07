@@ -1,7 +1,8 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace collegeGame
+namespace Trump
 {
     public class Healthbar : MonoBehaviour
     {

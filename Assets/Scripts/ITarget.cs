@@ -1,4 +1,4 @@
-namespace collegeGame
+namespace Trump
 {
     public interface ITarget
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace collegeGame.Enemy
+namespace Trump.Enemy
 {
     public class EnemyStateMachine : IStateSwitcher
     {

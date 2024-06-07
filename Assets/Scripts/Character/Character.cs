@@ -1,17 +1,17 @@
 using Cinemachine;
-using collegeGame.Health;
+using Trump.Health;
 using System;
 using UnityEngine;
 
-namespace collegeGame.StateMachine
+namespace Trump.StateMachine
 {
     [RequireComponent(typeof(CharacterController))]
     public class Character : MonoBehaviour, ITarget, IHealth
     {
         public Transform cameraPoint;
         public Transform meeleWeaponSpawnPoint;
-        public WeaponSO currentWeapon;
-        public WeaponSO[] weapons;
+        public IWeapon currentWeapon;
+        public GameObject[] weapons;
         public event Action HealthChanged;
         public event Action Died;
 
@@ -24,6 +24,8 @@ namespace collegeGame.StateMachine
         private CharacterController _characterController;
         private CinemachineVirtualCamera cm;
         private IHealth _health;
+        private float _currentHealth;
+        private float _maxHealth;
 
         public PlayerInput Input => _input;
 
@@ -39,13 +41,16 @@ namespace collegeGame.StateMachine
 
         private void Awake()
         {
-            _health = new HealthComponent(50);
+            _health = new HealthComponent(_config.Health);
             _view.Initialize();
             _input = new();
             _characterController = GetComponent<CharacterController>();
             _stateMachine = new(this);
             BindVCam();
             Died += OnDie;
+            currentWeapon = Instantiate(weapons[0], meeleWeaponSpawnPoint).GetComponent<IWeapon>();
+            _currentHealth = _maxHealth = _health.GetHealth();
+
         }
 
         private void Update()
@@ -58,7 +63,11 @@ namespace collegeGame.StateMachine
         {
             _stateMachine.LateUpdate();
         }
-
+        public void Heal(float heal)
+        {            
+            _health.Heal(heal);
+            HealthChanged?.Invoke();
+        }
         public void TakeDamage(float damage)
         {
             _health.TakeDamage(damage);
@@ -83,9 +92,6 @@ namespace collegeGame.StateMachine
                 Debug.LogError("Weapon prefab not found at path: " + weaponData.Path);
                 return;
             }
-
-            _currentWeaponInstance = Instantiate(weaponPrefab, meeleWeaponSpawnPoint);
-            currentWeapon = weaponData;
         }
 
         public float GetHealth() => _health.GetHealth();
@@ -104,5 +110,6 @@ namespace collegeGame.StateMachine
         {
             _input.Disable();
         }
+
     }
 }

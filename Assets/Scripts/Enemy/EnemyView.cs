@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace collegeGame.Enemy
+namespace Trump.Enemy
 {
     [RequireComponent(typeof(Animator))]
     public class EnemyView : MonoBehaviour

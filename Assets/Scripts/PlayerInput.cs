@@ -134,6 +134,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""a634a7d1-9f45-4680-a52f-bcbdb76c5c88"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -334,6 +343,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""SwitchToCatalyst"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b86568f0-5de7-475f-8117-e6cdd316a87c"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -354,6 +374,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_SwitchToSword = m_Player.FindAction("SwitchToSword", throwIfNotFound: true);
         m_Player_SwitchToPolearm = m_Player.FindAction("SwitchToPolearm", throwIfNotFound: true);
         m_Player_SwitchToCatalyst = m_Player.FindAction("SwitchToCatalyst", throwIfNotFound: true);
+        m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -427,6 +448,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SwitchToSword;
     private readonly InputAction m_Player_SwitchToPolearm;
     private readonly InputAction m_Player_SwitchToCatalyst;
+    private readonly InputAction m_Player_Inventory;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -443,6 +465,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @SwitchToSword => m_Wrapper.m_Player_SwitchToSword;
         public InputAction @SwitchToPolearm => m_Wrapper.m_Player_SwitchToPolearm;
         public InputAction @SwitchToCatalyst => m_Wrapper.m_Player_SwitchToCatalyst;
+        public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -488,6 +511,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SwitchToCatalyst.started += instance.OnSwitchToCatalyst;
             @SwitchToCatalyst.performed += instance.OnSwitchToCatalyst;
             @SwitchToCatalyst.canceled += instance.OnSwitchToCatalyst;
+            @Inventory.started += instance.OnInventory;
+            @Inventory.performed += instance.OnInventory;
+            @Inventory.canceled += instance.OnInventory;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -528,6 +554,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SwitchToCatalyst.started -= instance.OnSwitchToCatalyst;
             @SwitchToCatalyst.performed -= instance.OnSwitchToCatalyst;
             @SwitchToCatalyst.canceled -= instance.OnSwitchToCatalyst;
+            @Inventory.started -= instance.OnInventory;
+            @Inventory.performed -= instance.OnInventory;
+            @Inventory.canceled -= instance.OnInventory;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -559,5 +588,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnSwitchToSword(InputAction.CallbackContext context);
         void OnSwitchToPolearm(InputAction.CallbackContext context);
         void OnSwitchToCatalyst(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
     }
 }

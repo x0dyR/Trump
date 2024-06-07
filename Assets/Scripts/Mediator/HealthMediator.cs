@@ -1,7 +1,7 @@
-using collegeGame.StateMachine;
+using Trump.StateMachine;
 using UnityEngine;
 
-namespace collegeGame
+namespace Trump
 {
     public class HealthMediator : MonoBehaviour
     {
@@ -25,7 +25,7 @@ namespace collegeGame
 
         private void OnChangeHealth()
         {
-            _characterHpBar.ChangeValue(_character);
+            _characterHpBar.ChangeValue(_character) ;
         }
     }
 }

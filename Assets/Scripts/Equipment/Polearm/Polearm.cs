@@ -1,9 +1,8 @@
 using System;
-using Unity.Physics;
 using UnityEngine;
 using Collider = UnityEngine.Collider;
 
-namespace collegeGame
+namespace Trump
 {
     public class Polearm : MonoBehaviour, IWeapon
     {

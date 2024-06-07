@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using Zenject;
-using collegeGame.StateMachine;
+using Trump.StateMachine;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
-namespace collegeGame
+namespace Trump
 {
     public class Skelet : AbsEnemy, IHealth
     {
@@ -26,6 +26,7 @@ namespace collegeGame
         private float _currentHealth;
         private bool isAttacking = false;
         private bool isAttackedThisFrame = false;
+        private float _maxHealth;
 
         public int MaxOccupancy
         {
@@ -44,10 +45,10 @@ namespace collegeGame
             _navAgent = GetComponent<NavMeshAgent>();
             CreatePatrolPoints(_patrolPoints);
             _currentPatrolIndex = 0; // Начинаем с -1, чтобы выбрать случайную точку патрулирования при первом обновлении
-            _currentHealth = _skeletConfig.Health;
+            _maxHealth = _currentHealth = _skeletConfig.Health;
             _view.Initialize(); // Инициализируем SkeletView
             SetDestinationToRandomPatrolPoint(); // Начинаем с патрулирования к случайной точке
-
+            _maxHealth = _skeletConfig.Health;
         }
 
         public List<Transform> CreatePatrolPoints(List<Transform> patrolArray)
@@ -120,14 +121,9 @@ namespace collegeGame
             Collider[] hitColliders = Physics.OverlapSphere(_attackPoint.position, _skeletConfig.AttackRange);
             foreach (Collider col in hitColliders)
             {
-                if (col.CompareTag("Player") && !isAttackedThisFrame)
+                if (!isAttackedThisFrame)
                 {
-                    IHealth healthComponent = col.GetComponent<IHealth>(); // Проверяем, есть ли у объекта компонент здоровья
-                    if (healthComponent != null)
-                    {
-                        healthComponent.TakeDamage(_skeletConfig.EnemyDamage); // Вызываем метод нанесения урона у объекта
-                        isAttackedThisFrame = true;
-                    }
+                    _player.TakeDamage(_skeletConfig.Damage);
                 }
             }
         }
@@ -161,6 +157,13 @@ namespace collegeGame
         public float GetHealth()
         {
             return _currentHealth;
+        }
+
+        public void Heal(float heal)
+        {
+            if (_currentHealth > _maxHealth)
+                return;
+            _currentHealth += heal;
         }
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace collegeGame
+namespace Trump
 {
     [RequireComponent(typeof(Animator))]
     public class TrollView : MonoBehaviour

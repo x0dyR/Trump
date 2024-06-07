@@ -1,6 +1,6 @@
 using UnityEngine.AI;
 
-namespace collegeGame
+namespace Trump
 {
     public interface INavAgent
     {

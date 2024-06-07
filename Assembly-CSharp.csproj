@@ -9,7 +9,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>collegeGame</RootNamespace>
+    <RootNamespace>Trump</RootNamespace>
     <ProjectGuid>{582A3E42-DAFB-A696-EA20-1F253216CE71}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -72,6 +72,7 @@
     <Analyzer Include="G:\collegeGame\Library\PackageCache\com.unity.entities@1.0.16\Unity.Entities\SourceGenerators\Unity.Entities.SourceGen.JobEntityGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Environment\HealZone.cs" />
     <Compile Include="Assets\Scripts\Health\HealthComponent.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Scripts\Enemy\Troll\Troll.cs" />
@@ -79,7 +80,6 @@
     <Compile Include="Assets\Scripts\Enemy\EnemyType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\Enemy\INavAgent.cs" />
-    <Compile Include="Assets\Scripts\Camera\CMFollowPlayer.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\Configs\JumpingStateConfig.cs" />
     <Compile Include="Assets\MapMagic\Compatibility\MegaSplat\MegaSplatOutput.cs" />
     <Compile Include="Assets\Scripts\Mediator\HealthMediator.cs" />
@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\IInteract.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+    <Compile Include="Assets\Scripts\Environment\DamageZone.cs" />
     <Compile Include="Assets\Scripts\Enemy\Skeleton\Healthbar.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\Configs\RunningStateConfig.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyView.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Assets\Scripts\Enemy\StateMachine\Enemy.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\Scripts\Enemy\Skeleton\SkeletView.cs" />
+    <Compile Include="Assets\Scripts\Environment\Config\HealZoneConfig.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\StateMachineData.cs" />
@@ -152,6 +154,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Character\CharacterView.cs" />
     <Compile Include="Assets\Scripts\Fabric\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\Environment\Config\DamageZoneConfig.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\EnemyStateMachine.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\AirbornStates\JumpingState.cs" />

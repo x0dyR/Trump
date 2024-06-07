@@ -1,10 +1,9 @@
-using collegeGame.Health;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
-namespace collegeGame.Enemy
+namespace Trump.Enemy
 {
     public class Enemy : MonoBehaviour, IHealth, IDamage, INavAgent
     {
@@ -38,12 +37,12 @@ namespace collegeGame.Enemy
 
         private void Awake()
         {
-/*            _view.Initialize();
-            _navAgent = GetComponent<NavMeshAgent>();
-            _stateMachine = new EnemyStateMachine(this, player);
-            _navAgent.speed = _enemyConfig.Speed;
-            _navAgent.stoppingDistance = _enemyConfig.AttackRange * 2;
-            _health = new HealthComponent(_enemyConfig.Health);*/
+            /*            _view.Initialize();
+                        _navAgent = GetComponent<NavMeshAgent>();
+                        _stateMachine = new EnemyStateMachine(this, player);
+                        _navAgent.speed = _enemyConfig.Speed;
+                        _navAgent.stoppingDistance = _enemyConfig.AttackRange * 2;
+                        _health = new HealthComponent(_enemyConfig.Health);*/
         }
 
         private void Update()
@@ -53,38 +52,38 @@ namespace collegeGame.Enemy
 
         private void LateUpdate()
         {
-/*            _stateMachine.LateUpdate();*/
+            /*            _stateMachine.LateUpdate();*/
         }
 
         public void DealDamage(Vector3 damageZone, float damage)
         {
-/*            Collider[] colls = Physics.OverlapBox(_attackPoint.position, damageZone, _attackPoint.rotation);
-            foreach (Collider coll in colls)
-            {
-                if (coll.TryGetComponent(out IHealth health))
-                    health.TakeDamage(damage);
-            }*/
+            /*            Collider[] colls = Physics.OverlapBox(_attackPoint.position, damageZone, _attackPoint.rotation);
+                        foreach (Collider coll in colls)
+                        {
+                            if (coll.TryGetComponent(out IHealth health))
+                                health.TakeDamage(damage);
+                        }*/
         }
 
         public float GetHealth() => _health.GetHealth();
 
         public void TakeDamage(float damage)
         {
-/*            _health.TakeDamage(damage);
-            HealthChanged?.Invoke();
+            /*            _health.TakeDamage(damage);
+                        HealthChanged?.Invoke();
 
-            if (_health.GetHealth() <= damage)
-            {
-                Died?.Invoke();
-            }*/
+                        if (_health.GetHealth() <= damage)
+                        {
+                            Died?.Invoke();
+                        }*/
         }
 
         private void OnDrawGizmos()
         {
-/*            Gizmos.color = Color.red;
-            Gizmos.DrawSphere(_attackPoint.position, _enemyConfig.AttackRange);
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, _enemyConfig.DistanceToView);*/
+            /*            Gizmos.color = Color.red;
+                        Gizmos.DrawSphere(_attackPoint.position, _enemyConfig.AttackRange);
+                        Gizmos.color = Color.green;
+                        Gizmos.DrawWireSphere(transform.position, _enemyConfig.DistanceToView);*/
         }
 
         private void OnDie()
@@ -96,5 +95,10 @@ namespace collegeGame.Enemy
         private void OnEnable() => Died += OnDie;
 
         private void OnDisable() => Died -= OnDie;
+
+        public void Heal(float heal)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

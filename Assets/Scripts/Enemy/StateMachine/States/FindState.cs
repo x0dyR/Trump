@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace collegeGame.Enemy
+namespace Trump.Enemy
 {
     public class FindState : IState
     {

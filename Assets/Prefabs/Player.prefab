@@ -731,10 +731,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraPoint: {fileID: 5347461105242238393}
   meeleWeaponSpawnPoint: {fileID: 7788208220312428027}
-  currentWeapon: {fileID: 0}
   weapons:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4015315905588937011, guid: b1a4aafe8124564419fa03755d4f76c3, type: 3}
+  - {fileID: 336862090595718147, guid: 16b1d1be3f4012044969baba9300b32c, type: 3}
   _config: {fileID: 11400000, guid: ac6c7916040c4744ab54bd3bd530c788, type: 2}
   _groundChecker: {fileID: 651414019833534536}
   _view: {fileID: 8580461746936906810}

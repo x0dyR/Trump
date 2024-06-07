@@ -1,4 +1,4 @@
-namespace collegeGame.Enemy
+namespace Trump.Enemy
 {
     public interface IState
     {

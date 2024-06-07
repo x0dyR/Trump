@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace collegeGame
+namespace Trump
 {
     [Serializable]
     public class JumpingStateConfig

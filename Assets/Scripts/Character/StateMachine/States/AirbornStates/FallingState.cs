@@ -1,4 +1,4 @@
-namespace collegeGame.StateMachine
+namespace Trump.StateMachine
 {
     public class FallingState : AirbornState
     {
@@ -26,7 +26,6 @@ namespace collegeGame.StateMachine
             base.Update();
             if (_groundChecker.IsTouches)
             {
-                /*Data.YVelocity = 0;*/
                 if (IsHorizontalInputZero())
                     StateSwitcher.SwitchState<IdlingState>();
                 else

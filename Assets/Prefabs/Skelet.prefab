@@ -1510,7 +1510,7 @@ Transform:
   m_GameObject: {fileID: 5005942806775278423}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06, y: 4.46, z: 1.72}
+  m_LocalPosition: {x: 0.06, y: 4.46, z: 2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1876,7 +1876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _backSprite: {fileID: 6237952737059324081}
-  _skeletConfig: {fileID: 0}
+  _skeletConfig: {fileID: 11400000, guid: ef02ef9cb21f4604c928fa08d28d7c4e, type: 2}
   _reduceSpeed: 2
 --- !u!1 &5314640945364246763
 GameObject:

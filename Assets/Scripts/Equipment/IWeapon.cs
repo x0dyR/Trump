@@ -1,6 +1,6 @@
 using System;
 
-namespace collegeGame
+namespace Trump
 {
     public interface IWeapon
     {

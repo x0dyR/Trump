@@ -1,6 +1,6 @@
 using System;
 
-namespace collegeGame.Health
+namespace Trump.Health
 {
     [Serializable]
     public class HealthComponent : IHealth
@@ -28,5 +28,13 @@ namespace collegeGame.Health
         }
 
         public float GetHealth() => _health;
+
+        public void Heal(float heal)
+        {
+            HealthChanged?.Invoke();
+            if (_health > _maxHealth)
+                return;
+            _health += heal;
+        }
     }
 }

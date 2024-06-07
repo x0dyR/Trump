@@ -19,7 +19,7 @@
 
 //}
 using UnityEngine;
-using collegeGame;
+using Trump;
 public class SkeletonSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject skeletonPrefab; // Префаб скелета

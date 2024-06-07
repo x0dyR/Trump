@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace collegeGame
+namespace Trump
 {
     [CreateAssetMenu(fileName = "TrollConfig", menuName = "Enemy/EnemyConfig")]
     public class EnemyConfig : ScriptableObject

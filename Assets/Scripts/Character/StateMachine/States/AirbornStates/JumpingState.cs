@@ -1,4 +1,4 @@
-namespace collegeGame.StateMachine
+namespace Trump.StateMachine
 {
     public class JumpingState : AirbornState
     {

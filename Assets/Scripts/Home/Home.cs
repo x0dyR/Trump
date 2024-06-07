@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace collegeGame
+namespace Trump
 {
     public class Home : MonoBehaviour, IInteract
     {

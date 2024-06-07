@@ -1,6 +1,6 @@
 using UnityEngine.InputSystem;
 
-namespace collegeGame.StateMachine
+namespace Trump.StateMachine
 {
     public class GroundedState : MovementState
     {

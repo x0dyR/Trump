@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace collegeGame
+namespace Trump
 {
     [CreateAssetMenu(fileName = "weaponSO", menuName = "Weapon/WeaponConfig")]
     public class WeaponSO : ScriptableObject

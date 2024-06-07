@@ -1,7 +1,6 @@
-using System.Linq;
 using UnityEngine;
 
-namespace collegeGame.StateMachine
+namespace Trump.StateMachine
 {
     public abstract class MovementState : IState
     {
@@ -58,7 +57,12 @@ namespace collegeGame.StateMachine
             Input.Player.HeavyAttack.started += OnHeavyAttack;
         }
 
-        protected virtual void RemoveInputActionsCallback() { }
+        protected virtual void RemoveInputActionsCallback() {
+            Input.Player.SwitchToSword.started -= ctx => _character.SwitchToWeapon(Resources.Load<WeaponSO>("Sword"));
+            Input.Player.SwitchToPolearm.started -= ctx => _character.SwitchToWeapon(Resources.Load<WeaponSO>("Polearm"));
+            Input.Player.LightAttack.started -= OnLightAttack;
+            Input.Player.HeavyAttack.started -= OnHeavyAttack;
+        }
 
         private Vector2 ReadHorizontalInput() => Input.Player.Movement.ReadValue<Vector2>().normalized;
 

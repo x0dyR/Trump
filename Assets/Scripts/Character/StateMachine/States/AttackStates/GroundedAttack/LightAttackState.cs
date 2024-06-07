@@ -1,4 +1,4 @@
-namespace collegeGame.StateMachine
+namespace Trump.StateMachine
 {
     public class LightAttackState : AttackingState
     {
@@ -17,13 +17,6 @@ namespace collegeGame.StateMachine
             base.Exit();
 
             View.StopLightAttack();
-        }
-
-        public override void Update()
-        {
-            base.Update();
-
-            StateSwitcher.SwitchState<IdlingState>();
         }
     }
 }

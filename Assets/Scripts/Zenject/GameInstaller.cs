@@ -1,9 +1,9 @@
 using Cinemachine;
-using collegeGame.StateMachine;
+using Trump.StateMachine;
 using UnityEngine;
 using Zenject;
 
-namespace collegeGame.Zenject
+namespace Trump.Zenject
 {
     public class GameInstaller : MonoInstaller
     {
@@ -15,7 +15,7 @@ namespace collegeGame.Zenject
         public override void InstallBindings()
         {
             BindPlayer();
-            BindCM(); 
+            BindCM();
             Container.BindInterfacesAndSelfTo<Troll>().AsSingle();
         }
 

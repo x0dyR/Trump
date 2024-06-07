@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace collegeGame
+namespace Trump
 {
     [CreateAssetMenu(fileName = "EnemyFabric", menuName = "Factory/EnemyFabric")]
     public class EnemyFabric : ScriptableObject

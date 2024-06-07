@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 
-namespace collegeGame
+namespace Trump
 {
     public class Troll : AbsEnemy, IHealth
     {
@@ -19,12 +19,13 @@ namespace collegeGame
         private int _currentPatrolIndex = 0;
         private float _currentHealth;
         private bool isAttackedThisFrame = false;
+        private float _maxHealth;
 
         private void Start()
         {
             _navAgent = GetComponent<NavMeshAgent>();
             _player = GameObject.FindGameObjectWithTag("Player")?.transform;
-            _currentHealth = _trollConfig.Health;
+            _maxHealth = _currentHealth = _trollConfig.Health;
             _view.Initialize();
             _view.StartPatrol();
             Patrol();
@@ -121,6 +122,13 @@ namespace collegeGame
         public float GetHealth()
         {
             return _currentHealth;
+        }
+
+        public void Heal(float heal)
+        {
+            if (_currentHealth > _maxHealth)
+                return;
+            _currentHealth += heal;
         }
     }
 }

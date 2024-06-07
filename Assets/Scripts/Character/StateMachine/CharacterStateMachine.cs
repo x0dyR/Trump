@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace collegeGame.StateMachine
+namespace Trump.StateMachine
 {
     public class CharacterStateMachine : IStateSwitcher
     {

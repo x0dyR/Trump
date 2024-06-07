@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace collegeGame
+namespace Trump
 {
     public class Sword : MonoBehaviour, IWeapon
     {
@@ -15,11 +15,13 @@ namespace collegeGame
             Collider[] colls = Physics.OverlapBox(transform.position, weaponSO.BoxCollider.bounds.size, transform.rotation);
             foreach (Collider coll in colls)
             {
-                if (coll.TryGetComponent(out ITarget tranform))
-                    return;
-                Debug.Log("Find enemy!!!");
+
                 if (coll.TryGetComponent(out IHealth target))
-                    target.TakeDamage(weaponSO.Damage);
+                    if (coll.TryGetComponent(out AbsEnemy enemy))
+                    {
+                        Debug.Log("Find enemy!!!");
+                        target.TakeDamage(weaponSO.Damage);
+                    }
             }
         }
     }

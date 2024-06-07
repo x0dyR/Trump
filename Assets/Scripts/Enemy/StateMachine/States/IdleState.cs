@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace collegeGame.Enemy
+namespace Trump.Enemy
 {
     public class IdleState : IState
     {

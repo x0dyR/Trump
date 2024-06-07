@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace collegeGame
+namespace Trump
 {
 
     public class TrollHealth : MonoBehaviour

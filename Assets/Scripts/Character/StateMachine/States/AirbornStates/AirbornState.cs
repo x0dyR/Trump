@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace collegeGame.StateMachine
+namespace Trump.StateMachine
 {
     public class AirbornState : MovementState
     {

@@ -1,4 +1,4 @@
-namespace collegeGame.StateMachine
+namespace Trump.StateMachine
 {
     public class HeavyAttackState : AttackingState
     {
@@ -17,13 +17,6 @@ namespace collegeGame.StateMachine
             base.Exit();
 
             View.StopHeavyAttack();
-        }
-
-        public override void Update()
-        {
-            base.Update();
-
-            StateSwitcher.SwitchState<IdlingState>();
         }
     }
 }

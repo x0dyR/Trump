@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace collegeGame.StateMachine
+namespace Trump.StateMachine
 {
     [RequireComponent(typeof(Animator))]
 
@@ -57,9 +57,9 @@ namespace collegeGame.StateMachine
         public void StartAttacking() { _animator.SetBool(attacking, true); _animator.SetTrigger(attack); } //триггер чтобы была последовательность
         public void StopAttacking() => _animator.SetBool(attacking, false);
 
-        public void StartHeavyAttack() { _animator.SetBool(heavyAttack, true); _animator.SetTrigger(attack); }
+        public void StartHeavyAttack() { _animator.SetBool(heavyAttack, true); }
         public void StopHeavyAttack() => _animator.SetBool(heavyAttack, false);
-        public void StartLightAttack() { _animator.SetBool(lightAttack, true); _animator.SetTrigger(attack); }
+        public void StartLightAttack() { _animator.SetBool(lightAttack, true);  }
         public void StopLightAttack() => _animator.SetBool(lightAttack, false);
     }
 }

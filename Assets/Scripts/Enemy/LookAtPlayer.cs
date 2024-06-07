@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace collegeGame
+namespace Trump
 {
     public class LookAtPlayer : MonoBehaviour
     {
