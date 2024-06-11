@@ -20,7 +20,7 @@ namespace Zenject
         }
 
         public abstract DiContainer CreateSubContainer(
-            List<TypeValuePair> args, InjectContext context, out Action injectAction);
+            List<TypeValuePair> args, InjectContext context, out System.Action injectAction);
 
         protected DiContainer CreateEmptySubContainer()
         {
@@ -44,7 +44,7 @@ namespace Zenject
             _installMethod = installMethod;
         }
 
-        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out Action injectAction)
+        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out System.Action injectAction)
         {
             Assert.IsEmpty(args);
 
@@ -77,7 +77,7 @@ namespace Zenject
             _installMethod = installMethod;
         }
 
-        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out Action injectAction)
+        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out System.Action injectAction)
         {
             Assert.IsEqual(args.Count, 1);
             Assert.That(args[0].Type.DerivesFromOrEqual<TParam1>());
@@ -111,7 +111,7 @@ namespace Zenject
             _installMethod = installMethod;
         }
 
-        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out Action injectAction)
+        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out System.Action injectAction)
         {
             Assert.IsEqual(args.Count, 2);
             Assert.That(args[0].Type.DerivesFromOrEqual<TParam1>());
@@ -149,7 +149,7 @@ namespace Zenject
             _installMethod = installMethod;
         }
 
-        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out Action injectAction)
+        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out System.Action injectAction)
         {
             Assert.IsEqual(args.Count, 3);
             Assert.That(args[0].Type.DerivesFromOrEqual<TParam1>());
@@ -196,7 +196,7 @@ namespace Zenject
             _installMethod = installMethod;
         }
 
-        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out Action injectAction)
+        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out System.Action injectAction)
         {
             Assert.IsEqual(args.Count, 4);
             Assert.That(args[0].Type.DerivesFromOrEqual<TParam1>());
@@ -245,7 +245,7 @@ namespace Zenject
             _installMethod = installMethod;
         }
 
-        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out Action injectAction)
+        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out System.Action injectAction)
         {
             Assert.IsEqual(args.Count, 5);
             Assert.That(args[0].Type.DerivesFromOrEqual<TParam1>());
@@ -296,7 +296,7 @@ namespace Zenject
             _installMethod = installMethod;
         }
 
-        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out Action injectAction)
+        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out System.Action injectAction)
         {
             Assert.IsEqual(args.Count, 5);
             Assert.That(args[0].Type.DerivesFromOrEqual<TParam1>());
@@ -349,7 +349,7 @@ namespace Zenject
             _installMethod = installMethod;
         }
 
-        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out Action injectAction)
+        public override DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out System.Action injectAction)
         {
             Assert.IsEqual(args.Count, 10);
 

@@ -37,7 +37,7 @@ namespace Zenject
         {
         }
 
-        public DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out Action injectAction)
+        public DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out System.Action injectAction)
         {
             var subContainer = _container.CreateSubContainer();
 

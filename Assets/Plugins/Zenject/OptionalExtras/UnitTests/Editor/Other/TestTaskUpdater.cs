@@ -69,7 +69,7 @@ namespace Zenject.Tests.Other
 
         class Tickable1 : ITickable
         {
-            public event Action TickCalled = delegate {};
+            public event System.Action TickCalled = delegate {};
 
             public void Tick()
             {
@@ -79,7 +79,7 @@ namespace Zenject.Tests.Other
 
         class Tickable2 : ITickable
         {
-            public event Action TickCalled = delegate {};
+            public event System.Action TickCalled = delegate {};
 
             public void Tick()
             {
@@ -89,7 +89,7 @@ namespace Zenject.Tests.Other
 
         class Tickable3 : ITickable
         {
-            public event Action TickCalled = delegate {};
+            public event System.Action TickCalled = delegate {};
 
             public void Tick()
             {

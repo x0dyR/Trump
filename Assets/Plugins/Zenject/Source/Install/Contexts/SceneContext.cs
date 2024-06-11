@@ -14,10 +14,10 @@ namespace Zenject
 {
     public class SceneContext : RunnableContext
     {
-        public event Action PreInstall;
-        public event Action PostInstall;
-        public event Action PreResolve;
-        public event Action PostResolve;
+        public event System.Action PreInstall;
+        public event System.Action PostInstall;
+        public event System.Action PreResolve;
+        public event System.Action PostResolve;
 
         public UnityEvent OnPreInstall;
         public UnityEvent OnPostInstall;

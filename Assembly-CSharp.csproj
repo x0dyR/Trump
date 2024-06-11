@@ -93,10 +93,12 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\Scripts\Damage\IDamage.cs" />
     <Compile Include="Assets\Scripts\Equipment\IWeapon.cs" />
+    <Compile Include="Assets\Scripts\Zenject\Loader\ZenjectSceneLoaderWrapper.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\GroundedStates\RunningState.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\IInteract.cs" />
+    <Compile Include="Assets\Scripts\Zenject\Loader\SceneID.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Scripts\Environment\DamageZone.cs" />
@@ -117,6 +119,8 @@
     <Compile Include="Assets\Scripts\Enemy\StateMachine\IState.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\GroundedStates\IdlingState.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\GroundedStates\GroundedState.cs" />
+    <Compile Include="Assets\Scripts\Zenject\Loader\ISimpleSceneLoader.cs" />
+    <Compile Include="Assets\Scripts\Zenject\Loader\SceneLoadMediator.cs" />
     <Compile Include="Assets\Scripts\Zenject\GameInstaller.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\AttackStates\GroundedAttack\LightAttackState.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
@@ -135,6 +139,7 @@
     <Compile Include="Assets\Scripts\Enemy\StateMachine\States\FindState.cs" />
     <Compile Include="Assets\Scripts\Equipment\WeaponSO.cs" />
     <Compile Include="Assets\MapMagic\Compatibility\CTS\CTSOutput.cs" />
+    <Compile Include="Assets\Scripts\Zenject\Loader\SceneLoader.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\Enemy.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\Scripts\Enemy\Skeleton\SkeletView.cs" />
@@ -156,6 +161,7 @@
     <Compile Include="Assets\Scripts\Fabric\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Environment\Config\DamageZoneConfig.cs" />
     <Compile Include="Assets\Scripts\Enemy\StateMachine\EnemyStateMachine.cs" />
+    <Compile Include="Assets\Scripts\Zenject\BootScene.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\AirbornStates\JumpingState.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
@@ -171,6 +177,7 @@
     <Compile Include="Assets\Scripts\Character\StateMachine\States\AirbornStates\FallingState.cs" />
     <Compile Include="Assets\MapMagic\Compatibility\RTP\RTPOutput.cs" />
     <Compile Include="Assets\Scripts\Character\StateMachine\States\IState.cs" />
+    <Compile Include="Assets\Scripts\Zenject\GlobalInstaller.cs" />
     <Compile Include="Assets\Scripts\Character\GroundChecker.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
   </ItemGroup>

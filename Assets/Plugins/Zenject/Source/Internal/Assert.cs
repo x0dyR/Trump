@@ -386,7 +386,7 @@ namespace ModestTree
 #if ZEN_STRIP_ASSERTS_IN_BUILDS
         [Conditional("UNITY_EDITOR")]
 #endif
-        public static void Throws(Action action)
+        public static void Throws(System.Action action)
         {
             Throws<Exception>(action);
         }
@@ -394,7 +394,7 @@ namespace ModestTree
 #if ZEN_STRIP_ASSERTS_IN_BUILDS
         [Conditional("UNITY_EDITOR")]
 #endif
-        public static void Throws<TException>(Action action)
+        public static void Throws<TException>(System.Action action)
             where TException : Exception
         {
             try

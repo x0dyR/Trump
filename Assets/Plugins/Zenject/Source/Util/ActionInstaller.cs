@@ -2,11 +2,11 @@ using System;
 
 namespace Zenject
 {
-    public class ActionInstaller : Installer<ActionInstaller>
+    public class Action : Installer<Action>
     {
         readonly Action<DiContainer> _installMethod;
 
-        public ActionInstaller(Action<DiContainer> installMethod)
+        public Action(Action<DiContainer> installMethod)
         {
             _installMethod = installMethod;
         }

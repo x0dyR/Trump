@@ -227,13 +227,13 @@ namespace Zenject
         }
 #endif
 
-        public void SubscribeId<TSignal>(object identifier, Action callback)
+        public void SubscribeId<TSignal>(object identifier, System.Action callback)
         {
             Action<object> wrapperCallback = args => callback();
             SubscribeInternal(typeof(TSignal), identifier, callback, wrapperCallback);
         }
 
-        public void Subscribe<TSignal>(Action callback)
+        public void Subscribe<TSignal>(System.Action callback)
         {
             SubscribeId<TSignal>(null, callback);
         }
@@ -259,22 +259,22 @@ namespace Zenject
             SubscribeId(signalType, null, callback);
         }
 
-        public void UnsubscribeId<TSignal>(object identifier, Action callback)
+        public void UnsubscribeId<TSignal>(object identifier, System.Action callback)
         {
             UnsubscribeId(typeof(TSignal), identifier, callback);
         }
 
-        public void Unsubscribe<TSignal>(Action callback)
+        public void Unsubscribe<TSignal>(System.Action callback)
         {
             UnsubscribeId<TSignal>(null, callback);
         }
 
-        public void UnsubscribeId(Type signalType, object identifier, Action callback)
+        public void UnsubscribeId(Type signalType, object identifier, System.Action callback)
         {
             UnsubscribeInternal(signalType, identifier, callback, true);
         }
 
-        public void Unsubscribe(Type signalType, Action callback)
+        public void Unsubscribe(Type signalType, System.Action callback)
         {
             UnsubscribeId(signalType, null, callback);
         }
@@ -299,22 +299,22 @@ namespace Zenject
             UnsubscribeId<TSignal>(null, callback);
         }
 
-        public void TryUnsubscribeId<TSignal>(object identifier, Action callback)
+        public void TryUnsubscribeId<TSignal>(object identifier, System.Action callback)
         {
             UnsubscribeInternal(typeof(TSignal), identifier, callback, false);
         }
 
-        public void TryUnsubscribe<TSignal>(Action callback)
+        public void TryUnsubscribe<TSignal>(System.Action callback)
         {
             TryUnsubscribeId<TSignal>(null, callback);
         }
 
-        public void TryUnsubscribeId(Type signalType, object identifier, Action callback)
+        public void TryUnsubscribeId(Type signalType, object identifier, System.Action callback)
         {
             UnsubscribeInternal(signalType, identifier, callback, false);
         }
 
-        public void TryUnsubscribe(Type signalType, Action callback)
+        public void TryUnsubscribe(Type signalType, System.Action callback)
         {
             TryUnsubscribeId(signalType, null, callback);
         }

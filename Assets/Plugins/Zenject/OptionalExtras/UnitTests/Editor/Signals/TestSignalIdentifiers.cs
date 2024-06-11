@@ -32,7 +32,7 @@ namespace Zenject.Tests.Signals
 
             bool received = false;
 
-            Action callback = () => received = true;
+            System.Action callback = () => received = true;
             signalBus.SubscribeId<FooSignal>(signalId, callback);
 
             Assert.Throws(() => signalBus.Subscribe<FooSignal>(callback));

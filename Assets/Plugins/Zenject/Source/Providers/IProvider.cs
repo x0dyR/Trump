@@ -24,6 +24,6 @@ namespace Zenject
         // and then return that if something gets created during injection that refers back
         // to the newly created instance
         void GetAllInstancesWithInjectSplit(
-            InjectContext context, List<TypeValuePair> args, out Action injectAction, List<object> instances);
+            InjectContext context, List<TypeValuePair> args, out System.Action injectAction, List<object> instances);
     }
 }

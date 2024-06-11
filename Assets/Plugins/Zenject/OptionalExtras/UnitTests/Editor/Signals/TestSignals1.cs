@@ -28,7 +28,7 @@ namespace Zenject.Tests.Signals
 
             bool received = false;
 
-            Action callback = () => received = true;
+            System.Action callback = () => received = true;
             signalBus.Subscribe<FooSignal>(callback);
 
             Assert.That(!received);
@@ -75,7 +75,7 @@ namespace Zenject.Tests.Signals
 
             var signalBus = Container.Resolve<SignalBus>();
 
-            Action callback = () => {};
+            System.Action callback = () => {};
 
             Assert.Throws(() => signalBus.Unsubscribe<FooSignal>(callback));
 

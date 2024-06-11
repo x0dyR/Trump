@@ -21,7 +21,7 @@ namespace Zenject
             _subCreator = subCreator;
         }
 
-        public DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out Action injectAction)
+        public DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out System.Action injectAction)
         {
             // We can't really support arguments if we are using the cached value since
             // the arguments might change when called after the first time

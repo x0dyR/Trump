@@ -10,8 +10,8 @@ namespace Trump
 {
     public class Skelet : AbsEnemy, IHealth
     {
-        public event Action HealthChanged;
-        public event Action Died;
+        public event System.Action HealthChanged;
+        public event System.Action Died;
 
         [SerializeField] private EnemyConfig _skeletConfig;
         [SerializeField] private SkeletView _view;

@@ -40,7 +40,7 @@ namespace Zenject
             return new SignalCopyBinder(bindInfo);
         }
 
-        public SignalCopyBinder ToMethod(Action callback)
+        public SignalCopyBinder ToMethod(System.Action callback)
         {
             return ToMethod(signal => callback());
         }
@@ -50,7 +50,7 @@ namespace Zenject
             return ToMethod<TObject>(x => (Action<TSignal>)(s => handler(x, s)));
         }
 
-        public BindSignalFromBinder<TObject, TSignal> ToMethod<TObject>(Func<TObject, Action> handlerGetter)
+        public BindSignalFromBinder<TObject, TSignal> ToMethod<TObject>(Func<TObject, System.Action> handlerGetter)
         {
             return ToMethod<TObject>(x => (Action<TSignal>)(s => handlerGetter(x)()));
         }

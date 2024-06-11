@@ -24,7 +24,7 @@ namespace Zenject
         }
 
         public DiContainer CreateSubContainer(
-            List<TypeValuePair> args, InjectContext parentContext, out Action injectAction)
+            List<TypeValuePair> args, InjectContext parentContext, out System.Action injectAction)
         {
             bool shouldMakeActive;
             var gameObj = CreateGameObject(parentContext, out shouldMakeActive);

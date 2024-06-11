@@ -15,7 +15,7 @@ namespace Zenject.Internal
     public static class ZenUnityEditorUtil
     {
         // Returns true if succeeds without errors
-        public static bool SaveThenRunPreserveSceneSetup(Action action)
+        public static bool SaveThenRunPreserveSceneSetup(System.Action action)
         {
             if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
             {

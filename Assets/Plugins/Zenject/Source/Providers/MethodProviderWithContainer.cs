@@ -32,7 +32,7 @@ namespace Zenject
         }
 
         public void GetAllInstancesWithInjectSplit(
-            InjectContext context, List<TypeValuePair> args, out Action injectAction, List<object> buffer)
+            InjectContext context, List<TypeValuePair> args, out System.Action injectAction, List<object> buffer)
         {
             Assert.IsEmpty(args);
             Assert.IsNotNull(context);
@@ -80,7 +80,7 @@ namespace Zenject
         }
 
         public void GetAllInstancesWithInjectSplit(
-            InjectContext context, List<TypeValuePair> args, out Action injectAction, List<object> buffer)
+            InjectContext context, List<TypeValuePair> args, out System.Action injectAction, List<object> buffer)
         {
             Assert.IsEqual(args.Count, 1);
             Assert.IsNotNull(context);
@@ -132,7 +132,7 @@ namespace Zenject
         }
 
         public void GetAllInstancesWithInjectSplit(
-            InjectContext context, List<TypeValuePair> args, out Action injectAction, List<object> buffer)
+            InjectContext context, List<TypeValuePair> args, out System.Action injectAction, List<object> buffer)
         {
             Assert.IsEqual(args.Count, 2);
             Assert.IsNotNull(context);
@@ -186,7 +186,7 @@ namespace Zenject
         }
 
         public void GetAllInstancesWithInjectSplit(
-            InjectContext context, List<TypeValuePair> args, out Action injectAction, List<object> buffer)
+            InjectContext context, List<TypeValuePair> args, out System.Action injectAction, List<object> buffer)
         {
             Assert.IsEqual(args.Count, 3);
             Assert.IsNotNull(context);
@@ -250,7 +250,7 @@ namespace Zenject
         }
 
         public void GetAllInstancesWithInjectSplit(
-            InjectContext context, List<TypeValuePair> args, out Action injectAction, List<object> buffer)
+            InjectContext context, List<TypeValuePair> args, out System.Action injectAction, List<object> buffer)
         {
             Assert.IsEqual(args.Count, 4);
             Assert.IsNotNull(context);
@@ -316,7 +316,7 @@ namespace Zenject
         }
 
         public void GetAllInstancesWithInjectSplit(
-            InjectContext context, List<TypeValuePair> args, out Action injectAction, List<object> buffer)
+            InjectContext context, List<TypeValuePair> args, out System.Action injectAction, List<object> buffer)
         {
             Assert.IsEqual(args.Count, 5);
             Assert.IsNotNull(context);
@@ -384,7 +384,7 @@ namespace Zenject
         }
 
         public void GetAllInstancesWithInjectSplit(
-            InjectContext context, List<TypeValuePair> args, out Action injectAction, List<object> buffer)
+            InjectContext context, List<TypeValuePair> args, out System.Action injectAction, List<object> buffer)
         {
             Assert.IsEqual(args.Count, 5);
             Assert.IsNotNull(context);
@@ -454,7 +454,7 @@ namespace Zenject
         }
 
         public void GetAllInstancesWithInjectSplit(
-            InjectContext context, List<TypeValuePair> args, out Action injectAction, List<object> buffer)
+            InjectContext context, List<TypeValuePair> args, out System.Action injectAction, List<object> buffer)
         {
             Assert.IsEqual(args.Count, 10);
             Assert.IsNotNull(context);

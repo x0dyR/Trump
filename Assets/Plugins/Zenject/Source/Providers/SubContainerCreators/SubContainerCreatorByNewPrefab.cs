@@ -23,7 +23,7 @@ namespace Zenject
         }
 
         public DiContainer CreateSubContainer(
-            List<TypeValuePair> args, InjectContext parentContext, out Action injectAction)
+            List<TypeValuePair> args, InjectContext parentContext, out System.Action injectAction)
         {
             Assert.That(args.IsEmpty());
 

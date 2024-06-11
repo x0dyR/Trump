@@ -8,8 +8,8 @@ namespace Trump.Enemy
     public class Enemy : MonoBehaviour, IHealth, IDamage, INavAgent
     {
         public Vector3 attackRange = new(3f, 3f, 0f);
-        public event Action HealthChanged;
-        public event Action Died;
+        public event System.Action HealthChanged;
+        public event System.Action Died;
 
         [field: SerializeField] private EnemyConfig _enemyConfig;
         [field: SerializeField] private EnemyView _view;

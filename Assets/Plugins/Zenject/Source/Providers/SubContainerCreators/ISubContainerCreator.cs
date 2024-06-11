@@ -5,6 +5,6 @@ namespace Zenject
 {
     public interface ISubContainerCreator
     {
-        DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out Action injectAction);
+        DiContainer CreateSubContainer(List<TypeValuePair> args, InjectContext context, out System.Action injectAction);
     }
 }

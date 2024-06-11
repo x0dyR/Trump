@@ -39,7 +39,7 @@ namespace Zenject
             return _subInstantiator.GetPrefab(context);
         }
 
-        public GameObject Instantiate(InjectContext context, List<TypeValuePair> args, out Action injectAction)
+        public GameObject Instantiate(InjectContext context, List<TypeValuePair> args, out System.Action injectAction)
         {
             // We can't really support arguments if we are using the cached value since
             // the arguments might change when called after the first time

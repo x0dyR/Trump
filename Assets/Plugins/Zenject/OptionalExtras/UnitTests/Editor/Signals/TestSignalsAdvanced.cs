@@ -25,13 +25,13 @@ namespace Zenject.Tests.Signals
             int count = 1;
 
             int order1 = 0;
-            Action handler1 = () => order1 = count++;
+            System.Action handler1 = () => order1 = count++;
 
             int order2 = 0;
-            Action handler2 = () => order2 = count++;
+            System.Action handler2 = () => order2 = count++;
 
             int order3 = 0;
-            Action handler3 = () => order3 = count++;
+            System.Action handler3 = () => order3 = count++;
 
             signalBus.Subscribe<FooSignal>(handler1);
             signalBus.Subscribe<FooSignal>(handler2);
@@ -53,14 +53,14 @@ namespace Zenject.Tests.Signals
 
             bool received = false;
 
-            Action handler2 = () => received = true;
+            System.Action handler2 = () => received = true;
 
-            Action handler = () =>
+            System.Action handler = () =>
             {
                 signalBus.Subscribe<FooSignal>(handler2);
             };
 
-            Action handler3 = () =>
+            System.Action handler3 = () =>
             {
                 signalBus.Unsubscribe<FooSignal>(handler2);
             };
@@ -96,7 +96,7 @@ namespace Zenject.Tests.Signals
 
             // Now test unsubscribing ourself in our own handler
 
-            Action handler4 = null;
+            System.Action handler4 = null;
             handler4 = () =>
             {
                 received = true;
@@ -125,7 +125,7 @@ namespace Zenject.Tests.Signals
             var signalBus2 = subContainer.Resolve<SignalBus>();
 
             bool received = false;
-            Action callback = () => received = true;
+            System.Action callback = () => received = true;
 
             signalBus2.Subscribe<FooSignal>(callback);
 
@@ -211,7 +211,7 @@ namespace Zenject.Tests.Signals
 
             int callCount = 0;
 
-            Action handler = () =>
+            System.Action handler = () =>
             {
                 callCount++;
                 signalBus.Fire<FooSignal>();

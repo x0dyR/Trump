@@ -10,7 +10,7 @@ namespace Zenject
         static readonly List<TypeValuePair> EmptyArgList = new List<TypeValuePair>();
 
         public static void GetAllInstancesWithInjectSplit(
-            this IProvider creator, InjectContext context, out Action injectAction, List<object> buffer)
+            this IProvider creator, InjectContext context, out System.Action injectAction, List<object> buffer)
         {
             creator.GetAllInstancesWithInjectSplit(
                 context, EmptyArgList, out injectAction, buffer);
@@ -27,7 +27,7 @@ namespace Zenject
         {
             Assert.IsNotNull(context);
 
-            Action injectAction;
+            System.Action injectAction;
             creator.GetAllInstancesWithInjectSplit(context, args, out injectAction, buffer);
 
             if (injectAction != null)

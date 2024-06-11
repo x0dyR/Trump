@@ -11,10 +11,10 @@ namespace Zenject
 {
     public class ProjectContext : Context
     {
-        public static event Action PreInstall;
-        public static event Action PostInstall;
-        public static event Action PreResolve;
-        public static event Action PostResolve;
+        public static event System.Action PreInstall;
+        public static event System.Action PostInstall;
+        public static event System.Action PreResolve;
+        public static event System.Action PostResolve;
 
         public const string ProjectContextResourcePath = "ProjectContext";
         public const string ProjectContextResourcePathOld = "ProjectCompositionRoot";
