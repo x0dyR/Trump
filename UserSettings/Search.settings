@@ -1,0 +1,116 @@
+trackSelection = true
+refreshSearchWindowsInPlayMode = false
+fetchPreview = true
+defaultFlags = 0
+keepOpen = false
+queryFolder = "Assets"
+onBoardingDoNotAskAgain = true
+showPackageIndexes = false
+showStatusBar = false
+scopes = {
+	"last_search.DD5CDD96" = "ref:-20630:"
+	"OpenInspectorPreview.DD5CDD96" = "0"
+	"currentGroup.DD5CDD96" = "scene"
+	"last_search.DE949528" = "frame"
+	"OpenInspectorPreview.DE949528" = "0"
+	"currentGroup.DE949528" = "menu"
+	"last_search.956173B0" = "consol"
+	"OpenInspectorPreview.956173B0" = "0"
+	"currentGroup.956173B0" = "all"
+	"last_search.310DEAF1" = "animator"
+	"OpenInspectorPreview.310DEAF1" = "0"
+	"currentGroup.310DEAF1" = "menu"
+	"picker_window_position_offset.768FEAAC" = "566;-389;737;550"
+	"picker_search_text.768FEAAC" = ""
+	"last_search.768FEAAC" = ""
+	"OpenInspectorPreview.768FEAAC" = "0"
+	"currentGroup.768FEAAC" = "sassets"
+	"last_search.756173B0" = "p: t:texture"
+	"OpenInspectorPreview.756173B0" = "0"
+	"currentGroup.756173B0" = "asset"
+}
+providers = {
+	adb = {
+		active = false
+		priority = 2500
+		defaultAction = null
+	}
+	asset = {
+		active = true
+		priority = 25
+		defaultAction = null
+	}
+	store = {
+		active = true
+		priority = 100
+		defaultAction = null
+	}
+	find = {
+		active = true
+		priority = 25
+		defaultAction = null
+	}
+	log = {
+		active = false
+		priority = 210
+		defaultAction = null
+	}
+	packages = {
+		active = true
+		priority = 90
+		defaultAction = null
+	}
+	performance = {
+		active = false
+		priority = 100
+		defaultAction = null
+	}
+	scene = {
+		active = true
+		priority = 50
+		defaultAction = null
+	}
+	profilermarkers = {
+		active = false
+		priority = 100
+		defaultAction = null
+	}
+	archetype = {
+		active = true
+		priority = 2500
+		defaultAction = null
+	}
+	journal = {
+		active = true
+		priority = 2500
+		defaultAction = null
+	}
+}
+objectSelectors = {
+}
+recentSearches = [
+	"p: t:texture"
+	""
+	"c"
+	"nav"
+	"in"
+	"pl"
+	"u"
+	"up"
+	"a"
+	"p"
+	"ref:-20630:"
+]
+searchItemFavorites = [
+]
+savedSearchesSortOrder = 0
+showSavedSearchPanel = false
+hideTabs = false
+expandedQueries = [
+]
+queryBuilder = false
+ignoredProperties = "id;name;classname;imagecontentshash"
+helperWidgetCurrentArea = "all"
+disabledIndexers = ""
+minIndexVariations = 2
+findProviderIndexHelper = true

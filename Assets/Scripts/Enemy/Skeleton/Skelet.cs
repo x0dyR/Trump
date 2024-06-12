@@ -18,11 +18,11 @@
 //        [SerializeField] private Transform _attackPoint;
 //        [SerializeField] private Healthbar _healthbar;
 //        [SerializeField] private int _maxOccupancy = 1;
-//        [SerializeField] private List<Transform> _patrolPoints; // Массив точек патрулирования
+//        [SerializeField] private List<Transform> _patrolPoints; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 //        [field: SerializeField] private int _patrolPointsCount;
 //        private NavMeshAgent _navAgent;
 //        private Character _player;
-//        private int _currentPatrolIndex; // Индекс текущей точки патрулирования
+//        private int _currentPatrolIndex; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 //        private float _currentHealth;
 //        private bool isAttacking = false;
 //        private bool isAttackedThisFrame = false;
@@ -44,10 +44,10 @@
 //        {
 //            _navAgent = GetComponent<NavMeshAgent>();
 //            CreatePatrolPoints(_patrolPoints);
-//            _currentPatrolIndex = 0; // Начинаем с -1, чтобы выбрать случайную точку патрулирования при первом обновлении
+//            _currentPatrolIndex = 0; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ -1, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 //            _maxHealth = _currentHealth = _skeletConfig.Health;
-//            _view.Initialize(); // Инициализируем SkeletView
-//            SetDestinationToRandomPatrolPoint(); // Начинаем с патрулирования к случайной точке
+//            _view.Initialize(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ SkeletView
+//            SetDestinationToRandomPatrolPoint(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 //            _maxHealth = _skeletConfig.Health;
 //        }
 
@@ -73,22 +73,22 @@
 //            isAttackedThisFrame = false;
 //            if (_player != null && ShouldChasePlayer())
 //            {
-//                // Преследуем игрока
+//                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 //                _navAgent.SetDestination(_player.transform.position);
-//                _view.StartChase(); // Запускаем анимацию преследования
+//                _view.StartChase(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 //                _navAgent.speed = _skeletConfig.Speed;
 //            }
 //            else if (Vector3.Distance(transform.position, _player.transform.position) <= _skeletConfig.AttackRange)
 //            {
-//                // Если игрок достигнут, начинаем атаку
-//                _view.StartAttack(); // Запускаем анимацию атаки
-//                AttackPlayer(); // Вызываем метод для выполнения атаки
+//                // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+//                _view.StartAttack(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+//                AttackPlayer(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 //            }
 //            else if (_navAgent.remainingDistance < 0.1f)
 //            {
 //                SetDestinationToRandomPatrolPoint();
-//                _view.StartPatrol(); // Запускаем анимацию патрулирования
-//                _navAgent.speed = _skeletConfig.PatrolSpeed; // Устанавливаем скорость патрулирования
+//                _view.StartPatrol(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+//                _navAgent.speed = _skeletConfig.PatrolSpeed; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 //            }
 //        }
 
@@ -106,7 +106,7 @@
 
 //        private bool ShouldChasePlayer()
 //        {
-//            // Проверяем, должен ли скелет преследовать игрока
+//            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 //            if (_player != null)
 //            {
 //                float distanceToPlayer = Vector3.Distance(transform.position, _player.transform.position);
@@ -117,7 +117,7 @@
 
 //        private void AttackPlayer()
 //        {
-//            // Регистрируем урон в атакующей точке
+//            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 //            Collider[] hitColliders = Physics.OverlapSphere(_attackPoint.position, _skeletConfig.AttackRange);
 //            foreach (Collider col in hitColliders)
 //            {
@@ -189,11 +189,11 @@ namespace Trump
         [SerializeField] private Transform _attackPoint;
         [SerializeField] private Healthbar _healthbar;
         [SerializeField] private int _maxOccupancy = 1;
-        [SerializeField] private List<Transform> _patrolPoints; // Массив точек патрулирования
+        [SerializeField] private List<Transform> _patrolPoints; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         [field: SerializeField] private int _patrolPointsCount;
         private NavMeshAgent _navAgent;
         private Character _player;
-        private int _currentPatrolIndex; // Индекс текущей точки патрулирования
+        private int _currentPatrolIndex; // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         private float _currentHealth;
         private bool isAttacking = false;
         private bool isAttackedThisFrame = false;
@@ -214,12 +214,12 @@ namespace Trump
         private void Start()
         {
             _navAgent = GetComponent<NavMeshAgent>();
-            _navAgent.stoppingDistance = _skeletConfig.AttackRange - 0.1f; // Устанавливаем stoppingDistance чуть меньше AttackRange
+            _navAgent.stoppingDistance = _skeletConfig.AttackRange - 0.1f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ stoppingDistance пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ AttackRange
             CreatePatrolPoints(_patrolPoints);
-            _currentPatrolIndex = 0; // Начинаем с 0, чтобы выбрать случайную точку патрулирования при первом обновлении
+            _currentPatrolIndex = 0; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ 0, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             _maxHealth = _currentHealth = _skeletConfig.Health;
-            _view.Initialize(); // Инициализируем SkeletView
-            SetDestinationToRandomPatrolPoint(); // Начинаем с патрулирования к случайной точке
+            _view.Initialize(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ SkeletView
+            SetDestinationToRandomPatrolPoint(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
         }
 
         public List<Transform> CreatePatrolPoints(List<Transform> patrolArray)
@@ -250,34 +250,34 @@ namespace Trump
 
                 if (distanceToPlayer <= _skeletConfig.AttackRange)
                 {
-                    if (!isAttacking) // Убедимся, что мы не начинаем атаку заново, если уже атакуем
+                    if (!isAttacking) // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                     {
                         isAttacking = true;
-                        _navAgent.isStopped = true; // Останавливаем агента
-                        _view.StartAttack(); // Запускаем анимацию атаки
-                        AttackPlayer(); // Вызываем метод для выполнения атаки
+                        _navAgent.isStopped = true; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+                        _view.StartAttack(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+                        AttackPlayer(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
                     }
                 }
                 else
                 {
-                    isAttacking = false; // Перестаем атаковать, если игрок вне зоны атаки
-                    _navAgent.isStopped = false; // Разрешаем движение агента
+                    isAttacking = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+                    _navAgent.isStopped = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
                     _navAgent.SetDestination(_player.transform.position);
-                    _view.StartChase(); // Запускаем анимацию преследования
+                    _view.StartChase(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                     _navAgent.speed = _skeletConfig.Speed;
                 }
             }
             else
             {
-                isAttacking = false; // Перестаем атаковать, если игрок вне зоны видимости
-                _navAgent.isStopped = false; // Разрешаем движение агента
+                isAttacking = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                _navAgent.isStopped = false; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
                 _navAgent.stoppingDistance = patrolStoppingDistance;
 
                 if (_navAgent.remainingDistance < 0.1f)
                 {
                     SetDestinationToRandomPatrolPoint();
-                    _view.StartPatrol(); // Запускаем анимацию патрулирования
-                    _navAgent.speed = _skeletConfig.PatrolSpeed; // Устанавливаем скорость патрулирования
+                    _view.StartPatrol(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+                    _navAgent.speed = _skeletConfig.PatrolSpeed; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 }
             }
         }
@@ -296,7 +296,7 @@ namespace Trump
 
         private bool ShouldChasePlayer()
         {
-            // Проверяем, должен ли скелет преследовать игрока
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             if (_player != null)
             {
                 float distanceToPlayer = Vector3.Distance(transform.position, _player.transform.position);
@@ -307,7 +307,7 @@ namespace Trump
 
         private void AttackPlayer()
         {
-            // Регистрируем урон в атакующей точке
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
             Collider[] hitColliders = Physics.OverlapSphere(_attackPoint.position, _skeletConfig.AttackRange);
             foreach (Collider col in hitColliders)
             {
