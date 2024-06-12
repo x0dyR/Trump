@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f38039f12162b34c9a37e07f0b3a136, type: 3}
+  m_Name: SkeletConfig
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 2118109813777176944, guid: 585e9e60d3902634fa6b9fde4a295a3f, type: 3}
+  _patrolSpeed: 3
+  _distanceToView: 6
+  _attackRange: 1
+  _speed: 4.3
+  _damage: 2.3
+  _health: 100
+  _enemyDamage: 20.1
