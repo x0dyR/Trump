@@ -22,12 +22,14 @@ namespace Trump
 
         private void OnTriggerEnter(Collider other)
         {
-            _particles.Play();
+            if (other.TryGetComponent(out Character character))
+                _particles.Play();
         }
 
         private void OnTriggerExit(Collider other)
         {
-            _particles.Stop();
+            if (other.TryGetComponent(out Character character))
+                _particles.Stop();
         }
 
         private void OnTriggerStay(Collider other)
